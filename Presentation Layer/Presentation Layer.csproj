@@ -46,10 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAddOrEditPersonInfo.cs">
+    <Compile Include="Persons\ctrlShowDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Persons\ctrlShowDetails.Designer.cs">
+      <DependentUpon>ctrlShowDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persons\frmAddOrEditPersonInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddOrEditPersonInfo.Designer.cs">
+    <Compile Include="Persons\frmAddOrEditPersonInfo.Designer.cs">
       <DependentUpon>frmAddOrEditPersonInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
@@ -58,21 +64,24 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPersons.cs">
+    <Compile Include="Persons\frmPersons.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPersons.Designer.cs">
+    <Compile Include="Persons\frmPersons.Designer.cs">
       <DependentUpon>frmPersons.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAddOrEditPersonInfo.resx">
+    <EmbeddedResource Include="Persons\ctrlShowDetails.resx">
+      <DependentUpon>ctrlShowDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persons\frmAddOrEditPersonInfo.resx">
       <DependentUpon>frmAddOrEditPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPersons.resx">
+    <EmbeddedResource Include="Persons\frmPersons.resx">
       <DependentUpon>frmPersons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

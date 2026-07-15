@@ -31,6 +31,7 @@ namespace Presentation_Layer
             this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.lblPersonID = new System.Windows.Forms.Label();
             this.gbPersonalInfo = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.panelNameRow = new System.Windows.Forms.Panel();
@@ -66,8 +67,6 @@ namespace Presentation_Layer
             this.panelFooter = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
-            this.lblPersonID = new System.Windows.Forms.Label();
             this.epTxtFirstName = new System.Windows.Forms.ErrorProvider(this.components);
             this.epTxtSecoundName = new System.Windows.Forms.ErrorProvider(this.components);
             this.epTxtLastName = new System.Windows.Forms.ErrorProvider(this.components);
@@ -75,6 +74,7 @@ namespace Presentation_Layer
             this.epPhone = new System.Windows.Forms.ErrorProvider(this.components);
             this.epAddress = new System.Windows.Forms.ErrorProvider(this.components);
             this.epRdButton = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.panelHeader.SuspendLayout();
             this.gbPersonalInfo.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -85,7 +85,6 @@ namespace Presentation_Layer
             this.panelAddress.SuspendLayout();
             this.panelImage.SuspendLayout();
             this.panelFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epTxtFirstName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epTxtSecoundName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epTxtLastName)).BeginInit();
@@ -93,6 +92,7 @@ namespace Presentation_Layer
             ((System.ComponentModel.ISupportInitialize)(this.epPhone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epAddress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epRdButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -118,6 +118,17 @@ namespace Presentation_Layer
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1040, 64);
             this.panelHeader.TabIndex = 0;
+            // 
+            // lblPersonID
+            // 
+            this.lblPersonID.AutoSize = true;
+            this.lblPersonID.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPersonID.ForeColor = System.Drawing.Color.White;
+            this.lblPersonID.Location = new System.Drawing.Point(799, 16);
+            this.lblPersonID.Name = "lblPersonID";
+            this.lblPersonID.Size = new System.Drawing.Size(167, 32);
+            this.lblPersonID.TabIndex = 2;
+            this.lblPersonID.Text = "Person Id : -1";
             // 
             // gbPersonalInfo
             // 
@@ -243,6 +254,7 @@ namespace Presentation_Layer
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(160, 25);
             this.txtFirstName.TabIndex = 1;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // panelNationalAndDOB
             // 
@@ -512,30 +524,6 @@ namespace Presentation_Layer
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbPersonImage.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbPersonImage.Location = new System.Drawing.Point(22, 56);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(200, 170);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 0;
-            this.pbPersonImage.TabStop = false;
-            // 
-            // lblPersonID
-            // 
-            this.lblPersonID.AutoSize = true;
-            this.lblPersonID.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonID.ForeColor = System.Drawing.Color.White;
-            this.lblPersonID.Location = new System.Drawing.Point(799, 16);
-            this.lblPersonID.Name = "lblPersonID";
-            this.lblPersonID.Size = new System.Drawing.Size(167, 32);
-            this.lblPersonID.TabIndex = 2;
-            this.lblPersonID.Text = "Person Id : -1";
-            // 
             // epTxtFirstName
             // 
             this.epTxtFirstName.ContainerControl = this;
@@ -563,6 +551,19 @@ namespace Presentation_Layer
             // epRdButton
             // 
             this.epRdButton.ContainerControl = this;
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbPersonImage.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbPersonImage.Location = new System.Drawing.Point(22, 56);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(200, 170);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 0;
+            this.pbPersonImage.TabStop = false;
             // 
             // frmAddOrEditPersonInfo
             // 
@@ -598,7 +599,6 @@ namespace Presentation_Layer
             this.panelImage.ResumeLayout(false);
             this.panelImage.PerformLayout();
             this.panelFooter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epTxtFirstName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epTxtSecoundName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epTxtLastName)).EndInit();
@@ -606,6 +606,7 @@ namespace Presentation_Layer
             ((System.ComponentModel.ISupportInitialize)(this.epPhone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epAddress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epRdButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -2,6 +2,8 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using Business_Layer;
+using Microsoft.Win32;
+using PresentationLayer;
 
 namespace Presentation_Layer
 {
@@ -157,6 +159,9 @@ namespace Presentation_Layer
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        plCtrlShow.Visible = true;
+
         }
 
         private void addNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -201,6 +206,19 @@ namespace Presentation_Layer
 
         }
 
-  
+        private void plCtrlShow_Paint(object sender, PaintEventArgs e)
+        {
+
+            int PersonID = (int)dgvPersons.CurrentRow.Cells["PersonID"].Value;
+            ctrlShowDetails ctrl = new ctrlShowDetails(PersonID);
+
+            plCtrlShow.Controls.Clear();
+            plCtrlShow.Controls.Add(ctrl);
+
+            ctrl.Dock = DockStyle.Fill;
+
+            plCtrlShow.Visible = false;
+
+        }
     }
 }

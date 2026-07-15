@@ -37,7 +37,7 @@ namespace Presentation_Layer
                 isFilled = false;
                 epNationalNo.SetError(txtNationalNo, "National Number is required.");
             } 
-            else if (clsPerson.IsNationalNoExists(txtNationalNo.Text))
+            else if (clsPerson.IsNationalNoExists(txtNationalNo.Text)&&person.NationalNo != txtNationalNo.Text)
             {
                 isFilled = false;
                 epNationalNo.SetError(txtNationalNo, "National Number already exists.");
@@ -260,6 +260,11 @@ namespace Presentation_Layer
                     ev.Handled = true; // Ignore the input
                 }
             };
+
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
