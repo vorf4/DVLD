@@ -29,13 +29,14 @@ namespace Presentation_Layer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblManagePeople = new System.Windows.Forms.Label();
             this.panelToolbar = new System.Windows.Forms.Panel();
+            this.btnAddPerson = new System.Windows.Forms.Button();
+            this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.lblFilterBy = new System.Windows.Forms.Label();
-            this.txtFilterValue = new System.Windows.Forms.TextBox();
-            this.btnAddPerson = new System.Windows.Forms.Button();
             this.panelFooter = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecordsCount = new System.Windows.Forms.Label();
@@ -88,6 +89,32 @@ namespace Presentation_Layer
             this.panelToolbar.Size = new System.Drawing.Size(1284, 56);
             this.panelToolbar.TabIndex = 1;
             // 
+            // btnAddPerson
+            // 
+            this.btnAddPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPerson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnAddPerson.FlatAppearance.BorderSize = 0;
+            this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPerson.ForeColor = System.Drawing.Color.White;
+            this.btnAddPerson.Location = new System.Drawing.Point(1116, 11);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.Size = new System.Drawing.Size(150, 34);
+            this.btnAddPerson.TabIndex = 3;
+            this.btnAddPerson.Text = "Add New Person";
+            this.btnAddPerson.UseVisualStyleBackColor = false;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+            // 
+            // txtFilterValue
+            // 
+            this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilterValue.Location = new System.Drawing.Point(280, 15);
+            this.txtFilterValue.Name = "txtFilterValue";
+            this.txtFilterValue.Size = new System.Drawing.Size(224, 25);
+            this.txtFilterValue.TabIndex = 2;
+            this.txtFilterValue.Visible = false;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            // 
             // cbFilterBy
             // 
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -117,35 +144,9 @@ namespace Presentation_Layer
             this.lblFilterBy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFilterBy.Location = new System.Drawing.Point(16, 18);
             this.lblFilterBy.Name = "lblFilterBy";
-            this.lblFilterBy.Size = new System.Drawing.Size(64, 17);
+            this.lblFilterBy.Size = new System.Drawing.Size(63, 17);
             this.lblFilterBy.TabIndex = 0;
             this.lblFilterBy.Text = "Filter By:";
-            // 
-            // txtFilterValue
-            // 
-            this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilterValue.Location = new System.Drawing.Point(280, 15);
-            this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(224, 25);
-            this.txtFilterValue.TabIndex = 2;
-            this.txtFilterValue.Visible = false;
-            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
-            // 
-            // btnAddPerson
-            // 
-            this.btnAddPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPerson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnAddPerson.FlatAppearance.BorderSize = 0;
-            this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPerson.ForeColor = System.Drawing.Color.White;
-            this.btnAddPerson.Location = new System.Drawing.Point(1116, 11);
-            this.btnAddPerson.Name = "btnAddPerson";
-            this.btnAddPerson.Size = new System.Drawing.Size(150, 34);
-            this.btnAddPerson.TabIndex = 3;
-            this.btnAddPerson.Text = "Add New Person";
-            this.btnAddPerson.UseVisualStyleBackColor = false;
-            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
             // panelFooter
             // 
@@ -181,9 +182,10 @@ namespace Presentation_Layer
             this.lblRecordsCount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordsCount.Location = new System.Drawing.Point(16, 19);
             this.lblRecordsCount.Name = "lblRecordsCount";
-            this.lblRecordsCount.Size = new System.Drawing.Size(80, 17);
+            this.lblRecordsCount.Size = new System.Drawing.Size(71, 17);
             this.lblRecordsCount.TabIndex = 0;
-            this.lblRecordsCount.Text = "Records:  0";
+            this.lblRecordsCount.Text = "Records: 0";
+            this.lblRecordsCount.Click += new System.EventHandler(this.lblRecordsCount_Click);
             // 
             // dgvPersons
             // 
@@ -198,11 +200,14 @@ namespace Presentation_Layer
             this.dgvPersons.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPersons.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvPersons.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvPersons.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.dgvPersons.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPersons.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvPersons.ColumnHeadersDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.dgvPersons.ColumnHeadersDefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPersons.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPersons.ColumnHeadersHeight = 32;
             this.dgvPersons.ContextMenuStrip = this.cmsPersons;
             this.dgvPersons.EnableHeadersVisualStyles = false;
@@ -219,6 +224,7 @@ namespace Presentation_Layer
             this.dgvPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersons.Size = new System.Drawing.Size(1252, 527);
             this.dgvPersons.TabIndex = 2;
+            this.dgvPersons.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersons_CellContentClick);
             this.dgvPersons.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPersons_CellMouseDown);
             // 
             // cmsPersons
@@ -230,38 +236,38 @@ namespace Presentation_Layer
             this.updatePersonToolStripMenuItem,
             this.deletePersonToolStripMenuItem});
             this.cmsPersons.Name = "cmsPersons";
-            this.cmsPersons.Size = new System.Drawing.Size(166, 98);
+            this.cmsPersons.Size = new System.Drawing.Size(181, 120);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // addNewPersonToolStripMenuItem
             // 
             this.addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
-            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNewPersonToolStripMenuItem.Text = "Add New Person";
             this.addNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addNewPersonToolStripMenuItem_Click);
             // 
             // updatePersonToolStripMenuItem
             // 
             this.updatePersonToolStripMenuItem.Name = "updatePersonToolStripMenuItem";
-            this.updatePersonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.updatePersonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updatePersonToolStripMenuItem.Text = "Update Person";
             this.updatePersonToolStripMenuItem.Click += new System.EventHandler(this.updatePersonToolStripMenuItem_Click);
             // 
             // deletePersonToolStripMenuItem
             // 
             this.deletePersonToolStripMenuItem.Name = "deletePersonToolStripMenuItem";
-            this.deletePersonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.deletePersonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deletePersonToolStripMenuItem.Text = "Delete Person";
             this.deletePersonToolStripMenuItem.Click += new System.EventHandler(this.deletePersonToolStripMenuItem_Click);
             // 
