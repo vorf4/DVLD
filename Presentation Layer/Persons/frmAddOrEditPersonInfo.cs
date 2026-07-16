@@ -2,11 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Business_Layer;
+using System.IO;
+using System.Drawing;
 
 namespace Presentation_Layer
 {
     public partial class frmAddOrEditPersonInfo : Form
     {
+
+        private string _ImagePath = null;
 
         clsPerson person = new clsPerson();
 
@@ -84,7 +88,7 @@ namespace Presentation_Layer
                 person.Gender = clsPerson.enGenderType.Female;
 
             person.NationalityCountryID = clsPerson.GetCountryByName(cbCountry.SelectedItem.ToString());
-            person.ImagePath = pbPersonImage.ImageLocation;
+            person.ImagePath = _ImagePath;
 
         }
 
@@ -107,7 +111,9 @@ namespace Presentation_Layer
                     rbFemale.Checked = true;
 
                 cbCountry.SelectedItem = clsPerson.GetCountryNameByID(person.NationalityCountryID);
-                pbPersonImage.ImageLocation = person.ImagePath;
+
+                if (!string.IsNullOrEmpty(person.ImagePath) && File.Exists(person.ImagePath))
+                    pbPersonImage.Image = Image.FromFile(person.ImagePath);
             }
         }
 
@@ -218,6 +224,37 @@ namespace Presentation_Layer
 
         private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // Create Images folder if it doesn't exist
+                string folderPath = Path.Combine(Application.StartupPath, "Images");
+
+                if (!Directory.Exists(folderPath))
+                    Directory.CreateDirectory(folderPath);
+
+                // Create unique file name
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(ofd.FileName);
+
+                // Final destination path
+                string destinationPath = Path.Combine(folderPath, fileName);
+
+                // Copy image
+                File.Copy(ofd.FileName, destinationPath, true);
+
+                // Save path for database if needed
+                _ImagePath = destinationPath;
+
+                // Show image in PictureBox
+                pbPersonImage.Image = Image.FromFile(destinationPath);
+
+
+
+            }
         }
 
         private void rbMale_CheckedChanged(object sender, EventArgs e)
