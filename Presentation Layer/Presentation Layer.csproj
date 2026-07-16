@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainMenu.Designer.cs">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persons\ctrlShowDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -58,10 +64,10 @@
     <Compile Include="Persons\frmAddOrEditPersonInfo.Designer.cs">
       <DependentUpon>frmAddOrEditPersonInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Users\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
+    <Compile Include="Users\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Persons\frmPersons.cs">
@@ -72,13 +78,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmMainMenu.resx">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Persons\ctrlShowDetails.resx">
       <DependentUpon>ctrlShowDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Persons\frmAddOrEditPersonInfo.resx">
       <DependentUpon>frmAddOrEditPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="Users\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Persons\frmPersons.resx">
@@ -115,6 +124,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lock image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ce70d1ebaaa61a41e398e4e98064f0b0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cf7bb94f6280762d4a8bb86b22fe66c0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cb769a8dc2abddb43fa73dc746c71cbd.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

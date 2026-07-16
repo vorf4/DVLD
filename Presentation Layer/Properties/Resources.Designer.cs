@@ -63,6 +63,36 @@ namespace Presentation_Layer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cb769a8dc2abddb43fa73dc746c71cbd {
+            get {
+                object obj = ResourceManager.GetObject("cb769a8dc2abddb43fa73dc746c71cbd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ce70d1ebaaa61a41e398e4e98064f0b0 {
+            get {
+                object obj = ResourceManager.GetObject("ce70d1ebaaa61a41e398e4e98064f0b0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cf7bb94f6280762d4a8bb86b22fe66c0 {
+            get {
+                object obj = ResourceManager.GetObject("cf7bb94f6280762d4a8bb86b22fe66c0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lock_image {
             get {
                 object obj = ResourceManager.GetObject("lock image", resourceCulture);

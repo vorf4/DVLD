@@ -29,9 +29,9 @@ namespace Presentation_Layer
         private void InitializeComponent()
         {
             this.panelImage = new System.Windows.Forms.Panel();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lblSubTitle = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panelLogin = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -57,6 +57,19 @@ namespace Presentation_Layer
             this.panelImage.Name = "panelImage";
             this.panelImage.Size = new System.Drawing.Size(340, 500);
             this.panelImage.TabIndex = 0;
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pbLogo.Image = global::Presentation_Layer.Properties.Resources.lock_image;
+            this.pbLogo.Location = new System.Drawing.Point(36, 39);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(269, 213);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
             // 
             // lblSubTitle
             // 
@@ -85,19 +98,6 @@ namespace Presentation_Layer
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pbLogo.Image = global::Presentation_Layer.Properties.Resources.lock_image;
-            this.pbLogo.Location = new System.Drawing.Point(42, 34);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(269, 213);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo.TabIndex = 0;
-            this.pbLogo.TabStop = false;
             // 
             // panelLogin
             // 
