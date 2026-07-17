@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Business_Layer;
+using DVLD.Presentation_Layer;
 
 namespace Presentation_Layer
 {
@@ -61,6 +62,11 @@ namespace Presentation_Layer
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
+
+            frmManageUsers frmUsers = new frmManageUsers();
+            this.Hide(); // Hide the main menu form
+            frmUsers.ShowDialog();
+
         }
 
         private void btnAccountSettings_Click(object sender, EventArgs e)
@@ -131,6 +137,10 @@ namespace Presentation_Layer
 
         private void miSignOut_Click(object sender, EventArgs e)
         {
+
+            frmLogin frmLogin = new frmLogin();
+            this.Hide(); // Hide the main menu form
+            frmLogin.ShowDialog(this);
             this.Close();
         }
     }
