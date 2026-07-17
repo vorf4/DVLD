@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Business_Layer;
 
 namespace Presentation_Layer
 {
     public partial class frmMainMenu : Form
     {
-        public frmMainMenu()
+        private clsUser _User;
+
+        public frmMainMenu(clsUser User)
         {
             InitializeComponent();
             ApplyMenuRenderer();
+            _User = User;
         }
 
         private void ApplyMenuRenderer()
@@ -44,6 +48,11 @@ namespace Presentation_Layer
 
         private void btnPeople_Click(object sender, EventArgs e)
         {
+
+            frmPersons frmPersons = new frmPersons();
+            this.Hide(); // Hide the main menu form
+            frmPersons.ShowDialog();
+
         }
 
         private void btnDrivers_Click(object sender, EventArgs e)
@@ -122,6 +131,7 @@ namespace Presentation_Layer
 
         private void miSignOut_Click(object sender, EventArgs e)
         {
+            this.Close();
         }
     }
 }
