@@ -39,11 +39,6 @@
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cmsUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,8 +62,9 @@
             this.pnlHeader.Controls.Add(this.lblScreenTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(982, 80);
+            this.pnlHeader.Size = new System.Drawing.Size(1600, 65);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblScreenTitle
@@ -76,9 +72,10 @@
             this.lblScreenTitle.AutoSize = true;
             this.lblScreenTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScreenTitle.ForeColor = System.Drawing.Color.White;
-            this.lblScreenTitle.Location = new System.Drawing.Point(20, 17);
+            this.lblScreenTitle.Location = new System.Drawing.Point(15, 14);
+            this.lblScreenTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblScreenTitle.Name = "lblScreenTitle";
-            this.lblScreenTitle.Size = new System.Drawing.Size(242, 46);
+            this.lblScreenTitle.Size = new System.Drawing.Size(198, 37);
             this.lblScreenTitle.TabIndex = 0;
             this.lblScreenTitle.Text = "Manage Users";
             this.lblScreenTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -90,9 +87,11 @@
             this.gbFilter.Controls.Add(this.txtFilterValue);
             this.gbFilter.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.gbFilter.Location = new System.Drawing.Point(20, 100);
+            this.gbFilter.Location = new System.Drawing.Point(15, 81);
+            this.gbFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(600, 70);
+            this.gbFilter.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbFilter.Size = new System.Drawing.Size(450, 57);
             this.gbFilter.TabIndex = 1;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
@@ -101,9 +100,10 @@
             // 
             this.lblFilterBy.AutoSize = true;
             this.lblFilterBy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilterBy.Location = new System.Drawing.Point(20, 30);
+            this.lblFilterBy.Location = new System.Drawing.Point(15, 24);
+            this.lblFilterBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFilterBy.Name = "lblFilterBy";
-            this.lblFilterBy.Size = new System.Drawing.Size(80, 23);
+            this.lblFilterBy.Size = new System.Drawing.Size(68, 19);
             this.lblFilterBy.TabIndex = 0;
             this.lblFilterBy.Text = "Filter By:";
             // 
@@ -118,17 +118,19 @@
             "FullName",
             "UserName",
             "IsActive"});
-            this.cbFilterBy.Location = new System.Drawing.Point(106, 27);
+            this.cbFilterBy.Location = new System.Drawing.Point(80, 22);
+            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbFilterBy.Name = "cbFilterBy";
-            this.cbFilterBy.Size = new System.Drawing.Size(180, 31);
+            this.cbFilterBy.Size = new System.Drawing.Size(136, 25);
             this.cbFilterBy.TabIndex = 1;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // txtFilterValue
             // 
-            this.txtFilterValue.Location = new System.Drawing.Point(292, 27);
+            this.txtFilterValue.Location = new System.Drawing.Point(219, 22);
+            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(220, 30);
+            this.txtFilterValue.Size = new System.Drawing.Size(166, 25);
             this.txtFilterValue.TabIndex = 2;
             this.txtFilterValue.Visible = false;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
@@ -141,8 +143,8 @@
             this.dgvUsers.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
@@ -159,12 +161,6 @@
             this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsers.ColumnHeadersHeight = 40;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UserID,
-            this.PersonID,
-            this.FullName,
-            this.UserName,
-            this.IsActive});
             this.dgvUsers.ContextMenuStrip = this.cmsUsers;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -176,7 +172,8 @@
             this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsers.EnableHeadersVisualStyles = false;
             this.dgvUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.dgvUsers.Location = new System.Drawing.Point(20, 190);
+            this.dgvUsers.Location = new System.Drawing.Point(15, 154);
+            this.dgvUsers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
@@ -184,44 +181,10 @@
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 35;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(942, 300);
+            this.dgvUsers.Size = new System.Drawing.Size(1570, 244);
             this.dgvUsers.TabIndex = 3;
+            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
             this.dgvUsers.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsers_CellMouseDown);
-            // 
-            // UserID
-            // 
-            this.UserID.HeaderText = "User ID";
-            this.UserID.MinimumWidth = 6;
-            this.UserID.Name = "UserID";
-            this.UserID.ReadOnly = true;
-            // 
-            // PersonID
-            // 
-            this.PersonID.HeaderText = "Person ID";
-            this.PersonID.MinimumWidth = 6;
-            this.PersonID.Name = "PersonID";
-            this.PersonID.ReadOnly = true;
-            // 
-            // FullName
-            // 
-            this.FullName.HeaderText = "Full Name";
-            this.FullName.MinimumWidth = 6;
-            this.FullName.Name = "FullName";
-            this.FullName.ReadOnly = true;
-            // 
-            // UserName
-            // 
-            this.UserName.HeaderText = "User Name";
-            this.UserName.MinimumWidth = 6;
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // IsActive
-            // 
-            this.IsActive.HeaderText = "Is Active";
-            this.IsActive.MinimumWidth = 6;
-            this.IsActive.Name = "IsActive";
-            this.IsActive.ReadOnly = true;
             // 
             // cmsUsers
             // 
@@ -234,40 +197,40 @@
             this.deleteToolStripMenuItem,
             this.changePasswordToolStripMenuItem});
             this.cmsUsers.Name = "cmsUsers";
-            this.cmsUsers.Size = new System.Drawing.Size(213, 154);
+            this.cmsUsers.Size = new System.Drawing.Size(188, 124);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // addNewUserToolStripMenuItem
             // 
             this.addNewUserToolStripMenuItem.Name = "addNewUserToolStripMenuItem";
-            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
+            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
             this.addNewUserToolStripMenuItem.Text = "Add New User";
             this.addNewUserToolStripMenuItem.Click += new System.EventHandler(this.addNewUserToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(187, 24);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
@@ -279,9 +242,10 @@
             this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddUser.Location = new System.Drawing.Point(812, 120);
+            this.btnAddUser.Location = new System.Drawing.Point(1473, 98);
+            this.btnAddUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(150, 45);
+            this.btnAddUser.Size = new System.Drawing.Size(112, 37);
             this.btnAddUser.TabIndex = 2;
             this.btnAddUser.Text = "➕ Add User";
             this.btnAddUser.UseVisualStyleBackColor = false;
@@ -293,9 +257,10 @@
             this.pnlStatus.Controls.Add(this.lblRecordsCount);
             this.pnlStatus.Controls.Add(this.btnClose);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlStatus.Location = new System.Drawing.Point(0, 507);
+            this.pnlStatus.Location = new System.Drawing.Point(0, 412);
+            this.pnlStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Size = new System.Drawing.Size(982, 70);
+            this.pnlStatus.Size = new System.Drawing.Size(1600, 57);
             this.pnlStatus.TabIndex = 4;
             // 
             // lblRecordsCount
@@ -303,9 +268,10 @@
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordsCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.lblRecordsCount.Location = new System.Drawing.Point(20, 23);
+            this.lblRecordsCount.Location = new System.Drawing.Point(15, 19);
+            this.lblRecordsCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordsCount.Name = "lblRecordsCount";
-            this.lblRecordsCount.Size = new System.Drawing.Size(93, 23);
+            this.lblRecordsCount.Size = new System.Drawing.Size(79, 19);
             this.lblRecordsCount.TabIndex = 0;
             this.lblRecordsCount.Text = "Records: 0";
             // 
@@ -314,13 +280,13 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.White;
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.btnClose.FlatAppearance.BorderSize = 1;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnClose.Location = new System.Drawing.Point(832, 12);
+            this.btnClose.Location = new System.Drawing.Point(1488, 10);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(130, 45);
+            this.btnClose.Size = new System.Drawing.Size(98, 37);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "✖ Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -328,15 +294,16 @@
             // 
             // frmManageUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(982, 577);
+            this.ClientSize = new System.Drawing.Size(1600, 469);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.gbFilter);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlStatus);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmManageUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Users";
@@ -371,10 +338,5 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PersonID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
     }
 }

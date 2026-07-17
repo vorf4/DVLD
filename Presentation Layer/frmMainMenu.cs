@@ -64,7 +64,6 @@ namespace Presentation_Layer
         {
 
             frmManageUsers frmUsers = new frmManageUsers();
-            this.Hide(); // Hide the main menu form
             frmUsers.ShowDialog();
 
         }

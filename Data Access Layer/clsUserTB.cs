@@ -8,8 +8,8 @@ namespace Data_Access_Layer
     public class clsUserTB
     {
 
-        public static bool GetUserByUsernameAndPassword(string username, string password, ref int UserID 
-            ,ref int PersonId,ref bool IsActive)
+        public static bool GetUserByUsernameAndPassword(string username, string password, ref int UserID
+            , ref int PersonId, ref bool IsActive)
         {
 
             bool isFound = false;
@@ -48,9 +48,9 @@ namespace Data_Access_Layer
 
             }
             finally
-            { 
-            
-            connection.Close();
+            {
+
+                connection.Close();
 
             }
 
@@ -71,9 +71,9 @@ namespace Data_Access_Layer
 
             cmd.Parameters.AddWithValue("@UserID", UserID);
 
-            try 
+            try
             {
-            
+
                 connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -101,6 +101,41 @@ namespace Data_Access_Layer
 
         }
 
+        public static DataTable GetAllUsers()
+        {
+            DataTable dtUsers = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT        Users.UserID, Users.PersonID,\r\n" +
+                "People.FirstName+''+ People.SecondName+''+ People.ThirdName+''+ People.LastName as FullName,\r\n" +
+                "Users.UserName, Users.IsActive\r\nFROM           " +
+                " Users INNER JOIN\r\n                     " +
+                "    People ON Users.PersonID = People.PersonID";
 
+            SqlCommand cmd = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if(reader.HasRows)
+                {
+                    dtUsers.Load(reader);
+                }
+
+                reader.Close();
+
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dtUsers;
+
+
+        }
     }
 }

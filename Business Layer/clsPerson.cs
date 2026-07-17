@@ -35,7 +35,7 @@ namespace Business_Layer
         private int _NationalityCountryID;
         private string _ImagePath;
 
-        private DataTable _GetAllPersons()
+        private static DataTable _GetAllPersons()
         {
             return clsPersonsTB.GetAllPersons();
         }
@@ -154,7 +154,7 @@ namespace Business_Layer
         public string ImagePath { get => _ImagePath; set => _ImagePath = value; }
 
         //public method to get all persons from the database
-        public DataTable GetAllPersons()
+        public static DataTable GetAllPersons()
         {
             return _GetAllPersons();
         }

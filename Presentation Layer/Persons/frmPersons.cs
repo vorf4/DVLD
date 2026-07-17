@@ -35,8 +35,7 @@ namespace Presentation_Layer
 
         private void _LoadPersons()
         {
-            clsPerson person = new clsPerson();
-            _dtAllPersons = person.GetAllPersons();
+            _dtAllPersons = clsPerson.GetAllPersons();
             dgvPersons.DataSource = _dtAllPersons;
             _UpdateRecordsCount();
         }

@@ -81,6 +81,11 @@ namespace Business_Layer
             }
         }
 
+        private static DataTable GetAllUsers()
+        {
+            return clsUserTB.GetAllUsers();
+        }
+
         //public set and get methods for the private variables
         public int UserId { get => _UserId; set => _UserId = value; }
         public int PersonId { get => _PersonId; set => _PersonId = value; }
@@ -116,6 +121,10 @@ namespace Business_Layer
 
         }
 
+        public static DataTable GetAll()
+        {
+            return GetAllUsers();
+        }
 
     }
 }

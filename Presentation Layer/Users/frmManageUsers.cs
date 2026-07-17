@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,10 +7,31 @@ namespace DVLD.Presentation_Layer
 {
     public partial class frmManageUsers : Form
     {
+
+        private DataTable _dtAllUsers;
         public frmManageUsers()
         {
             InitializeComponent();
             ApplyModernMenuStyling();
+
+            this.Load += frmManageUsers_Load;
+        }
+
+        private void frmManageUsers_Load(object sender, EventArgs e)
+        {
+            _LoadUsers();
+        }
+
+        private  void _LoadUsers()
+        {
+            _dtAllUsers = Business_Layer.clsUser.GetAll();
+            dgvUsers.DataSource = _dtAllUsers;
+            _UpdateRecordsCount();
+        }
+
+        private void _UpdateRecordsCount()
+        {
+            lblRecordsCount.Text = $"Total Records: {_dtAllUsers.Rows.Count}";
         }
 
         private void ApplyModernMenuStyling()
@@ -96,6 +118,11 @@ namespace DVLD.Presentation_Layer
             {
                 get { return Color.FromArgb(227, 242, 253); } // Light Blue #E3F2FD border to blend in
             }
+        }
+
+        private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
