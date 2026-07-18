@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.tcUserInfo = new System.Windows.Forms.TabControl();
@@ -43,6 +44,9 @@
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.epUserName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epConfirmPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlHeader.SuspendLayout();
             this.tcUserInfo.SuspendLayout();
             this.tpPersonalInfo.SuspendLayout();
@@ -50,6 +54,9 @@
             this.gbPersonInformation.SuspendLayout();
             this.tpLoginInfo.SuspendLayout();
             this.gbLoginInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epUserName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epConfirmPassword)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -72,6 +79,7 @@
             this.lblTitle.Size = new System.Drawing.Size(220, 41);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Add New User";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // tcUserInfo
             // 
@@ -183,6 +191,7 @@
             this.ctrlShowDetails.Name = "ctrlShowDetails";
             this.ctrlShowDetails.Size = new System.Drawing.Size(854, 326);
             this.ctrlShowDetails.TabIndex = 0;
+            this.ctrlShowDetails.Load += new System.EventHandler(this.ctrlShowDetails_Load);
             // 
             // btnNext
             // 
@@ -337,6 +346,18 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // epUserName
+            // 
+            this.epUserName.ContainerControl = this;
+            // 
+            // epPassword
+            // 
+            this.epPassword.ContainerControl = this;
+            // 
+            // epConfirmPassword
+            // 
+            this.epConfirmPassword.ContainerControl = this;
+            // 
             // frmAddOrUpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +380,9 @@
             this.tpLoginInfo.ResumeLayout(false);
             this.gbLoginInformation.ResumeLayout(false);
             this.gbLoginInformation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epUserName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epConfirmPassword)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -391,5 +415,8 @@
         private System.Windows.Forms.CheckBox chkIsActive;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ErrorProvider epUserName;
+        private System.Windows.Forms.ErrorProvider epPassword;
+        private System.Windows.Forms.ErrorProvider epConfirmPassword;
     }
 }

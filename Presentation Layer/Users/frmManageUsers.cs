@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using Business_Layer;
 using Presentation_Layer;
 
 namespace DVLD.Presentation_Layer
@@ -44,7 +45,7 @@ namespace DVLD.Presentation_Layer
         private void btnAddUser_Click(object sender, EventArgs e)
         {
 
-           frmAddOrUpdateUser frm = new frmAddOrUpdateUser(frmAddOrUpdateUser.enMode.AddNew);
+           frmAddOrUpdateUser frm = new frmAddOrUpdateUser();
             frm.ShowDialog();
             _LoadUsers(); // Refresh the user list after adding a new user
 
@@ -207,18 +208,44 @@ namespace DVLD.Presentation_Layer
 
         private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            frmAddOrUpdateUser frm = new frmAddOrUpdateUser();
+            frm.ShowDialog();
+            _LoadUsers(); // Refresh the user list after adding a new user
+
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["UserID"].Value);
+            frmAddOrUpdateUser frm = new frmAddOrUpdateUser(UserID);
+            frm.ShowDialog();
+            _LoadUsers(); // Refresh the user list after adding a new user
+
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["UserID"].Value);
+            if (clsUser.DeleteUser(UserID))
+            {
+                MessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _LoadUsers(); // Refresh the user list after deleting a user
+            }
+            else
+            {
+                MessageBox.Show("Failed to delete user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            
+
         }
 
         // Custom Color Table for Context Menu Strip

@@ -10,6 +10,10 @@ namespace Presentation_Layer
     public partial class frmAddOrEditPersonInfo : Form
     {
 
+        public delegate void frmAddOrEditPersonInfo_Click(int PersonID);
+
+        public event frmAddOrEditPersonInfo_Click DataSent;
+
         private string _ImagePath = null;
 
         clsPerson person = new clsPerson();
@@ -211,6 +215,12 @@ namespace Presentation_Layer
 
                 lblPersonID.Text = "Person ID: " + person.PersonID.ToString();
                 lblTitle.Text = "Update Person Info";
+            }
+
+           
+          if(DataSent != null)
+            {
+                DataSent(person.PersonID);
             }
 
         }

@@ -21,6 +21,15 @@ namespace PresentationLayer
             LoadPersonInfo();
         }
 
+        public ctrlShowDetails(clsPerson Person)
+        {
+            InitializeComponent();
+
+
+            _Person = Person;
+            LoadPersonInfo();
+        }
+
         public void LoadPersonInfo()
         {
          

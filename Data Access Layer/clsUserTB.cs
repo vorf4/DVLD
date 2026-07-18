@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Runtime.InteropServices;
 
 namespace Data_Access_Layer
@@ -101,6 +102,38 @@ namespace Data_Access_Layer
 
         }
 
+        public static bool GetUserByPersonID(int PersonID, ref int UserID, ref bool IsActive, ref string UserName, ref string Password)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT UserID, IsActive, UserName, Password FROM Users WHERE PersonID = @PersonID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    UserID = (int)reader["UserID"];
+                    IsActive = (bool)reader["IsActive"];
+                    UserName = (string)reader["UserName"];
+                    Password = (string)reader["Password"];
+                    isFound = true;
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isFound;
+        }
+
         public static DataTable GetAllUsers()
         {
             DataTable dtUsers = new DataTable();
@@ -137,5 +170,189 @@ namespace Data_Access_Layer
 
 
         }
+
+        public static int AddUser(int PersonId, string UserName, string Password, bool IsActive)
+        {
+            int newUserId = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "INSERT INTO Users (PersonId, UserName, Password, IsActive) VALUES (@PersonId, @UserName, @Password, @IsActive); SELECT SCOPE_IDENTITY();";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@PersonId", PersonId);
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            cmd.Parameters.AddWithValue("@IsActive", IsActive);
+            try
+            {
+                connection.Open();
+
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    newUserId = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return newUserId;
+        }
+
+        public static bool UpdateUser(int UserID, int PersonId, string UserName, string Password, bool IsActive)
+        {
+            bool isUpdated = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "UPDATE Users SET PersonId = @PersonId, UserName = @UserName, Password = @Password, IsActive = @IsActive WHERE UserID = @UserID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@UserID", UserID);
+            cmd.Parameters.AddWithValue("@PersonId", PersonId);
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            cmd.Parameters.AddWithValue("@IsActive", IsActive);
+            try
+            {
+                connection.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                isUpdated = rowsAffected > 0;
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isUpdated;
+        }
+
+        public static bool DeleteUser(int UserID)
+        {
+            bool isDeleted = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "DELETE FROM Users WHERE UserID = @UserID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@UserID", UserID);
+            try
+            {
+                connection.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                isDeleted = rowsAffected > 0;
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isDeleted;
+        }
+
+        public static bool IsUserExists(int UserID)
+        {
+            bool exists = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT COUNT(*) FROM Users WHERE UserID = @UserID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@UserID", UserID);
+            try
+            {
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                exists = count > 0;
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return exists;
+        }
+
+        public static bool IsUsernameExists(string UserName)
+        {
+            bool exists = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT COUNT(*) FROM Users WHERE UserName = @UserName";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+            try
+            {
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                exists = count > 0;
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return exists;
+        }
+
+        public static bool IsPersonIdExists(int PersonId)
+        {
+            bool exists = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT COUNT(*) FROM Users WHERE PersonId = @PersonId";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@PersonId", PersonId);
+            try
+            {
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                exists = count > 0;
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return exists;
+        }
+
+        public static bool IsNationalIdExists(string NationalId)
+        {
+            bool exists = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT        count(*)\r\nFROM    " +
+                "        People INNER JOIN\r\n       " +
+                "                  Users ON People.PersonID = Users.PersonID" +
+                " WHERE People.NationalNo = @NationalId";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@NationalId", NationalId);
+            try
+            {
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                exists = count > 0;
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return exists;
+        }
+
+
     }
 }

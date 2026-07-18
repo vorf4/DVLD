@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Runtime.CompilerServices;
 using Data_Access_Layer;
 
 namespace Business_Layer
@@ -86,6 +87,59 @@ namespace Business_Layer
             return clsUserTB.GetAllUsers();
         }
 
+        private void AddNewUser() 
+        { 
+        
+            this._UserId = clsUserTB.AddUser(this._PersonId, this._UserName, this._Password, this._IsActive);
+
+        }
+
+        private void UpdateUser()
+        {
+            clsUserTB.UpdateUser(this._UserId, this._PersonId, this._UserName, this._Password, this._IsActive);
+        }
+
+        private static bool DeleteUserById(int UserID)
+        {
+            return clsUserTB.DeleteUser(UserID);
+        }
+
+        private static bool IsUserExists(int UserID)
+        {
+            return clsUserTB.IsUserExists(UserID);
+        }
+
+        private static bool IsUserExists(string UserName)
+        {
+            return clsUserTB.IsUsernameExists(UserName);
+        }
+
+        private static bool IsPersonIdExists(int PersonId)
+        {
+            return clsUserTB.IsPersonIdExists(PersonId);
+        }
+
+        private static clsUser findUserByPersonId(int PersonId)
+        {
+            int UserID = -1;
+            bool IsActive = false;
+            string UserName = "";
+            string Password = "";
+
+            if(clsUserTB.GetUserByPersonID(PersonId, ref UserID, ref IsActive, ref UserName, ref Password))
+            {
+                
+                return new clsUser(UserID, PersonId, UserName, Password, IsActive);
+
+            }
+            return null;
+        }
+
+        private static bool IsNationalIdExists(string NationalId)
+        {
+            return clsUserTB.IsNationalIdExists(NationalId);
+        }
+
         //public set and get methods for the private variables
         public int UserId { get => _UserId; set => _UserId = value; }
         public int PersonId { get => _PersonId; set => _PersonId = value; }
@@ -121,9 +175,57 @@ namespace Business_Layer
 
         }
 
+        public enSave Save()
+        {
+            if (this._Mode == enMode.enAddNewUser)
+            {
+                AddNewUser();
+                return enSave.enAddScc;
+            }
+            else if (this._Mode == enMode.enUpdateUser)
+            {
+                UpdateUser();
+                return enSave.enUpdateScc;
+            }
+            else
+            {
+                return enSave.enfailed;
+            }
+        }
+
         public static DataTable GetAll()
         {
             return GetAllUsers();
+        }
+
+        public static bool DeleteUser(int UserID)
+        {
+            return DeleteUserById(UserID);
+        }
+
+        public static bool IsExists(int UserID)
+        {
+            return IsUserExists(UserID);
+        }
+
+        public static bool IsExists(string UserName)
+        {
+            return IsUserExists(UserName);
+        }
+
+        public static bool IsPersonExists(int PersonId)
+        {
+            return IsPersonIdExists(PersonId);
+        }
+
+        public static clsUser FindByPersonId(int PersonId)
+        {
+            return findUserByPersonId(PersonId);
+        }
+
+        public static bool IsNationalNumberExists(string NationalId)
+        {
+            return IsNationalIdExists(NationalId);
         }
 
     }

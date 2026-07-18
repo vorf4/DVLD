@@ -51,8 +51,10 @@ namespace Presentation_Layer
         {
 
             frmPersons frmPersons = new frmPersons();
-            this.Hide(); // Hide the main menu form
+            this.Visible =false; // Hide the main menu form
             frmPersons.ShowDialog();
+            this.Visible = true; // Show the main menu form again after frmPersons is closed
+
 
         }
 
@@ -64,7 +66,9 @@ namespace Presentation_Layer
         {
 
             frmManageUsers frmUsers = new frmManageUsers();
+            this.Visible =false;
             frmUsers.ShowDialog();
+            this.Visible = true;
 
         }
 
