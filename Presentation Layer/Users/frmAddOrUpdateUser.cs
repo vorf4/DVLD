@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Business_Layer;
 
 namespace Presentation_Layer
 {
@@ -26,7 +27,12 @@ namespace Presentation_Layer
 
         private void btnSearchPerson_Click(object sender, EventArgs e)
         {
-        }
+
+            clsPerson Person=clsPerson.Find(cbFilterBy.SelectedItem.ToString());
+            
+
+
+            }
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {

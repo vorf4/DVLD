@@ -293,6 +293,61 @@ namespace Data_Access_Layer
 
         }
 
+        public static bool GetPersonByNationalNo(string NationalNo, ref string FirstName, ref string SecondName, ref string ThirdName, ref string LastName
+            , ref DateTime DateOfBirth, ref int Gender, ref string Address, 
+            ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath, ref int PersonID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+
+            string query = "select * from People where NationalNo = @NationalNo";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                isFound = reader.Read();
+
+                if (isFound)
+                {
+                    PersonID = int.Parse(reader["PersonID"].ToString());
+                    FirstName = reader["FirstName"].ToString();
+                    SecondName = reader["SecondName"].ToString();
+                    ThirdName = reader["ThirdName"].ToString();
+                    LastName = reader["LastName"].ToString();
+                    NationalNo = reader["NationalNo"].ToString();
+                    DateOfBirth = DateTime.Parse(reader["DateOfBirth"].ToString());
+                    Gender = int.Parse(reader["Gendor"].ToString());
+                    Address = reader["Address"].ToString();
+                    Phone = reader["Phone"].ToString();
+                    Email = reader["Email"].ToString();
+                    NationalityCountryID = int.Parse(reader["NationalityCountryID"].ToString());
+                    ImagePath = reader["ImagePath"].ToString();
+                }
+
+                isFound = true;
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+                // Handle the exception (e.g., log it, rethrow it, etc.)
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
         public static bool IsNationalNoExists(string NationalNo)
         {
            

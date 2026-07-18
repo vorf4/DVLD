@@ -84,6 +84,32 @@ namespace Business_Layer
            
         }
 
+        private static clsPerson _FindPersonByNationalNo(string NationalNo)
+        {
+            bool found;
+            int PersonID = -1;
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Address = "", Phone = "", Email = "", ImagePath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            int Gender = 0;
+            int NationalityCountryID = -1;
+
+            found = clsPersonsTB.GetPersonByNationalNo(NationalNo, ref FirstName, ref SecondName, ref ThirdName, ref LastName,
+            ref DateOfBirth,
+            ref Gender, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath, ref PersonID);
+
+            if (found)
+            {
+                return new clsPerson(enMode.enUpdate, PersonID, NationalNo, FirstName, SecondName, ThirdName, LastName,
+                    DateOfBirth, (enGenderType)Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+            }
+            else
+            {
+                return null;
+            }
+
+
+            }
+
         private static string _GetCountryNameByID(int CountryID)
         { 
         return clsPersonsTB.GetCountryNameByID(CountryID);
@@ -206,6 +232,13 @@ namespace Business_Layer
         public static clsPerson Find(int PersonID)
         {
             return _FindPersonByID(PersonID);
+        }
+
+        public static clsPerson Find(string NationalNo)
+        {
+         
+            return _FindPersonByNationalNo(NationalNo);
+
         }
 
         public static bool IsNationalNoExists(string NationalNo)
