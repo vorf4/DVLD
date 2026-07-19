@@ -64,6 +64,18 @@
     <Compile Include="Persons\frmAddOrEditPersonInfo.Designer.cs">
       <DependentUpon>frmAddOrEditPersonInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\ctrlChangePassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\ctrlChangePassword.Designer.cs">
+      <DependentUpon>ctrlChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\ctrlShowUserDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\ctrlShowUserDetails.Designer.cs">
+      <DependentUpon>ctrlShowUserDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmAddOrUpdateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persons\frmAddOrEditPersonInfo.resx">
       <DependentUpon>frmAddOrEditPersonInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\ctrlChangePassword.resx">
+      <DependentUpon>ctrlChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmAddOrUpdateUser.resx">
       <DependentUpon>frmAddOrUpdateUser.cs</DependentUpon>

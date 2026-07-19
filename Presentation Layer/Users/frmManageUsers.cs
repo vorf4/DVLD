@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Business_Layer;
 using Presentation_Layer;
+using PresentationLayer;
 
 namespace DVLD.Presentation_Layer
 {
@@ -204,6 +205,22 @@ namespace DVLD.Presentation_Layer
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["UserID"].Value);
+            ctrlShowUserDetails personDetailsControl = new ctrlShowUserDetails(UserID);
+            personDetailsControl._CheckIfEndTask += btnCloseDetails_Click;
+            
+
+
+            plUserDetails.Controls.Clear();
+            plUserDetails.Controls.Add(personDetailsControl);
+            plUserDetails.Visible = true;
+
+        }
+
+        private void btnCloseDetails_Click(int check)
+        {
+            plUserDetails.Visible = false;
         }
 
         private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)

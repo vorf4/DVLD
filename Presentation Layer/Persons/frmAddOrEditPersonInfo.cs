@@ -10,13 +10,17 @@ namespace Presentation_Layer
     public partial class frmAddOrEditPersonInfo : Form
     {
 
+        public delegate void frmSendPersonInfo(clsPerson PersonID);
+
         public delegate void frmAddOrEditPersonInfo_Click(int PersonID);
 
-        public event frmAddOrEditPersonInfo_Click DataSent;
+        public event frmAddOrEditPersonInfo_Click DataSentPersonID;
+
+        public event frmSendPersonInfo DataSentPersonInfo;
 
         private string _ImagePath = null;
 
-        clsPerson person = new clsPerson();
+        clsPerson _Person = new clsPerson();
 
         private bool _CheckFormIsCorrect() {
         
@@ -45,7 +49,7 @@ namespace Presentation_Layer
                 isFilled = false;
                 epNationalNo.SetError(txtNationalNo, "National Number is required.");
             } 
-            else if (clsPerson.IsNationalNoExists(txtNationalNo.Text)&&person.NationalNo != txtNationalNo.Text)
+            else if (clsPerson.IsNationalNoExists(txtNationalNo.Text)&&_Person.NationalNo != txtNationalNo.Text)
             {
                 isFilled = false;
                 epNationalNo.SetError(txtNationalNo, "National Number already exists.");
@@ -75,49 +79,49 @@ namespace Presentation_Layer
         private void _LoadPersonInfo() {
 
 
-            person.FirstName = txtFirstName.Text;
-            person.SecondName = txtSecondName.Text;
-            person.ThirdName = txtThirdName.Text;
-            person.LastName = txtLastName.Text;
+            _Person.FirstName = txtFirstName.Text;
+            _Person.SecondName = txtSecondName.Text;
+            _Person.ThirdName = txtThirdName.Text;
+            _Person.LastName = txtLastName.Text;
 
-            person.Email = txtEmail.Text;
-            person.Phone = txtPhone.Text;
-            person.Address = txtAddress.Text;
-            person.NationalNo = txtNationalNo.Text;
+            _Person.Email = txtEmail.Text;
+            _Person.Phone = txtPhone.Text;
+            _Person.Address = txtAddress.Text;
+            _Person.NationalNo = txtNationalNo.Text;
 
-            person.DateOfBirth = dtpDateOfBirth.Value;
+            _Person.DateOfBirth = dtpDateOfBirth.Value;
             if (rbMale.Checked)
-                person.Gender = clsPerson.enGenderType.Male;
+                _Person.Gender = clsPerson.enGenderType.Male;
             else
-                person.Gender = clsPerson.enGenderType.Female;
+                _Person.Gender = clsPerson.enGenderType.Female;
 
-            person.NationalityCountryID = clsPerson.GetCountryByName(cbCountry.SelectedItem.ToString());
-            person.ImagePath = _ImagePath;
+            _Person.NationalityCountryID = clsPerson.GetCountryByName(cbCountry.SelectedItem.ToString());
+            _Person.ImagePath = _ImagePath;
 
         }
 
         private void _LoadPersonInfoToForm()
         {
-            if (person != null)
+            if (_Person != null)
             {
-                txtFirstName.Text = person.FirstName;
-                txtSecondName.Text = person.SecondName;
-                txtThirdName.Text = person.ThirdName;
-                txtLastName.Text = person.LastName;
-                txtEmail.Text = person.Email;
-                txtPhone.Text = person.Phone;
-                txtAddress.Text = person.Address;
-                txtNationalNo.Text = person.NationalNo;
-                dtpDateOfBirth.Value = person.DateOfBirth;
-                if (person.Gender == clsPerson.enGenderType.Male)
+                txtFirstName.Text = _Person.FirstName;
+                txtSecondName.Text = _Person.SecondName;
+                txtThirdName.Text = _Person.ThirdName;
+                txtLastName.Text = _Person.LastName;
+                txtEmail.Text = _Person.Email;
+                txtPhone.Text = _Person.Phone;
+                txtAddress.Text = _Person.Address;
+                txtNationalNo.Text = _Person.NationalNo;
+                dtpDateOfBirth.Value = _Person.DateOfBirth;
+                if (_Person.Gender == clsPerson.enGenderType.Male)
                     rbMale.Checked = true;
                 else
                     rbFemale.Checked = true;
 
-                cbCountry.SelectedItem = clsPerson.GetCountryNameByID(person.NationalityCountryID);
+                cbCountry.SelectedItem = clsPerson.GetCountryNameByID(_Person.NationalityCountryID);
 
-                if (!string.IsNullOrEmpty(person.ImagePath) && File.Exists(person.ImagePath))
-                    pbPersonImage.Image = Image.FromFile(person.ImagePath);
+                if (!string.IsNullOrEmpty(_Person.ImagePath) && File.Exists(_Person.ImagePath))
+                    pbPersonImage.Image = Image.FromFile(_Person.ImagePath);
             }
         }
 
@@ -136,10 +140,10 @@ namespace Presentation_Layer
             lblTitle.Text = Title;
             LoadCountries();
 
-            person =clsPerson.Find(PersonID);
+            _Person =clsPerson.Find(PersonID);
 
             _LoadPersonInfoToForm();
-            lblPersonID.Text = "Person ID: " + person.PersonID.ToString();
+            lblPersonID.Text = "Person ID: " + _Person.PersonID.ToString();
         }
 
         private void LoadCountries()
@@ -198,30 +202,35 @@ namespace Presentation_Layer
 
                 _LoadPersonInfo();
 
-                clsPerson.enSave result = person.Save();
+                clsPerson.enSave result = _Person.Save();
 
                 switch (result)
                 {
                     case clsPerson.enSave.enAddNew:
                         MessageBox.Show("Person info saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if(DataSentPersonID != null)
+                        {
+                            DataSentPersonID(_Person.PersonID);
+                        }
                         break;
                     case clsPerson.enSave.enFaild:
                         MessageBox.Show("Failed to save person info.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     case clsPerson.enSave.enUpdated:
                         MessageBox.Show("Person info updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (DataSentPersonInfo != null)
+                        {
+                            DataSentPersonInfo(_Person);
+                        }
                         break;
                 }
 
-                lblPersonID.Text = "Person ID: " + person.PersonID.ToString();
+                lblPersonID.Text = "Person ID: " + _Person.PersonID.ToString();
                 lblTitle.Text = "Update Person Info";
             }
 
            
-          if(DataSent != null)
-            {
-                DataSent(person.PersonID);
-            }
+          
 
         }
 

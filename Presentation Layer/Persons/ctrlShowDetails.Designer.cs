@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbPersonInformation = new System.Windows.Forms.GroupBox();
+            this.btClose = new System.Windows.Forms.Button();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.lblCountryValue = new System.Windows.Forms.Label();
             this.lblCountryTitle = new System.Windows.Forms.Label();
             this.lblPhoneValue = new System.Windows.Forms.Label();
@@ -47,14 +49,14 @@
             this.lblFullNameTitle = new System.Windows.Forms.Label();
             this.lblPersonIDValue = new System.Windows.Forms.Label();
             this.lblPersonIDTitle = new System.Windows.Forms.Label();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
-            this.btClose = new System.Windows.Forms.Button();
+            this.llEditPerson = new System.Windows.Forms.LinkLabel();
             this.gbPersonInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // gbPersonInformation
             // 
+            this.gbPersonInformation.Controls.Add(this.llEditPerson);
             this.gbPersonInformation.Controls.Add(this.btClose);
             this.gbPersonInformation.Controls.Add(this.pbPersonImage);
             this.gbPersonInformation.Controls.Add(this.lblCountryValue);
@@ -82,6 +84,28 @@
             this.gbPersonInformation.TabStop = false;
             this.gbPersonInformation.Text = "Person Information";
             this.gbPersonInformation.Enter += new System.EventHandler(this.gbPersonInformation_Enter);
+            // 
+            // btClose
+            // 
+            this.btClose.BackColor = System.Drawing.Color.Blue;
+            this.btClose.ForeColor = System.Drawing.Color.White;
+            this.btClose.Location = new System.Drawing.Point(561, 234);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(150, 36);
+            this.btClose.TabIndex = 12;
+            this.btClose.Text = "Close";
+            this.btClose.UseVisualStyleBackColor = false;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbPersonImage.Location = new System.Drawing.Point(561, 70);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(150, 150);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 8;
+            this.pbPersonImage.TabStop = false;
             // 
             // lblCountryValue
             // 
@@ -254,27 +278,17 @@
             this.lblPersonIDTitle.TabIndex = 0;
             this.lblPersonIDTitle.Text = "Person ID:";
             // 
-            // pbPersonImage
+            // llEditPerson
             // 
-            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbPersonImage.Location = new System.Drawing.Point(561, 55);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(150, 150);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 8;
-            this.pbPersonImage.TabStop = false;
-            // 
-            // btClose
-            // 
-            this.btClose.BackColor = System.Drawing.Color.Blue;
-            this.btClose.ForeColor = System.Drawing.Color.White;
-            this.btClose.Location = new System.Drawing.Point(561, 234);
-            this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(150, 36);
-            this.btClose.TabIndex = 12;
-            this.btClose.Text = "Close";
-            this.btClose.UseVisualStyleBackColor = false;
-            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            this.llEditPerson.AutoSize = true;
+            this.llEditPerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llEditPerson.Location = new System.Drawing.Point(601, 35);
+            this.llEditPerson.Name = "llEditPerson";
+            this.llEditPerson.Size = new System.Drawing.Size(74, 17);
+            this.llEditPerson.TabIndex = 14;
+            this.llEditPerson.TabStop = true;
+            this.llEditPerson.Text = "Edit Person";
+            this.llEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPerson_LinkClicked);
             // 
             // ctrlShowDetails
             // 
@@ -315,5 +329,6 @@
         private System.Windows.Forms.Label lblCountryValue;
         private System.Windows.Forms.PictureBox pbPersonImage;
         private System.Windows.Forms.Button btClose;
+        private System.Windows.Forms.LinkLabel llEditPerson;
     }
 }

@@ -24,6 +24,9 @@ namespace Presentation_Layer
                 txtPassword.Text = _User.Password;
                 txtConfirmPassword.Text = _User.Password;
                 chkIsActive.Checked = _User.IsActive;
+                ctrlShowDetails.Controls.Clear();
+                ctrlShowDetails personDetailsControl = new PresentationLayer.ctrlShowDetails(_Person);
+                ctrlShowDetails.Controls.Add(personDetailsControl);
             }
         }
 
@@ -43,6 +46,7 @@ namespace Presentation_Layer
             _User = clsUser.Find(UserID);
             _Person = clsPerson.Find(_User.PersonId);
             lblTitle.Text = "Update User";
+            gbFilter.Enabled = false; // Disable filter controls when updating
             _LoadUserDetails();
         }
 
@@ -114,7 +118,7 @@ namespace Presentation_Layer
 
             frmAddOrEditPersonInfo FormAdd = new frmAddOrEditPersonInfo("Add New Person");
           
-            FormAdd.DataSent += FormAdd_DataSent;
+            FormAdd.DataSentPersonID += FormAdd_DataSent;
             
             FormAdd.ShowDialog();
 

@@ -35,6 +35,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblScreenTitle = new System.Windows.Forms.Label();
             this.gbFilter = new System.Windows.Forms.GroupBox();
+            this.cbFilterValue = new System.Windows.Forms.ComboBox();
             this.lblFilterBy = new System.Windows.Forms.Label();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
@@ -49,7 +50,7 @@
             this.pnlStatus = new System.Windows.Forms.Panel();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.cbFilterValue = new System.Windows.Forms.ComboBox();
+            this.plUserDetails = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
@@ -97,6 +98,22 @@
             this.gbFilter.TabIndex = 1;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
+            // 
+            // cbFilterValue
+            // 
+            this.cbFilterValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterValue.FormattingEnabled = true;
+            this.cbFilterValue.Items.AddRange(new object[] {
+            "All",
+            "Yes",
+            "No"});
+            this.cbFilterValue.Location = new System.Drawing.Point(219, 22);
+            this.cbFilterValue.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilterValue.Name = "cbFilterValue";
+            this.cbFilterValue.Size = new System.Drawing.Size(166, 25);
+            this.cbFilterValue.TabIndex = 3;
+            this.cbFilterValue.Visible = false;
+            this.cbFilterValue.SelectedIndexChanged += new System.EventHandler(this.cbFilterValue_SelectedIndexChanged);
             // 
             // lblFilterBy
             // 
@@ -183,7 +200,7 @@
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 35;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(1570, 244);
+            this.dgvUsers.Size = new System.Drawing.Size(1570, 509);
             this.dgvUsers.TabIndex = 3;
             this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
             this.dgvUsers.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsers_CellMouseDown);
@@ -259,7 +276,7 @@
             this.pnlStatus.Controls.Add(this.lblRecordsCount);
             this.pnlStatus.Controls.Add(this.btnClose);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlStatus.Location = new System.Drawing.Point(0, 412);
+            this.pnlStatus.Location = new System.Drawing.Point(0, 677);
             this.pnlStatus.Margin = new System.Windows.Forms.Padding(2);
             this.pnlStatus.Name = "pnlStatus";
             this.pnlStatus.Size = new System.Drawing.Size(1600, 57);
@@ -294,28 +311,21 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // cbFilterValue
+            // plUserDetails
             // 
-            this.cbFilterValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilterValue.FormattingEnabled = true;
-            this.cbFilterValue.Items.AddRange(new object[] {
-            "All",
-            "Yes",
-            "No"});
-            this.cbFilterValue.Location = new System.Drawing.Point(219, 22);
-            this.cbFilterValue.Margin = new System.Windows.Forms.Padding(2);
-            this.cbFilterValue.Name = "cbFilterValue";
-            this.cbFilterValue.Size = new System.Drawing.Size(166, 25);
-            this.cbFilterValue.TabIndex = 3;
-            this.cbFilterValue.Visible = false;
-            this.cbFilterValue.SelectedIndexChanged += new System.EventHandler(this.cbFilterValue_SelectedIndexChanged);
+            this.plUserDetails.Location = new System.Drawing.Point(337, 63);
+            this.plUserDetails.Name = "plUserDetails";
+            this.plUserDetails.Size = new System.Drawing.Size(967, 621);
+            this.plUserDetails.TabIndex = 5;
+            this.plUserDetails.Visible = false;
             // 
             // frmManageUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1600, 469);
+            this.ClientSize = new System.Drawing.Size(1600, 734);
+            this.Controls.Add(this.plUserDetails);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.gbFilter);
@@ -357,5 +367,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbFilterValue;
+        private System.Windows.Forms.Panel plUserDetails;
     }
 }

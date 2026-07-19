@@ -36,6 +36,7 @@
             this.btnPeople = new System.Windows.Forms.Button();
             this.btnApplications = new System.Windows.Forms.Button();
             this.pnlDashboard = new System.Windows.Forms.Panel();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.cmsApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miDrivingLicenseServices = new System.Windows.Forms.ToolStripMenuItem();
             this.miNewDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,12 +59,11 @@
             this.miCurrentUserInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.miChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.miSignOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlTopNav.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.cmsApplications.SuspendLayout();
             this.cmsAccountSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTopNav
@@ -179,6 +179,19 @@
             this.pnlDashboard.Name = "pnlDashboard";
             this.pnlDashboard.Size = new System.Drawing.Size(1904, 973);
             this.pnlDashboard.TabIndex = 1;
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.pbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbLogo.Image = global::Presentation_Layer.Properties.Resources.cb769a8dc2abddb43fa73dc746c71cbd;
+            this.pbLogo.Location = new System.Drawing.Point(-10, 0);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(1922, 957);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
             // 
             // cmsApplications
             // 
@@ -354,19 +367,6 @@
             this.miSignOut.Text = "Sign Out";
             this.miSignOut.Click += new System.EventHandler(this.miSignOut_Click);
             // 
-            // pbLogo
-            // 
-            this.pbLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.pbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbLogo.Image = global::Presentation_Layer.Properties.Resources.cb769a8dc2abddb43fa73dc746c71cbd;
-            this.pbLogo.Location = new System.Drawing.Point(-10, 0);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(1922, 957);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo.TabIndex = 0;
-            this.pbLogo.TabStop = false;
-            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,9 +381,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlTopNav.ResumeLayout(false);
             this.pnlDashboard.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.cmsApplications.ResumeLayout(false);
             this.cmsAccountSettings.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

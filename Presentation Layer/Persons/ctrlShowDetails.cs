@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
 using Business_Layer;
+using Presentation_Layer;
+using System.IO;
 
 namespace PresentationLayer
 {
@@ -11,7 +13,7 @@ namespace PresentationLayer
     {
 
         clsPerson _Person= null;
-     
+
         public ctrlShowDetails( int PersonID)
         {
             InitializeComponent();
@@ -43,10 +45,8 @@ namespace PresentationLayer
             lblPhoneValue.Text = _Person.Phone;
             lblCountryValue.Text = clsPerson.GetCountryNameByID(_Person.NationalityCountryID);
 
-            if (_Person.ImagePath != "")
-            {
-                pbPersonImage.Load(_Person.ImagePath);
-            }
+            if (!string.IsNullOrEmpty(_Person.ImagePath) && File.Exists(_Person.ImagePath))
+                pbPersonImage.Image = Image.FromFile(_Person.ImagePath);
 
         }
 
@@ -61,6 +61,23 @@ namespace PresentationLayer
         {
             this.Parent.Controls.Remove(this);
             
+            
+        }
+
+        private void llEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+           frmAddOrEditPersonInfo personInfoForm = new frmAddOrEditPersonInfo("Update Person", _Person.PersonID);
+            personInfoForm.DataSentPersonInfo += ctrlShowDetails_Load;
+            personInfoForm.ShowDialog();
+
+            LoadPersonInfo();
+
+        }
+
+        private void ctrlShowDetails_Load(clsPerson Person)
+        {
+            _Person = Person;
             
         }
     }
