@@ -158,8 +158,17 @@ namespace Presentation_Layer
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int PersonID = (int)dgvPersons.CurrentRow.Cells["PersonID"].Value;
+            ctrlShowDetails ctrl = new ctrlShowDetails(PersonID);
+            ctrl.TaskIsEnd += (bool isEnd) =>
+            { 
+                if (isEnd)
+                plCtrlShow.Visible = false;
+            };
 
-        plCtrlShow.Visible = true;
+            plCtrlShow.Controls.Clear();
+            plCtrlShow.Controls.Add(ctrl);
+            plCtrlShow.Visible = true;
 
         }
 
@@ -208,16 +217,11 @@ namespace Presentation_Layer
         private void plCtrlShow_Paint(object sender, PaintEventArgs e)
         {
 
-            int PersonID = (int)dgvPersons.CurrentRow.Cells["PersonID"].Value;
-            ctrlShowDetails ctrl = new ctrlShowDetails(PersonID);
+        }
 
-            plCtrlShow.Controls.Clear();
-            plCtrlShow.Controls.Add(ctrl);
-
-            ctrl.Dock = DockStyle.Fill;
-
+        private void btClose_Click(object sender, EventArgs e)
+        {
             plCtrlShow.Visible = false;
-
         }
     }
 }

@@ -274,9 +274,9 @@ namespace Presentation_Layer
             // 
             // plCtrlShow
             // 
-            this.plCtrlShow.Location = new System.Drawing.Point(298, 268);
+            this.plCtrlShow.Location = new System.Drawing.Point(200, 209);
             this.plCtrlShow.Name = "plCtrlShow";
-            this.plCtrlShow.Size = new System.Drawing.Size(785, 279);
+            this.plCtrlShow.Size = new System.Drawing.Size(802, 364);
             this.plCtrlShow.TabIndex = 4;
             this.plCtrlShow.Visible = false;
             this.plCtrlShow.Paint += new System.Windows.Forms.PaintEventHandler(this.plCtrlShow_Paint);

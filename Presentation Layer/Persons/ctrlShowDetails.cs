@@ -14,6 +14,9 @@ namespace PresentationLayer
 
         clsPerson _Person= null;
 
+        public delegate void CheckEndTask(bool Check);
+        public event CheckEndTask TaskIsEnd;
+
         public ctrlShowDetails( int PersonID)
         {
             InitializeComponent();
@@ -57,13 +60,6 @@ namespace PresentationLayer
 
         }
 
-        private void btClose_Click(object sender, EventArgs e)
-        {
-            this.Parent.Controls.Remove(this);
-            
-            
-        }
-
         private void llEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
@@ -79,6 +75,15 @@ namespace PresentationLayer
         {
             _Person = Person;
             
+        }
+
+        private void btClose_Click_1(object sender, EventArgs e)
+        {
+
+            if(TaskIsEnd != null)
+                TaskIsEnd(true);
+
+
         }
     }
 }
