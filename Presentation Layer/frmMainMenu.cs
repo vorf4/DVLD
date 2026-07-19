@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using Business_Layer;
 using DVLD.Presentation_Layer;
+using DVLD.PresentationLayer;
+using PresentationLayer;
 
 namespace Presentation_Layer
 {
@@ -15,6 +17,9 @@ namespace Presentation_Layer
             InitializeComponent();
             ApplyMenuRenderer();
             _User = User;
+            this.FormBorderStyle = FormBorderStyle.Sizable; // Prevent resizing
+            this.WindowState = FormWindowState.Maximized; // Start maximized
+
         }
 
         private void ApplyMenuRenderer()
@@ -132,10 +137,38 @@ namespace Presentation_Layer
 
         private void miCurrentUserInfo_Click(object sender, EventArgs e)
         {
+
+            ctrlShowUserDetails ctrlShowUserDetails = new ctrlShowUserDetails(_User.UserId);
+            ctrlShowUserDetails._CheckIfEndTask += btnCloseDetails_Click;
+
+            plUserDetails.Controls.Clear();
+            plUserDetails.Controls.Add(ctrlShowUserDetails);
+            plUserDetails.Visible = true;
+
+        }
+
+        private void btnCloseDetails_Click(bool Success)
+        {
+            
+            plUserDetails.Visible = Success;
+
         }
 
         private void miChangePassword_Click(object sender, EventArgs e)
         {
+
+            ctrlChangePassword ctrlChangePassword = new ctrlChangePassword(_User.UserId);
+            ctrlChangePassword.TaskIsEnd += btnCloseChnage_Click;
+
+            plUserChange.Controls.Clear();
+            plUserChange.Controls.Add(ctrlChangePassword);
+            plUserChange.Visible = true;
+
+        }
+
+        private void btnCloseChnage_Click(bool Success)
+        {
+            plUserChange.Visible = Success;
         }
 
         private void miSignOut_Click(object sender, EventArgs e)
@@ -145,6 +178,11 @@ namespace Presentation_Layer
             this.Hide(); // Hide the main menu form
             frmLogin.ShowDialog(this);
             this.Close();
+        }
+
+        private void frmMainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

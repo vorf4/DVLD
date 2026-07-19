@@ -353,6 +353,32 @@ namespace Data_Access_Layer
             return exists;
         }
 
+        public static string GetPasswordByID(int UserID)
+        {
+            string password = null;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT Password FROM Users WHERE UserID = @UserID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@UserID", UserID);
+            try
+            {
+                connection.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    password = (string)result;
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return password;
+        }
 
     }
 }

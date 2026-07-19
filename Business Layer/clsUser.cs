@@ -140,6 +140,11 @@ namespace Business_Layer
             return clsUserTB.IsNationalIdExists(NationalId);
         }
 
+        private static string GetPasswordByID(int UserID)
+        {
+            return clsUserTB.GetPasswordByID(UserID);
+        }
+
         //public set and get methods for the private variables
         public int UserId { get => _UserId; set => _UserId = value; }
         public int PersonId { get => _PersonId; set => _PersonId = value; }
@@ -226,6 +231,11 @@ namespace Business_Layer
         public static bool IsNationalNumberExists(string NationalId)
         {
             return IsNationalIdExists(NationalId);
+        }
+
+        public static string GetPassword(int UserID)
+        {
+            return GetPasswordByID(UserID);
         }
 
     }

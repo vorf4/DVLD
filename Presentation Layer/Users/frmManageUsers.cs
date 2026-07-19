@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Business_Layer;
+using DVLD.PresentationLayer;
 using Presentation_Layer;
 using PresentationLayer;
 
@@ -16,8 +17,10 @@ namespace DVLD.Presentation_Layer
         {
             InitializeComponent();
             ApplyModernMenuStyling();
-
+            this.FormBorderStyle = FormBorderStyle.Sizable; // Prevent resizing
+            this.WindowState = FormWindowState.Maximized; // Start maximized
             this.Load += frmManageUsers_Load;
+
         }
 
         private void frmManageUsers_Load(object sender, EventArgs e)
@@ -218,9 +221,9 @@ namespace DVLD.Presentation_Layer
 
         }
 
-        private void btnCloseDetails_Click(int check)
+        private void btnCloseDetails_Click(bool check)
         {
-            plUserDetails.Visible = false;
+            plUserDetails.Visible = check;
         }
 
         private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
@@ -261,8 +264,21 @@ namespace DVLD.Presentation_Layer
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            
+            int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["UserID"].Value);
+            ctrlChangePassword changePasswordControl = new ctrlChangePassword(UserID);
+            changePasswordControl.TaskIsEnd += BtnCloseChange_Click;
 
+
+
+            plUserChange.Controls.Clear();
+            plUserChange.Controls.Add(changePasswordControl);
+            plUserChange.Visible = true;
+
+        }
+
+        private void BtnCloseChange_Click(bool Success)
+        {
+            plUserChange.Visible =  Success;
         }
 
         // Custom Color Table for Context Menu Strip
@@ -310,6 +326,11 @@ namespace DVLD.Presentation_Layer
         private void cbFilterValue_SelectedIndexChanged(object sender, EventArgs e)
         {
             _ApplyFilter();
+        }
+
+        private void frmManageUsers_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

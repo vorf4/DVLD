@@ -9,7 +9,9 @@ namespace PresentationLayer
     public partial class ctrlShowUserDetails : UserControl
     {
 
-        public delegate void CheckIfEndTask(int check);
+        
+
+        public delegate void CheckIfEndTask(bool check);
         public event CheckIfEndTask _CheckIfEndTask;
 
         public clsUser _User;
@@ -37,7 +39,7 @@ namespace PresentationLayer
         {
 
             if (_CheckIfEndTask != null)
-                _CheckIfEndTask(1);
+                _CheckIfEndTask(false);
         }
 
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.gbChangePassword = new System.Windows.Forms.GroupBox();
@@ -41,6 +42,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.gbUserInformation = new System.Windows.Forms.GroupBox();
             this.ctrlShowDetails = new System.Windows.Forms.UserControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnlHeader.SuspendLayout();
             this.gbChangePassword.SuspendLayout();
             this.gbUserInformation.SuspendLayout();
@@ -78,9 +80,9 @@
             this.gbChangePassword.Controls.Add(this.txtCurrentPassword);
             this.gbChangePassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.gbChangePassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.gbChangePassword.Location = new System.Drawing.Point(20, 540);
+            this.gbChangePassword.Location = new System.Drawing.Point(17, 574);
             this.gbChangePassword.Name = "gbChangePassword";
-            this.gbChangePassword.Size = new System.Drawing.Size(860, 220);
+            this.gbChangePassword.Size = new System.Drawing.Size(860, 176);
             this.gbChangePassword.TabIndex = 2;
             this.gbChangePassword.TabStop = false;
             this.gbChangePassword.Text = "Change Password";
@@ -152,7 +154,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnSave.Location = new System.Drawing.Point(760, 780);
+            this.btnSave.Location = new System.Drawing.Point(760, 756);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 40);
             this.btnSave.TabIndex = 3;
@@ -167,7 +169,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnClose.Location = new System.Drawing.Point(620, 780);
+            this.btnClose.Location = new System.Drawing.Point(620, 756);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(120, 40);
             this.btnClose.TabIndex = 4;
@@ -181,7 +183,7 @@
             this.gbUserInformation.Controls.Add(this.ctrlShowDetails);
             this.gbUserInformation.Location = new System.Drawing.Point(20, 76);
             this.gbUserInformation.Name = "gbUserInformation";
-            this.gbUserInformation.Size = new System.Drawing.Size(860, 458);
+            this.gbUserInformation.Size = new System.Drawing.Size(860, 492);
             this.gbUserInformation.TabIndex = 5;
             this.gbUserInformation.TabStop = false;
             this.gbUserInformation.Text = "Person Information";
@@ -191,8 +193,13 @@
             this.ctrlShowDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlShowDetails.Location = new System.Drawing.Point(3, 16);
             this.ctrlShowDetails.Name = "ctrlShowDetails";
-            this.ctrlShowDetails.Size = new System.Drawing.Size(854, 439);
+            this.ctrlShowDetails.Size = new System.Drawing.Size(854, 473);
             this.ctrlShowDetails.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // ctrlChangePassword
             // 
@@ -205,7 +212,7 @@
             this.Controls.Add(this.gbChangePassword);
             this.Controls.Add(this.pnlHeader);
             this.Name = "ctrlChangePassword";
-            this.Size = new System.Drawing.Size(900, 840);
+            this.Size = new System.Drawing.Size(900, 816);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.gbChangePassword.ResumeLayout(false);
@@ -231,5 +238,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox gbUserInformation;
         private System.Windows.Forms.UserControl ctrlShowDetails;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

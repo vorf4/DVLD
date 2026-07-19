@@ -51,11 +51,13 @@
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.plUserDetails = new System.Windows.Forms.Panel();
+            this.plUserChange = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.cmsUsers.SuspendLayout();
             this.pnlStatus.SuspendLayout();
+            this.plUserChange.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -66,7 +68,7 @@
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(2);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1600, 65);
+            this.pnlHeader.Size = new System.Drawing.Size(1969, 65);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblScreenTitle
@@ -200,7 +202,7 @@
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 35;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(1570, 509);
+            this.dgvUsers.Size = new System.Drawing.Size(1954, 1253);
             this.dgvUsers.TabIndex = 3;
             this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
             this.dgvUsers.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsers_CellMouseDown);
@@ -261,7 +263,7 @@
             this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddUser.Location = new System.Drawing.Point(1473, 98);
+            this.btnAddUser.Location = new System.Drawing.Point(1842, 98);
             this.btnAddUser.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(112, 37);
@@ -276,10 +278,10 @@
             this.pnlStatus.Controls.Add(this.lblRecordsCount);
             this.pnlStatus.Controls.Add(this.btnClose);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlStatus.Location = new System.Drawing.Point(0, 677);
+            this.pnlStatus.Location = new System.Drawing.Point(0, 1408);
             this.pnlStatus.Margin = new System.Windows.Forms.Padding(2);
             this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Size = new System.Drawing.Size(1600, 57);
+            this.pnlStatus.Size = new System.Drawing.Size(1969, 10);
             this.pnlStatus.TabIndex = 4;
             // 
             // lblRecordsCount
@@ -302,7 +304,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnClose.Location = new System.Drawing.Point(1488, 10);
+            this.btnClose.Location = new System.Drawing.Point(1857, -37);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 37);
@@ -313,19 +315,28 @@
             // 
             // plUserDetails
             // 
-            this.plUserDetails.Location = new System.Drawing.Point(337, 63);
+            this.plUserDetails.Location = new System.Drawing.Point(0, 0);
             this.plUserDetails.Name = "plUserDetails";
-            this.plUserDetails.Size = new System.Drawing.Size(967, 621);
-            this.plUserDetails.TabIndex = 5;
+            this.plUserDetails.Size = new System.Drawing.Size(844, 600);
+            this.plUserDetails.TabIndex = 7;
             this.plUserDetails.Visible = false;
+            // 
+            // plUserChange
+            // 
+            this.plUserChange.Controls.Add(this.plUserDetails);
+            this.plUserChange.Location = new System.Drawing.Point(285, 70);
+            this.plUserChange.Name = "plUserChange";
+            this.plUserChange.Size = new System.Drawing.Size(891, 813);
+            this.plUserChange.TabIndex = 7;
+            this.plUserChange.Visible = false;
             // 
             // frmManageUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1600, 734);
-            this.Controls.Add(this.plUserDetails);
+            this.ClientSize = new System.Drawing.Size(1969, 1418);
+            this.Controls.Add(this.plUserChange);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.gbFilter);
@@ -335,6 +346,7 @@
             this.Name = "frmManageUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Users";
+            this.Load += new System.EventHandler(this.frmManageUsers_Load_1);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.gbFilter.ResumeLayout(false);
@@ -343,6 +355,7 @@
             this.cmsUsers.ResumeLayout(false);
             this.pnlStatus.ResumeLayout(false);
             this.pnlStatus.PerformLayout();
+            this.plUserChange.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -368,5 +381,6 @@
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbFilterValue;
         private System.Windows.Forms.Panel plUserDetails;
+        private System.Windows.Forms.Panel plUserChange;
     }
 }

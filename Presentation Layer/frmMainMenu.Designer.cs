@@ -36,6 +36,8 @@
             this.btnPeople = new System.Windows.Forms.Button();
             this.btnApplications = new System.Windows.Forms.Button();
             this.pnlDashboard = new System.Windows.Forms.Panel();
+            this.plUserChange = new System.Windows.Forms.Panel();
+            this.plUserDetails = new System.Windows.Forms.Panel();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.cmsApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miDrivingLicenseServices = new System.Windows.Forms.ToolStripMenuItem();
@@ -173,12 +175,30 @@
             // pnlDashboard
             // 
             this.pnlDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.pnlDashboard.Controls.Add(this.plUserChange);
+            this.pnlDashboard.Controls.Add(this.plUserDetails);
             this.pnlDashboard.Controls.Add(this.pbLogo);
             this.pnlDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDashboard.Location = new System.Drawing.Point(0, 68);
             this.pnlDashboard.Name = "pnlDashboard";
             this.pnlDashboard.Size = new System.Drawing.Size(1904, 973);
             this.pnlDashboard.TabIndex = 1;
+            // 
+            // plUserChange
+            // 
+            this.plUserChange.Location = new System.Drawing.Point(300, 0);
+            this.plUserChange.Name = "plUserChange";
+            this.plUserChange.Size = new System.Drawing.Size(891, 813);
+            this.plUserChange.TabIndex = 6;
+            this.plUserChange.Visible = false;
+            // 
+            // plUserDetails
+            // 
+            this.plUserDetails.Location = new System.Drawing.Point(300, 43);
+            this.plUserDetails.Name = "plUserDetails";
+            this.plUserDetails.Size = new System.Drawing.Size(844, 600);
+            this.plUserDetails.TabIndex = 6;
+            this.plUserDetails.Visible = false;
             // 
             // pbLogo
             // 
@@ -379,6 +399,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu - DVLD System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMainMenu_Load);
             this.pnlTopNav.ResumeLayout(false);
             this.pnlDashboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
@@ -420,5 +441,7 @@
         private System.Windows.Forms.ToolStripMenuItem miManageDetainedLicenses;
         private System.Windows.Forms.ToolStripMenuItem miDetainLicense;
         private System.Windows.Forms.ToolStripMenuItem miReleaseDetainedLicense;
+        private System.Windows.Forms.Panel plUserDetails;
+        private System.Windows.Forms.Panel plUserChange;
     }
 }
