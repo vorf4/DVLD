@@ -129,6 +129,10 @@ namespace Presentation_Layer
 
         private void miManageApplicationTypes_Click(object sender, EventArgs e)
         {
+
+            frmManageApplicationTypes frmManageApplicationTypes = new frmManageApplicationTypes(_User);
+            frmManageApplicationTypes.ShowDialog();
+
         }
 
         private void miManageTestTypes_Click(object sender, EventArgs e)

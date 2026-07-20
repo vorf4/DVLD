@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsApplicationTypeDB.cs" />
     <Compile Include="clsDataAccessSetting.cs" />
     <Compile Include="clsPersonsTB.cs" />
     <Compile Include="clsUserTB.cs" />
