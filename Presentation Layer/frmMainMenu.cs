@@ -137,6 +137,10 @@ namespace Presentation_Layer
 
         private void miManageTestTypes_Click(object sender, EventArgs e)
         {
+
+            frmManageTestTypes frmManageTestTypes = new frmManageTestTypes();
+            frmManageTestTypes.ShowDialog();
+
         }
 
         private void miCurrentUserInfo_Click(object sender, EventArgs e)
