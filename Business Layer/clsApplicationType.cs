@@ -22,13 +22,13 @@ namespace Business_Layer
         {
             
             // Code to retrieve all application types from the database and fill the DataTable
-            return clsApplicationTypeDB.GetAllApplicationTypes();
+            return clsApplicationTypeTB.GetAllApplicationTypes();
         }
 
         private static bool _UpdateApplicationType(int applicationTypeID, string title, double fees)
         {
             // Code to update the application type in the database
-            return clsApplicationTypeDB.UpdateApplicationType(applicationTypeID, title, fees);
+            return clsApplicationTypeTB.UpdateApplicationType(applicationTypeID, title, fees);
         }
 
         //public methods

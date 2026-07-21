@@ -4,43 +4,44 @@ using System.Data.SqlClient;
 
 namespace Data_Access_Layer
 {
-    public class clsApplicationTypeDB
+    public class clsTestTypeTB
     {
 
-        public static DataTable GetAllApplicationTypes()
+        public static DataTable GetInfoOfTestType()
         {
-          
-            DataTable dt = new DataTable()  ;
+
+            DataTable dt = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
 
-            string query = "SELECT * FROM ApplicationTypes";
+            string query = "select * from TestTypes";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            try 
+            try
             {
 
                 connection.Open();
+
                 SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
+
+                if(reader.HasRows)
                 {
                     dt.Load(reader);
                 }
                 reader.Close();
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
 
-                // Handle exception (e.g., log the error)
+                // Handle the exception (e.g., log it, rethrow it, etc.)
 
             }
             finally
-            {
+            { 
             
                 connection.Close();
-
 
             }
 
@@ -48,23 +49,30 @@ namespace Data_Access_Layer
 
         }
 
-        public static bool UpdateApplicationType(int applicationTypeID, string title, double fees)
+        public static bool UpdateTestTypeByID(int testTypeID, string testTypeTitle, string testTypeDescription, double testTypeFees)
         {
+
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
-            string query = "UPDATE ApplicationTypes SET ApplicationTypeTitle = @Title, ApplicationFees = @Fees WHERE ApplicationTypeID = @ID";
+
+            string query = "UPDATE TestTypes SET TestTypeTitle = @TestTypeTitle, TestTypeDescription = @TestTypeDescription" +
+                ", TestTypeFees = @TestTypeFees WHERE TestTypeID = @TestTypeID";
+
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Title", title);
-            command.Parameters.AddWithValue("@Fees", fees);
-            command.Parameters.AddWithValue("@ID", applicationTypeID);
+
+            command.Parameters.AddWithValue("@TestTypeID", testTypeID);
+            command.Parameters.AddWithValue("@TestTypeTitle", testTypeTitle);
+            command.Parameters.AddWithValue("@TestTypeDescription", testTypeDescription);
+            command.Parameters.AddWithValue("@TestTypeFees", testTypeFees);
+
             try
             {
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0; // Return true if at least one row was updated
+                return rowsAffected > 0;
             }
             catch (Exception ex)
             {
-                // Handle exception (e.g., log the error)
+                // Handle the exception (e.g., log it, rethrow it, etc.)
                 return false;
             }
             finally
