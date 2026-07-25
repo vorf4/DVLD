@@ -31,6 +31,12 @@ namespace Business_Layer
             return clsApplicationTypeTB.UpdateApplicationType(applicationTypeID, title, fees);
         }
 
+        private static double _GetApplicationFees(string applicationTypeTitle)
+        {
+            // Code to retrieve the fees for a specific application type from the database
+            return clsApplicationTypeTB.GetApplicationFees(applicationTypeTitle);
+        }
+
         //public methods
 
         public static DataTable GetAllApplicationTypes()
@@ -41,6 +47,11 @@ namespace Business_Layer
         public static bool UpdateApplicationType(int applicationTypeID, string title, double fees)
         {
             return _UpdateApplicationType(applicationTypeID, title, fees);
+        }
+
+        public static double GetApplicationFees(string applicationTypeTitle)
+        {
+            return _GetApplicationFees(applicationTypeTitle);
         }
 
 

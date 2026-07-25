@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Business_Layer;
@@ -8,7 +9,7 @@ namespace PresentationLayer
 {
     public partial class frmNewLocalDrivingLicenseApplication : Form
     {
-
+        
         public frmNewLocalDrivingLicenseApplication()
         {
             InitializeComponent();
@@ -150,6 +151,13 @@ namespace PresentationLayer
             if (_IfChoosePerson())
             {
                 tcApplicationInfo.SelectedIndex = 1;
+                lblApplicationDateValue.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                lblCreatedByValue.Text = _User.UserName;
+                
+                cbLicenseClass.DataSource = clsLicenseClass.GetClassName();
+                cbLicenseClass.DisplayMember = "ClassName";
+                cbLicenseClass.ValueMember = "ClassName";
+                lblApplicationFeesValue.Text = clsApplicationType.GetApplicationFees("New Local Driving License Service").ToString("C");
             }
         }
 
@@ -179,7 +187,7 @@ namespace PresentationLayer
 
         private void cbLicenseClass_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
     }
 }
