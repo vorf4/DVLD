@@ -10,7 +10,6 @@ namespace Presentation_Layer
 {
     public partial class frmMainMenu : Form
     {
-        private clsUser _User;
 
         public frmMainMenu(clsUser User)
         {
@@ -21,6 +20,9 @@ namespace Presentation_Layer
             this.WindowState = FormWindowState.Maximized; // Start maximized
 
         }
+
+
+        private clsUser _User;
 
         private void ApplyMenuRenderer()
         {

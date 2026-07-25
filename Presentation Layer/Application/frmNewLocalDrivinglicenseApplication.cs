@@ -9,6 +9,25 @@ namespace PresentationLayer
     public partial class frmNewLocalDrivingLicenseApplication : Form
     {
 
+        public frmNewLocalDrivingLicenseApplication()
+        {
+            InitializeComponent();
+            _User = new clsUser();
+
+            cbFilterBy.SelectedIndex = 0; // Default to "National No."
+            _LoadValidText();
+
+        }
+        public frmNewLocalDrivingLicenseApplication(clsUser User)
+        {
+            InitializeComponent();
+            _User = User;
+
+            cbFilterBy.SelectedIndex = 0; // Default to "National No."
+            _LoadValidText();
+
+        }
+ 
         private clsPerson _Person;
 
         private clsUser _User;
@@ -39,16 +58,6 @@ namespace PresentationLayer
                 };
 
             }
-
-        }
-
-        public frmNewLocalDrivingLicenseApplication(clsUser User)
-        {
-            InitializeComponent();
-            _User = User;
-
-            cbFilterBy.SelectedIndex = 0; // Default to "National No."
-            _LoadValidText();
 
         }
 

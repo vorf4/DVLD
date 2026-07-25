@@ -62,6 +62,7 @@
             this.tpApplicationInfo.SuspendLayout();
             this.gbApplicationInformation.SuspendLayout();
             this.SuspendLayout();
+            this.ctrlShowDetails = new PresentationLayer.ctrlShowDetails(0);
             // 
             // pnlHeader
             // 
