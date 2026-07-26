@@ -75,5 +75,32 @@ namespace Data_Access_Layer
             return fees;
         }
 
+        public static int GetLicenseClassIDByClassName(string className)
+        {
+            int classID = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT LicenseClassID FROM LicenseClasses WHERE ClassName = @ClassName";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ClassName", className);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    classID = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return classID;
+        }
+
     }
 }

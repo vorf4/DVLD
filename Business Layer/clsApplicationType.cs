@@ -37,6 +37,18 @@ namespace Business_Layer
             return clsApplicationTypeTB.GetApplicationFees(applicationTypeTitle);
         }
 
+        private static string _GetApplicationTypeTitle(int applicationTypeID)
+        {
+            // Code to retrieve the title for a specific application type from the database
+            return clsApplicationTypeTB.GetApplicationTypeTitleByID(applicationTypeID);
+        }
+
+        private static int _GetApplicationTypeID(string applicationTypeTitle)
+        {
+            // Code to retrieve the ID for a specific application type from the database
+            return clsApplicationTypeTB.GetApplicationTypeIDByTitle(applicationTypeTitle);
+        }
+
         //public methods
 
         public static DataTable GetAllApplicationTypes()
@@ -54,6 +66,15 @@ namespace Business_Layer
             return _GetApplicationFees(applicationTypeTitle);
         }
 
+        public static string GetApplicationTypeTitle(int applicationTypeID)
+        {
+            return _GetApplicationTypeTitle(applicationTypeID);
+        }
+
+        public static int GetApplicationTypeID(string applicationTypeTitle)
+        {
+            return _GetApplicationTypeID(applicationTypeTitle);
+        }
 
         //set and get methods
         public int ApplicationTypeID1 { get => ApplicationTypeID; set => ApplicationTypeID = value; }

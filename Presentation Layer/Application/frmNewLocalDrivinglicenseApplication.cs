@@ -161,8 +161,76 @@ namespace PresentationLayer
             }
         }
 
+        private bool CheckIfComboBoxRight() 
+        { 
+        
+            if (cbLicenseClass.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a license class.");
+                return false;
+            }else if (clsLocalDrivingLicenseApplication.CheckIfPersonHasThisLicense(_Person.PersonID, clsLicenseClass.GetClassID(cbLicenseClass.SelectedItem.ToString())))
+            {
+                MessageBox.Show("This person already has this license class.");
+                return false;
+            }
+
+            return true;
+
+        }
+
+        private int AddNewApplication() 
+        {
+            int applicationID = -1;
+
+            clsApplication newApplication = new clsApplication();
+            newApplication.PersonID = _Person.PersonID;
+            newApplication.ApplicationDate1 = DateTime.Now;
+            newApplication.TypeID1 = clsApplicationType.GetApplicationTypeID("New Local Driving License Service");
+            newApplication.UpdateStatus(1);
+            newApplication.PaidFees = 0;
+            newApplication.LastStatusDate = DateTime.Now;
+            newApplication.UserID = _User.UserId;
+
+            newApplication.Save();
+
+            applicationID = newApplication.ApplicationID;
+
+            return applicationID;
+
+
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
+
+           if(CheckIfComboBoxRight())
+           {
+
+                int applicationID = AddNewApplication();
+
+                if (applicationID != -1) 
+                {
+
+                    clsLocalDrivingLicenseApplication newLocalLicenseApplication = new clsLocalDrivingLicenseApplication();
+
+                    newLocalLicenseApplication.ApplicationID = applicationID;
+                    newLocalLicenseApplication.LicenseClassID1 = clsLicenseClass.GetClassID(cbLicenseClass.SelectedItem.ToString());
+                    clsLocalDrivingLicenseApplication.enSave saveResult = newLocalLicenseApplication.Save();
+
+                    if (saveResult == clsLocalDrivingLicenseApplication.enSave.enAddScc)
+                    {
+                        MessageBox.Show("New local driving license application added successfully.");
+                        lblTitle.Text ="Update Local Driving License Application";
+                        lblApplicationIDValue.Text = newLocalLicenseApplication.ApplicationID.ToString();
+                    }
+                    else if (saveResult == clsLocalDrivingLicenseApplication.enSave.enAddFail)
+                    {
+                        MessageBox.Show("Failed to add new local driving license application.");
+                    }
+
+                }
+
+            }
 
         }
 

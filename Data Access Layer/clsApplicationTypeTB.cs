@@ -100,5 +100,59 @@ namespace Data_Access_Layer
             return fees;
         }
 
+        public static string GetApplicationTypeTitleByID(int applicationTypeID)
+        {
+            string title = string.Empty;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT ApplicationTypeTitle FROM ApplicationTypes WHERE ApplicationTypeID = @ID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ID", applicationTypeID);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    title = result.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return title;
+        }
+
+        public static int GetApplicationTypeIDByTitle(string applicationTypeTitle)
+        {
+            int id = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT ApplicationTypeID FROM ApplicationTypes WHERE ApplicationTypeTitle = @Title";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Title", applicationTypeTitle);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    id = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return id;
+        }
+
     }
 }
