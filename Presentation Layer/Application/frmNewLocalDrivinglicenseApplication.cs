@@ -153,10 +153,6 @@ namespace PresentationLayer
                 tcApplicationInfo.SelectedIndex = 1;
                 lblApplicationDateValue.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 lblCreatedByValue.Text = _User.UserName;
-                
-                cbLicenseClass.DataSource = clsLicenseClass.GetClassName();
-                cbLicenseClass.DisplayMember = "ClassName";
-                cbLicenseClass.ValueMember = "ClassName";
                 lblApplicationFeesValue.Text = clsApplicationType.GetApplicationFees("New Local Driving License Service").ToString("C");
             }
         }
@@ -187,7 +183,7 @@ namespace PresentationLayer
             newApplication.ApplicationDate1 = DateTime.Now;
             newApplication.TypeID1 = clsApplicationType.GetApplicationTypeID("New Local Driving License Service");
             newApplication.UpdateStatus(1);
-            newApplication.PaidFees = 0;
+            newApplication.PaidFees = 15.00m;
             newApplication.LastStatusDate = DateTime.Now;
             newApplication.UserID = _User.UserId;
 
@@ -221,7 +217,7 @@ namespace PresentationLayer
                     {
                         MessageBox.Show("New local driving license application added successfully.");
                         lblTitle.Text ="Update Local Driving License Application";
-                        lblApplicationIDValue.Text = newLocalLicenseApplication.ApplicationID.ToString();
+                        lblApplicationIDValue.Text = newLocalLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
                     }
                     else if (saveResult == clsLocalDrivingLicenseApplication.enSave.enAddFail)
                     {

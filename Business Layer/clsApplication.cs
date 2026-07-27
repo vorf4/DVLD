@@ -13,7 +13,7 @@ namespace Business_Layer
 
         private clsApplication(enMode Mode, int ApplicationID, int PersonID, 
             DateTime ApplicationDate, int TypeID, enStatus Status,
-            DateTime LastStatusDate, double PaidFees, int UserID) 
+            DateTime LastStatusDate, decimal PaidFees, int UserID) 
         {
         
             this._Mode = Mode;
@@ -38,7 +38,7 @@ namespace Business_Layer
             this.TypeID = 0;
             this._Status = enStatus.enNew;
             this._LastStatusDate = DateTime.Now;
-            this._PaidFees = 0.0;
+            this._PaidFees = 0.0m;
             this._UserID = 0;
         } // AddNewUser
 
@@ -79,7 +79,7 @@ namespace Business_Layer
         private int TypeID;
         private enStatus _Status;
         private DateTime _LastStatusDate;
-        private double _PaidFees;
+        private decimal _PaidFees;
         private int _UserID;
 
         // private methods
@@ -88,7 +88,7 @@ namespace Business_Layer
         {
         
             return clsApplicationTB.InsertApplication(this._PersonID, this.ApplicationDate, this.TypeID,
-                (int)this._Status, this._LastStatusDate, this._PaidFees, this._UserID);
+                (byte)this._Status, this._LastStatusDate, this._PaidFees, this._UserID);
 
         }
 
@@ -98,9 +98,9 @@ namespace Business_Layer
             int PersonID = 0;
             DateTime ApplicationDate = DateTime.Now;
             int TypeID = 0;
-            int Status = 0;
+            byte Status = 0;
             DateTime LastStatusDate = DateTime.Now;
-            double PaidFees = 0.0;
+            decimal PaidFees = 0.0m;
             int UserID = 0;
 
             if (clsApplicationTB.GetApplicationByID(ApplicationID, ref PersonID, ref ApplicationDate, ref TypeID, ref Status, ref LastStatusDate, ref PaidFees, ref UserID))
@@ -171,7 +171,7 @@ namespace Business_Layer
         public int TypeID1 { get => TypeID; set => TypeID = value; }
         private enStatus Status { get => _Status; set => _Status = value; }
         public DateTime LastStatusDate { get => _LastStatusDate; set => _LastStatusDate = value; }
-        public double PaidFees { get => _PaidFees; set => _PaidFees = value; }
+        public decimal PaidFees { get => _PaidFees; set => _PaidFees = value; }
         public int UserID { get => _UserID; set => _UserID = value; }
     }
 }

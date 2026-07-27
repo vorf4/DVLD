@@ -7,12 +7,12 @@ namespace Data_Access_Layer
     public class clsApplicationTB
     {
 
-        public static int InsertApplication(int PersonID, DateTime ApplicationDate, int TypeID, int Status, 
-            DateTime LastStatusDate, double PaidFees, int UserID)
+        public static int InsertApplication(int PersonID, DateTime ApplicationDate, int TypeID, byte Status, 
+            DateTime LastStatusDate, decimal PaidFees, int UserID)
         {
-            int newApplicationID = 0;
+            int newApplicationID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
-            string query = "INSERT INTO Applications (ApplicationPersonID, ApplicationDate, ApplicationTypeID," +
+            string query = "INSERT INTO Applications (ApplicantPersonID, ApplicationDate, ApplicationTypeID," +
                 " ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID) " +
                            "VALUES (@PersonID, @ApplicationDate, @TypeID, @Status, @LastStatusDate, @PaidFees, @UserID); select scope_identity();";
             SqlCommand command = new SqlCommand(query, connection);
@@ -26,7 +26,12 @@ namespace Data_Access_Layer
             try
             {
                 connection.Open();
-                newApplicationID = (int)command.ExecuteScalar();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    newApplicationID = insertedID;
+                }
             }
             catch (Exception e)
             {
@@ -40,7 +45,7 @@ namespace Data_Access_Layer
         }
 
         public static bool GetApplicationByID(int ApplicationID,ref int PersonID,ref DateTime ApplicationDate,
-            ref int TypeID,ref int Status,ref DateTime LastStatusDate,ref double PaidFees,ref int UserID) 
+            ref int TypeID,ref byte Status,ref DateTime LastStatusDate,ref decimal PaidFees,ref int UserID) 
         {
             bool isFound = false;
 
@@ -66,9 +71,9 @@ namespace Data_Access_Layer
                     PersonID = (int)reader["ApplicationPersonID"];
                     ApplicationDate = (DateTime)reader["ApplicationDate"];
                     TypeID = (int)reader["ApplicationTypeID"];
-                    Status = (int)reader["ApplicationStatus"];
+                    Status = (byte)reader["ApplicationStatus"];
                     LastStatusDate = (DateTime)reader["LastStatusDate"];
-                    PaidFees = (double)reader["PaidFees"];
+                    PaidFees = (decimal)reader["PaidFees"];
                     UserID = (int)reader["CreatedByUserID"];
                     isFound = true;
                 }

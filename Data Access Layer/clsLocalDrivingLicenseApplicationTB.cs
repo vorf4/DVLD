@@ -19,7 +19,12 @@ namespace Data_Access_Layer
             try
             {
                 connection.Open();
-                newID = (int)command.ExecuteScalar();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    newID = insertedID;
+                }
             }
             catch (Exception e)
             {
