@@ -140,6 +140,9 @@
     <Compile Include="Users\frmManageUsers.Designer.cs">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Application\frmLocalDrivingLicenseApplicationManage.resx">
+      <DependentUpon>frmLocalDrivingLicenseApplicationManage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Application\frmNewLocalDrivinglicenseApplication.resx">
       <DependentUpon>frmNewLocalDrivinglicenseApplication.cs</DependentUpon>
     </EmbeddedResource>

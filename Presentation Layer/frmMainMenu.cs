@@ -116,6 +116,9 @@ namespace Presentation_Layer
         private void miLocalDrivingLicenseApplications_Click(object sender, EventArgs e)
         {
 
+              frmLocalDrivingLicenseApplicationManage frm = new frmLocalDrivingLicenseApplicationManage(_User);
+              frm.ShowDialog();
+
         }
 
         private void miInternationalLicenseApplications_Click(object sender, EventArgs e)

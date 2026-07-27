@@ -73,6 +73,11 @@ namespace Business_Layer
             return clsLocalDrivingLicenseApplicationTB.IsPersonIDHaveThisLicense(personID, LicenseClassID);
         }
 
+        private  static DataTable GetLocalLicenseByPersonID()
+        {
+            return clsLocalDrivingLicenseApplicationTB.GetAllInfoOfLocalLicenseApplication();
+        }
+
         //public methods
 
         public enSave Save()
@@ -98,6 +103,11 @@ namespace Business_Layer
         {
             return IsPersonIDHaveThisLicense(personID, LicenseClassID);
 
+        }
+
+        public static DataTable GetAllInfoOfLocalLicenseApplication()
+        {
+            return GetLocalLicenseByPersonID();
         }
     }
 }

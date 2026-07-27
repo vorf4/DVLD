@@ -82,5 +82,38 @@ namespace Data_Access_Layer
 
         }
 
+        public static DataTable GetAllInfoOfLocalLicenseApplication() 
+        { 
+        
+            DataTable dt = new DataTable();
+
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
+
+            string query = "select * from LocalDrivingLicenseApplications_View";
+
+            SqlCommand command = new SqlCommand(query, conn);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if(reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return dt;
+        }
     }
 }
