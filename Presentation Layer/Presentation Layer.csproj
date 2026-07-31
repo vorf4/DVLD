@@ -60,6 +60,24 @@
     <Compile Include="Application\frmNewLocalDrivinglicenseApplication.Designer.cs">
       <DependentUpon>frmNewLocalDrivinglicenseApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Appointments\Controls\ctrlApplicationBasicInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Appointments\Controls\ctrlApplicationBasicInfo.Designer.cs">
+      <DependentUpon>ctrlApplicationBasicInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointments\Controls\ctrlDrivingLicenseApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Appointments\Controls\ctrlDrivingLicenseApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointments\frmTestAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointments\frmTestAppointments.Designer.cs">
+      <DependentUpon>frmTestAppointments.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Application\frmNewLocalDrivinglicenseApplication.resx">
       <DependentUpon>frmNewLocalDrivinglicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointments\Controls\ctrlDrivingLicenseApplicationInfo.resx">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>

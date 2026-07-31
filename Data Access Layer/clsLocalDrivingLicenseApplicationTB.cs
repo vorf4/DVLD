@@ -48,7 +48,7 @@ namespace Data_Access_Layer
             string query = "SELECT        ApplicantPersonID\r\nFROM        " +
                 "    Applications INNER JOIN\r\n          " +
                 "               LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID\r\n  " +
-                "                       where ApplicantPersonID = @PersonID and LicenseClassID = @LicenseClassID;";
+                "                       where ApplicantPersonID = @PersonID and LicenseClassID = @LicenseClassID and Applications.ApplicationStatus != 2;";
 
             SqlCommand command = new SqlCommand(query, conn);
             
@@ -114,6 +114,38 @@ namespace Data_Access_Layer
             }
 
             return dt;
+        }
+
+        public static int GetApplicationIDByLocalID(int localID)
+        {
+            int applicationID = -1;
+
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
+
+            string query = "SELECT ApplicationID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalID";
+
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@LocalID", localID);
+
+            try
+            {
+                conn.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int id))
+                {
+                    applicationID = id;
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return applicationID;
         }
     }
 }

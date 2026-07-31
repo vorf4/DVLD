@@ -223,6 +223,16 @@ namespace DVLD.Presentation_Layer
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[0].Value);
+            int ApplicationID = clsLocalDrivingLicenseApplication.GetApplicationID(LocalDrivingLicenseApplicationID);
+            if (ApplicationID != -1) {
+                
+                clsApplication.CancelledApplication(ApplicationID);
+
+                _LoadDataToDgv();
+
+            }
+
         }
 
         private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)

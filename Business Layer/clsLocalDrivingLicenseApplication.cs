@@ -78,6 +78,11 @@ namespace Business_Layer
             return clsLocalDrivingLicenseApplicationTB.GetAllInfoOfLocalLicenseApplication();
         }
 
+        private static int GetApplicationIDByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationTB.GetApplicationIDByLocalID(LocalDrivingLicenseApplicationID);
+        }
+
         //public methods
 
         public enSave Save()
@@ -108,6 +113,11 @@ namespace Business_Layer
         public static DataTable GetAllInfoOfLocalLicenseApplication()
         {
             return GetLocalLicenseByPersonID();
+        }
+
+        public static int GetApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            return GetApplicationIDByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID);
         }
     }
 }

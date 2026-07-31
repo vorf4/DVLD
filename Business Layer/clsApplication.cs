@@ -56,7 +56,7 @@ namespace Business_Layer
         { 
         
             enNew = 1,
-            enCanceled=2,
+            enCancelled=2,
             enCompleted = 3
 
         };
@@ -120,6 +120,11 @@ namespace Business_Layer
             return clsApplicationTB.CheckIfPersonHasThisApplicationType(PersonID, TypeID);
         }
 
+        private static bool _UpdateApplicationStatus(int ApplicationID, enStatus newStatus)
+        {
+            return clsApplicationTB.UpdateApplicationStatus(ApplicationID, (byte)newStatus,DateTime.Now);
+        }
+
         // public methods
 
         public static clsApplication Find(int ApplicationID)
@@ -160,6 +165,11 @@ namespace Business_Layer
         public void UpdateStatus(int newStatus)
         {
             this._Status = (enStatus)newStatus;
+        }
+
+        public static bool CancelledApplication(int ApplicationID)
+        {
+            return _UpdateApplicationStatus(ApplicationID, enStatus.enCancelled);
         }
 
         // get and set methods

@@ -120,5 +120,31 @@ namespace Data_Access_Layer
             return hasApplication;
         }
 
+        public static bool UpdateApplicationStatus(int ApplicationID, byte NewStatus, DateTime LastStatusDate)
+        {
+            bool isUpdated = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "UPDATE Applications SET ApplicationStatus = @NewStatus, LastStatusDate = @LastStatusDate WHERE ApplicationID = @ApplicationID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@NewStatus", NewStatus);
+            command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            try
+            {
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                isUpdated = rowsAffected > 0;
+            }
+            catch
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isUpdated;
+        }
+
     }
 }
