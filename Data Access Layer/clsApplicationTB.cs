@@ -51,7 +51,7 @@ namespace Data_Access_Layer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
 
-            string query = "SELECT ApplicationPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID " +
+            string query = "SELECT ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID " +
                            "FROM Applications WHERE ApplicationID = @ApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -68,7 +68,7 @@ namespace Data_Access_Layer
                 if(reader.HasRows)
                 {
                     reader.Read();
-                    PersonID = (int)reader["ApplicationPersonID"];
+                    PersonID = (int)reader["ApplicantPersonID"];
                     ApplicationDate = (DateTime)reader["ApplicationDate"];
                     TypeID = (int)reader["ApplicationTypeID"];
                     Status = (byte)reader["ApplicationStatus"];

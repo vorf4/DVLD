@@ -29,6 +29,11 @@ namespace Business_Layer
             return clsLicenseClassTB.GetLicenseClassIDByClassName(className);
         }
 
+        private static string GetClassNameByClassID(int classID)
+        {
+            return clsLicenseClassTB.GetLicenseClassNameByClassID(classID);
+        }
+
         public static DataTable GetClassName()
         {
         return GetAllClassName();
@@ -42,6 +47,11 @@ namespace Business_Layer
         public static int GetClassID(string className)
         {
             return GetClassIDByClassName(className);
+        }
+
+        public static string GetClassName(int classID)
+        {
+            return GetClassNameByClassID(classID);
         }
 
     }

@@ -41,10 +41,11 @@
             this.gbDrivingLicenseApplicationInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDrivingLicenseApplicationInfo.Location = new System.Drawing.Point(0, 0);
             this.gbDrivingLicenseApplicationInfo.Name = "gbDrivingLicenseApplicationInfo";
-            this.gbDrivingLicenseApplicationInfo.Size = new System.Drawing.Size(950, 256);
+            this.gbDrivingLicenseApplicationInfo.Size = new System.Drawing.Size(950, 110);
             this.gbDrivingLicenseApplicationInfo.TabIndex = 0;
             this.gbDrivingLicenseApplicationInfo.TabStop = false;
             this.gbDrivingLicenseApplicationInfo.Text = "Driving License Application Info";
+            this.gbDrivingLicenseApplicationInfo.Enter += new System.EventHandler(this.gbDrivingLicenseApplicationInfo_Enter);
             // 
             // llShowLicenseInfo
             // 
@@ -60,7 +61,7 @@
             // lblPassedTestsValue
             // 
             this.lblPassedTestsValue.AutoSize = true;
-            this.lblPassedTestsValue.Location = new System.Drawing.Point(721, 40);
+            this.lblPassedTestsValue.Location = new System.Drawing.Point(516, 40);
             this.lblPassedTestsValue.Name = "lblPassedTestsValue";
             this.lblPassedTestsValue.Size = new System.Drawing.Size(35, 19);
             this.lblPassedTestsValue.TabIndex = 5;
@@ -69,7 +70,7 @@
             // lblAppliedForLicenseValue
             // 
             this.lblAppliedForLicenseValue.AutoSize = true;
-            this.lblAppliedForLicenseValue.Location = new System.Drawing.Point(448, 40);
+            this.lblAppliedForLicenseValue.Location = new System.Drawing.Point(563, 75);
             this.lblAppliedForLicenseValue.Name = "lblAppliedForLicenseValue";
             this.lblAppliedForLicenseValue.Size = new System.Drawing.Size(35, 19);
             this.lblAppliedForLicenseValue.TabIndex = 4;
@@ -89,7 +90,7 @@
             this.lblPassedTests.AutoSize = true;
             this.lblPassedTests.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassedTests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.lblPassedTests.Location = new System.Drawing.Point(620, 40);
+            this.lblPassedTests.Location = new System.Drawing.Point(415, 40);
             this.lblPassedTests.Name = "lblPassedTests";
             this.lblPassedTests.Size = new System.Drawing.Size(95, 19);
             this.lblPassedTests.TabIndex = 2;
@@ -100,7 +101,7 @@
             this.lblAppliedForLicense.AutoSize = true;
             this.lblAppliedForLicense.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAppliedForLicense.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.lblAppliedForLicense.Location = new System.Drawing.Point(300, 40);
+            this.lblAppliedForLicense.Location = new System.Drawing.Point(415, 75);
             this.lblAppliedForLicense.Name = "lblAppliedForLicense";
             this.lblAppliedForLicense.Size = new System.Drawing.Size(144, 19);
             this.lblAppliedForLicense.TabIndex = 1;

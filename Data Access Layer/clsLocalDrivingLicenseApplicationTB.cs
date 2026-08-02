@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace Data_Access_Layer
 {
@@ -38,9 +39,9 @@ namespace Data_Access_Layer
             return newID;
         }
 
-        public static bool IsPersonIDHaveThisLicense(int personID,int LicenseClassID) 
-        { 
-        
+        public static bool IsPersonIDHaveThisLicense(int personID, int LicenseClassID)
+        {
+
             bool isFound = false;
 
             SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
@@ -51,7 +52,7 @@ namespace Data_Access_Layer
                 "                       where ApplicantPersonID = @PersonID and LicenseClassID = @LicenseClassID and Applications.ApplicationStatus != 2;";
 
             SqlCommand command = new SqlCommand(query, conn);
-            
+
             command.Parameters.AddWithValue("@PersonID", personID);
             command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
 
@@ -60,9 +61,9 @@ namespace Data_Access_Layer
                 conn.Open();
 
                 SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows) 
+                if (reader.HasRows)
                 {
-                isFound = true;
+                    isFound = true;
                 }
 
                 reader.Close();
@@ -75,16 +76,16 @@ namespace Data_Access_Layer
             }
             finally
             {
-              conn.Close();
+                conn.Close();
             }
 
             return isFound;
 
         }
 
-        public static DataTable GetAllInfoOfLocalLicenseApplication() 
-        { 
-        
+        public static DataTable GetAllInfoOfLocalLicenseApplication()
+        {
+
             DataTable dt = new DataTable();
 
             SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
@@ -98,7 +99,7 @@ namespace Data_Access_Layer
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
-                if(reader.HasRows)
+                if (reader.HasRows)
                 {
                     dt.Load(reader);
                 }
@@ -147,5 +148,53 @@ namespace Data_Access_Layer
 
             return applicationID;
         }
+
+        public static bool GetLocalDrivingLicenseApplicationByID(int localID, ref int applicationID, ref int licenseClassID)
+        {
+
+            bool result = false;
+
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
+
+            string query = "SELECT ApplicationID, LicenseClassID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalID";
+
+            SqlCommand command = new SqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@LocalID", localID);
+
+            try
+            {
+
+                conn.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    applicationID = (int)reader["ApplicationID"];
+                    licenseClassID = (int)reader["LicenseClassID"];
+                    result = true;
+                }
+                reader.Close();
+
+            }
+            catch
+            {
+
+                // Handle exception (e.g., log the error)
+
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+            return result;
+
+        }
+
+
+
     }
+        
 }

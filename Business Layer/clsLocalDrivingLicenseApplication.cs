@@ -15,7 +15,7 @@ namespace Business_Layer
             this._Mode = enMode.enAddNew;
             this._LocalDrivingLicenseApplicationID = 0;
             this._ApplicationID = 0;
-            this.LicenseClassID = 0;
+            this._LicenseClassID = 0;
 
         }
 
@@ -25,7 +25,7 @@ namespace Business_Layer
             this._Mode = Mode;
             this._LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this._ApplicationID = ApplicationID;
-            this.LicenseClassID = LicenseClassID;
+            this._LicenseClassID = LicenseClassID;
         }
 
         //enums 
@@ -52,19 +52,19 @@ namespace Business_Layer
         private enMode _Mode;
         private int _LocalDrivingLicenseApplicationID;
         private int _ApplicationID;
-        private int LicenseClassID;
+        private int _LicenseClassID;
 
         // get and set methods
         public int LocalDrivingLicenseApplicationID { get => _LocalDrivingLicenseApplicationID; set => _LocalDrivingLicenseApplicationID = value; }
         public int ApplicationID { get => _ApplicationID; set => _ApplicationID = value; }
-        public int LicenseClassID1 { get => LicenseClassID; set => LicenseClassID = value; }
+        public int LicenseClassID1 { get => _LicenseClassID; set => _LicenseClassID = value; }
 
         //private methods
 
         private int AddNewLocalLicense()
         {
 
-            return clsLocalDrivingLicenseApplicationTB.AddNewLocalLicense(this._ApplicationID, this.LicenseClassID);
+            return clsLocalDrivingLicenseApplicationTB.AddNewLocalLicense(this._ApplicationID, this._LicenseClassID);
 
         }
 
@@ -81,6 +81,26 @@ namespace Business_Layer
         private static int GetApplicationIDByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
         {
             return clsLocalDrivingLicenseApplicationTB.GetApplicationIDByLocalID(LocalDrivingLicenseApplicationID);
+        }
+
+        private static clsLocalDrivingLicenseApplication FindLocalLicesensByID(int LocalDrivingLicenseApplicationID) 
+        {
+
+            int ApplicationID=-1;
+            int LicesenseClassID=-1;
+
+
+            if (clsLocalDrivingLicenseApplicationTB.GetLocalDrivingLicenseApplicationByID(LocalDrivingLicenseApplicationID, ref ApplicationID, ref LicesenseClassID))
+            {
+
+            return new clsLocalDrivingLicenseApplication(enMode.enUpdate, LocalDrivingLicenseApplicationID, ApplicationID, LicesenseClassID);
+            }
+            else
+            {
+                return null;
+
+            }
+
         }
 
         //public methods
@@ -118,6 +138,11 @@ namespace Business_Layer
         public static int GetApplicationID(int LocalDrivingLicenseApplicationID)
         {
             return GetApplicationIDByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID);
+        }
+
+        public static clsLocalDrivingLicenseApplication Find(int LocalDrivingLicenseApplicationID)
+        {
+            return FindLocalLicesensByID(LocalDrivingLicenseApplicationID);
         }
     }
 }

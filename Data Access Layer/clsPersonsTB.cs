@@ -404,5 +404,33 @@ namespace Data_Access_Layer
             return isDeleted;
         }
 
+        public static string GetFullNameByID(int PersonID) 
+        {
+            string fullName = string.Empty;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "select FirstName, SecondName, ThirdName, LastName from People where PersonID = @PersonID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    fullName = reader["FirstName"].ToString() + " " + reader["SecondName"].ToString() + " " + reader["ThirdName"].ToString() + " " + reader["LastName"].ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return fullName;
+        }
+
     }
 }

@@ -36,7 +36,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.ctrlDrivingLicenseApplicationInfo = new DVLD.Presentation_Layer.ctrlDrivingLicenseApplicationInfo();
             this.ctrlApplicationBasicInfo = new DVLD.Presentation_Layer.ctrlApplicationBasicInfo();
-
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.cmsAppointments.SuspendLayout();
@@ -59,26 +58,10 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(20, 16);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(288, 41);
+            this.lblTitle.Size = new System.Drawing.Size(284, 41);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Test Appointments";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ctrlDrivingLicenseApplicationInfo
-            // 
-            this.ctrlDrivingLicenseApplicationInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlDrivingLicenseApplicationInfo.Location = new System.Drawing.Point(0, 75);
-            this.ctrlDrivingLicenseApplicationInfo.Name = "ctrlDrivingLicenseApplicationInfo";
-            this.ctrlDrivingLicenseApplicationInfo.Size = new System.Drawing.Size(950, 120);
-            this.ctrlDrivingLicenseApplicationInfo.TabIndex = 1;
-            // 
-            // ctrlApplicationBasicInfo
-            // 
-            this.ctrlApplicationBasicInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlApplicationBasicInfo.Location = new System.Drawing.Point(0, 195);
-            this.ctrlApplicationBasicInfo.Name = "ctrlApplicationBasicInfo";
-            this.ctrlApplicationBasicInfo.Size = new System.Drawing.Size(950, 160);
-            this.ctrlApplicationBasicInfo.TabIndex = 2;
             // 
             // lblAppointmentsTitle
             // 
@@ -87,7 +70,7 @@
             this.lblAppointmentsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lblAppointmentsTitle.Location = new System.Drawing.Point(20, 370);
             this.lblAppointmentsTitle.Name = "lblAppointmentsTitle";
-            this.lblAppointmentsTitle.Size = new System.Drawing.Size(120, 21);
+            this.lblAppointmentsTitle.Size = new System.Drawing.Size(119, 21);
             this.lblAppointmentsTitle.TabIndex = 6;
             this.lblAppointmentsTitle.Text = "Appointments";
             // 
@@ -113,8 +96,8 @@
             this.dgvAppointments.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.dgvAppointments.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvAppointments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvAppointments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAppointments.BackgroundColor = System.Drawing.Color.White;
@@ -122,7 +105,7 @@
             this.dgvAppointments.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -146,6 +129,7 @@
             this.dgvAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAppointments.Size = new System.Drawing.Size(910, 250);
             this.dgvAppointments.TabIndex = 0;
+            this.dgvAppointments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppointments_CellContentClick);
             this.dgvAppointments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAppointments_CellMouseDown);
             // 
             // colAppointmentID
@@ -205,7 +189,7 @@
             this.lblRecords.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lblRecords.Location = new System.Drawing.Point(20, 680);
             this.lblRecords.Name = "lblRecords";
-            this.lblRecords.Size = new System.Drawing.Size(78, 19);
+            this.lblRecords.Size = new System.Drawing.Size(79, 19);
             this.lblRecords.TabIndex = 4;
             this.lblRecords.Text = "Records: 0";
             // 
@@ -223,6 +207,26 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // ctrlDrivingLicenseApplicationInfo
+            // 
+            this.ctrlDrivingLicenseApplicationInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.ctrlDrivingLicenseApplicationInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ctrlDrivingLicenseApplicationInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlDrivingLicenseApplicationInfo.Location = new System.Drawing.Point(0, 75);
+            this.ctrlDrivingLicenseApplicationInfo.Name = "ctrlDrivingLicenseApplicationInfo";
+            this.ctrlDrivingLicenseApplicationInfo.Size = new System.Drawing.Size(950, 120);
+            this.ctrlDrivingLicenseApplicationInfo.TabIndex = 1;
+            // 
+            // ctrlApplicationBasicInfo
+            // 
+            this.ctrlApplicationBasicInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.ctrlApplicationBasicInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ctrlApplicationBasicInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlApplicationBasicInfo.Location = new System.Drawing.Point(0, 195);
+            this.ctrlApplicationBasicInfo.Name = "ctrlApplicationBasicInfo";
+            this.ctrlApplicationBasicInfo.Size = new System.Drawing.Size(950, 160);
+            this.ctrlApplicationBasicInfo.TabIndex = 2;
             // 
             // frmTestAppointments
             // 

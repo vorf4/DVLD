@@ -125,6 +125,13 @@ namespace Business_Layer
             return clsPersonsTB.DeletePerson(PersonID);
         }
 
+        private static string GetFullNameByID(int PersonID) 
+        {
+        
+            return clsPersonsTB.GetFullNameByID(PersonID);
+
+        }
+
         //public methods to get and set the properties of the class
 
         public clsPerson()
@@ -249,6 +256,11 @@ namespace Business_Layer
         public static bool DeletePerson(int PersonID)
         {
             return _DeletePerson(PersonID);
+        }
+
+        public static string GetFullName(int PersonID)
+        {
+            return GetFullNameByID(PersonID);
         }
 
     }

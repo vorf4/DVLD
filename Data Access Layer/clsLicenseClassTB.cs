@@ -102,5 +102,32 @@ namespace Data_Access_Layer
             return classID;
         }
 
+        public static string GetLicenseClassNameByClassID(int classID)
+        {
+            string className = string.Empty;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            string query = "SELECT ClassName FROM LicenseClasses WHERE LicenseClassID = @ClassID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ClassID", classID);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    className = result.ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return className;
+        }
+
     }
 }

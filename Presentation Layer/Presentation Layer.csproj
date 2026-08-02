@@ -72,6 +72,12 @@
     <Compile Include="Appointments\Controls\ctrlDrivingLicenseApplicationInfo.Designer.cs">
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Appointments\frmTakeAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointments\frmTakeAppointment.Designer.cs">
+      <DependentUpon>frmTakeAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Appointments\frmTestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Appointments\Controls\ctrlDrivingLicenseApplicationInfo.resx">
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointments\frmTakeAppointment.resx">
+      <DependentUpon>frmTakeAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointments\frmTestAppointments.resx">
+      <DependentUpon>frmTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>

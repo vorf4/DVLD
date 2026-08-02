@@ -179,7 +179,7 @@ namespace Business_Layer
         public int PersonID { get => _PersonID; set => _PersonID = value; }
         public DateTime ApplicationDate1 { get => ApplicationDate; set => ApplicationDate = value; }
         public int TypeID1 { get => TypeID; set => TypeID = value; }
-        private enStatus Status { get => _Status; set => _Status = value; }
+        public int Status { get => (int)_Status; set => _Status = (enStatus)value; }
         public DateTime LastStatusDate { get => _LastStatusDate; set => _LastStatusDate = value; }
         public decimal PaidFees { get => _PaidFees; set => _PaidFees = value; }
         public int UserID { get => _UserID; set => _UserID = value; }
