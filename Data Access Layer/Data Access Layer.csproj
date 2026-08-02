@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsApplicationTB.cs" />
     <Compile Include="clsApplicationTypeTB.cs" />
+    <Compile Include="clsAppointmentTB.cs" />
     <Compile Include="clsDataAccessSetting.cs" />
     <Compile Include="clsLicenseClassTB.cs" />
     <Compile Include="clsLocalDrivingLicenseApplicationTB.cs" />
