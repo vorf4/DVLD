@@ -58,7 +58,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(20, 16);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(284, 41);
+            this.lblTitle.Size = new System.Drawing.Size(415, 60);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Test Appointments";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -70,7 +70,7 @@
             this.lblAppointmentsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lblAppointmentsTitle.Location = new System.Drawing.Point(20, 370);
             this.lblAppointmentsTitle.Name = "lblAppointmentsTitle";
-            this.lblAppointmentsTitle.Size = new System.Drawing.Size(119, 21);
+            this.lblAppointmentsTitle.Size = new System.Drawing.Size(177, 32);
             this.lblAppointmentsTitle.TabIndex = 6;
             this.lblAppointmentsTitle.Text = "Appointments";
             // 
@@ -125,6 +125,7 @@
             this.dgvAppointments.Name = "dgvAppointments";
             this.dgvAppointments.ReadOnly = true;
             this.dgvAppointments.RowHeadersVisible = false;
+            this.dgvAppointments.RowHeadersWidth = 62;
             this.dgvAppointments.RowTemplate.Height = 35;
             this.dgvAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAppointments.Size = new System.Drawing.Size(910, 250);
@@ -135,24 +136,28 @@
             // colAppointmentID
             // 
             this.colAppointmentID.HeaderText = "Appointment ID";
+            this.colAppointmentID.MinimumWidth = 8;
             this.colAppointmentID.Name = "colAppointmentID";
             this.colAppointmentID.ReadOnly = true;
             // 
             // colAppointmentDate
             // 
             this.colAppointmentDate.HeaderText = "Appointment Date";
+            this.colAppointmentDate.MinimumWidth = 8;
             this.colAppointmentDate.Name = "colAppointmentDate";
             this.colAppointmentDate.ReadOnly = true;
             // 
             // colPaidFees
             // 
             this.colPaidFees.HeaderText = "Paid Fees";
+            this.colPaidFees.MinimumWidth = 8;
             this.colPaidFees.Name = "colPaidFees";
             this.colPaidFees.ReadOnly = true;
             // 
             // colIsLocked
             // 
             this.colIsLocked.HeaderText = "Is Locked";
+            this.colIsLocked.MinimumWidth = 8;
             this.colIsLocked.Name = "colIsLocked";
             this.colIsLocked.ReadOnly = true;
             this.colIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -161,23 +166,24 @@
             // cmsAppointments
             // 
             this.cmsAppointments.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsAppointments.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsAppointments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editAppointmentToolStripMenuItem,
             this.takeTestToolStripMenuItem});
             this.cmsAppointments.Name = "cmsAppointments";
-            this.cmsAppointments.Size = new System.Drawing.Size(130, 48);
+            this.cmsAppointments.Size = new System.Drawing.Size(161, 72);
             // 
             // editAppointmentToolStripMenuItem
             // 
             this.editAppointmentToolStripMenuItem.Name = "editAppointmentToolStripMenuItem";
-            this.editAppointmentToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.editAppointmentToolStripMenuItem.Size = new System.Drawing.Size(160, 34);
             this.editAppointmentToolStripMenuItem.Text = "Edit";
             this.editAppointmentToolStripMenuItem.Click += new System.EventHandler(this.editAppointmentToolStripMenuItem_Click);
             // 
             // takeTestToolStripMenuItem
             // 
             this.takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
-            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(160, 34);
             this.takeTestToolStripMenuItem.Text = "Take Test";
             this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
             // 
@@ -189,7 +195,7 @@
             this.lblRecords.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lblRecords.Location = new System.Drawing.Point(20, 680);
             this.lblRecords.Name = "lblRecords";
-            this.lblRecords.Size = new System.Drawing.Size(79, 19);
+            this.lblRecords.Size = new System.Drawing.Size(110, 28);
             this.lblRecords.TabIndex = 4;
             this.lblRecords.Text = "Records: 0";
             // 
@@ -230,7 +236,7 @@
             // 
             // frmTestAppointments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(950, 720);
@@ -247,6 +253,7 @@
             this.Name = "frmTestAppointments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Test Appointments";
+            this.Load += new System.EventHandler(this.frmTestAppointments_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).EndInit();

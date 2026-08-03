@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Business_Layer;
@@ -16,6 +17,27 @@ namespace DVLD.Presentation_Layer
         private string FullName;
 
 
+        private void LoadAppointmentData()
+        {
+            DataTable dt = clsAppointment.GetAppointmentsByLocalID(Application.LocalDrivingLicenseApplicationID);
+            if (dt.Rows.Count > 0)
+            {
+
+                dgvAppointments.Columns[0].DataPropertyName = "TestAppointmentID";
+                dgvAppointments.Columns[1].DataPropertyName = "AppointmentDate";
+                dgvAppointments.Columns[2].DataPropertyName = "PaidFees";
+                dgvAppointments.Columns[3].DataPropertyName = "IsLocked";
+
+                dgvAppointments.DataSource = dt;
+                
+                lblRecords.Text = dt.Rows.Count.ToString() + " Record(s) Found";
+            }
+            else
+            {
+                dgvAppointments.DataSource = null;
+            }
+        }
+
         public frmTestAppointments(int LocalDrivingLicenseID,int passedTests,string fullName,double Fees)
         {
             InitializeComponent();
@@ -26,6 +48,7 @@ namespace DVLD.Presentation_Layer
             this.FullName = fullName;
 
             _LoadDataOfControls();
+            LoadAppointmentData();
         }
 
         private void _LoadDataOfControls() 
@@ -69,6 +92,11 @@ namespace DVLD.Presentation_Layer
         }
 
         private void dgvAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void frmTestAppointments_Load(object sender, EventArgs e)
         {
 
         }

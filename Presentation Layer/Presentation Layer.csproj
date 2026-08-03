@@ -191,6 +191,9 @@
     <EmbeddedResource Include="Persons\frmAddOrEditPersonInfo.resx">
       <DependentUpon>frmAddOrEditPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test Types\frmManageTestTypes.resx">
+      <DependentUpon>frmManageTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\ctrlChangePassword.resx">
       <DependentUpon>ctrlChangePassword.cs</DependentUpon>
     </EmbeddedResource>
