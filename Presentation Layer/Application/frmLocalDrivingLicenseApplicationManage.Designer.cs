@@ -85,7 +85,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(497, 41);
+            this.lblTitle.Size = new System.Drawing.Size(733, 60);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Local Driving License Applications";
             // 
@@ -112,7 +112,7 @@
             "Completed"});
             this.cbFilterValue.Location = new System.Drawing.Point(235, 23);
             this.cbFilterValue.Name = "cbFilterValue";
-            this.cbFilterValue.Size = new System.Drawing.Size(200, 23);
+            this.cbFilterValue.Size = new System.Drawing.Size(200, 33);
             this.cbFilterValue.TabIndex = 3;
             this.cbFilterValue.Visible = false;
             this.cbFilterValue.SelectedIndexChanged += new System.EventHandler(this.cbFilterValue_SelectedIndexChanged);
@@ -121,7 +121,7 @@
             // 
             this.txtFilterValue.Location = new System.Drawing.Point(235, 23);
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(200, 23);
+            this.txtFilterValue.Size = new System.Drawing.Size(200, 31);
             this.txtFilterValue.TabIndex = 2;
             this.txtFilterValue.Visible = false;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
@@ -138,7 +138,7 @@
             "Status"});
             this.cbFilterBy.Location = new System.Drawing.Point(75, 23);
             this.cbFilterBy.Name = "cbFilterBy";
-            this.cbFilterBy.Size = new System.Drawing.Size(150, 23);
+            this.cbFilterBy.Size = new System.Drawing.Size(150, 33);
             this.cbFilterBy.TabIndex = 1;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
@@ -148,7 +148,7 @@
             this.lblFilterBy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFilterBy.Location = new System.Drawing.Point(15, 26);
             this.lblFilterBy.Name = "lblFilterBy";
-            this.lblFilterBy.Size = new System.Drawing.Size(56, 15);
+            this.lblFilterBy.Size = new System.Drawing.Size(87, 25);
             this.lblFilterBy.TabIndex = 0;
             this.lblFilterBy.Text = "Filter By:";
             // 
@@ -201,6 +201,7 @@
             this.dgvLocalDriving.Name = "dgvLocalDriving";
             this.dgvLocalDriving.ReadOnly = true;
             this.dgvLocalDriving.RowHeadersVisible = false;
+            this.dgvLocalDriving.RowHeadersWidth = 62;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgvLocalDriving.RowsDefaultCellStyle = dataGridViewCellStyle3;
@@ -208,52 +209,61 @@
             this.dgvLocalDriving.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLocalDriving.Size = new System.Drawing.Size(1160, 480);
             this.dgvLocalDriving.TabIndex = 3;
+            this.dgvLocalDriving.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLocalDriving_CellContentClick);
             this.dgvLocalDriving.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLocalDriving_CellMouseDown);
             // 
             // colLDLAppID
             // 
             this.colLDLAppID.HeaderText = "L.D.L.AppID";
+            this.colLDLAppID.MinimumWidth = 8;
             this.colLDLAppID.Name = "colLDLAppID";
             this.colLDLAppID.ReadOnly = true;
             // 
             // colDrivingClass
             // 
             this.colDrivingClass.HeaderText = "Driving Class";
+            this.colDrivingClass.MinimumWidth = 8;
             this.colDrivingClass.Name = "colDrivingClass";
             this.colDrivingClass.ReadOnly = true;
             // 
             // colNationalNo
             // 
             this.colNationalNo.HeaderText = "National No.";
+            this.colNationalNo.MinimumWidth = 8;
             this.colNationalNo.Name = "colNationalNo";
             this.colNationalNo.ReadOnly = true;
             // 
             // colFullName
             // 
             this.colFullName.HeaderText = "Full Name";
+            this.colFullName.MinimumWidth = 8;
             this.colFullName.Name = "colFullName";
             this.colFullName.ReadOnly = true;
             // 
             // colApplicationDate
             // 
             this.colApplicationDate.HeaderText = "Application Date";
+            this.colApplicationDate.MinimumWidth = 8;
             this.colApplicationDate.Name = "colApplicationDate";
             this.colApplicationDate.ReadOnly = true;
             // 
             // colPassedTests
             // 
             this.colPassedTests.HeaderText = "Passed Tests";
+            this.colPassedTests.MinimumWidth = 8;
             this.colPassedTests.Name = "colPassedTests";
             this.colPassedTests.ReadOnly = true;
             // 
             // colStatus
             // 
             this.colStatus.HeaderText = "Status";
+            this.colStatus.MinimumWidth = 8;
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             // 
             // cmsLocalDrivingLicenseApplications
             // 
+            this.cmsLocalDrivingLicenseApplications.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsLocalDrivingLicenseApplications.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showApplicationDetailsToolStripMenuItem,
             this.editApplicationToolStripMenuItem,
@@ -264,33 +274,33 @@
             this.showLicenseToolStripMenuItem,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmsLocalDrivingLicenseApplications.Name = "cmsLocalDrivingLicenseApplications";
-            this.cmsLocalDrivingLicenseApplications.Size = new System.Drawing.Size(247, 202);
+            this.cmsLocalDrivingLicenseApplications.Size = new System.Drawing.Size(339, 260);
             // 
             // showApplicationDetailsToolStripMenuItem
             // 
             this.showApplicationDetailsToolStripMenuItem.Name = "showApplicationDetailsToolStripMenuItem";
-            this.showApplicationDetailsToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.showApplicationDetailsToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
             this.showApplicationDetailsToolStripMenuItem.Text = "Show Application Details";
             this.showApplicationDetailsToolStripMenuItem.Click += new System.EventHandler(this.showApplicationDetailsToolStripMenuItem_Click);
             // 
             // editApplicationToolStripMenuItem
             // 
             this.editApplicationToolStripMenuItem.Name = "editApplicationToolStripMenuItem";
-            this.editApplicationToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.editApplicationToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
             this.editApplicationToolStripMenuItem.Text = "Edit Application";
             this.editApplicationToolStripMenuItem.Click += new System.EventHandler(this.editApplicationToolStripMenuItem_Click);
             // 
             // deleteApplicationToolStripMenuItem
             // 
             this.deleteApplicationToolStripMenuItem.Name = "deleteApplicationToolStripMenuItem";
-            this.deleteApplicationToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.deleteApplicationToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
             this.deleteApplicationToolStripMenuItem.Text = "Delete Application";
             this.deleteApplicationToolStripMenuItem.Click += new System.EventHandler(this.deleteApplicationToolStripMenuItem_Click);
             // 
             // cancelApplicationToolStripMenuItem
             // 
             this.cancelApplicationToolStripMenuItem.Name = "cancelApplicationToolStripMenuItem";
-            this.cancelApplicationToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.cancelApplicationToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
             this.cancelApplicationToolStripMenuItem.Text = "Cancel Application";
             this.cancelApplicationToolStripMenuItem.Click += new System.EventHandler(this.cancelApplicationToolStripMenuItem_Click);
             // 
@@ -301,48 +311,48 @@
             this.scheduleWrittenTestToolStripMenuItem,
             this.scheduleStreetTestToolStripMenuItem});
             this.scheduleTestsToolStripMenuItem.Name = "scheduleTestsToolStripMenuItem";
-            this.scheduleTestsToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.scheduleTestsToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
             this.scheduleTestsToolStripMenuItem.Text = "Schedule Tests";
             // 
             // scheduleVisionTestToolStripMenuItem
             // 
             this.scheduleVisionTestToolStripMenuItem.Name = "scheduleVisionTestToolStripMenuItem";
-            this.scheduleVisionTestToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.scheduleVisionTestToolStripMenuItem.Size = new System.Drawing.Size(283, 34);
             this.scheduleVisionTestToolStripMenuItem.Text = "Schedule Vision Test";
             this.scheduleVisionTestToolStripMenuItem.Click += new System.EventHandler(this.scheduleVisionTestToolStripMenuItem_Click);
             // 
             // scheduleWrittenTestToolStripMenuItem
             // 
             this.scheduleWrittenTestToolStripMenuItem.Name = "scheduleWrittenTestToolStripMenuItem";
-            this.scheduleWrittenTestToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.scheduleWrittenTestToolStripMenuItem.Size = new System.Drawing.Size(283, 34);
             this.scheduleWrittenTestToolStripMenuItem.Text = "Schedule Written Test";
             this.scheduleWrittenTestToolStripMenuItem.Click += new System.EventHandler(this.scheduleWrittenTestToolStripMenuItem_Click);
             // 
             // scheduleStreetTestToolStripMenuItem
             // 
             this.scheduleStreetTestToolStripMenuItem.Name = "scheduleStreetTestToolStripMenuItem";
-            this.scheduleStreetTestToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.scheduleStreetTestToolStripMenuItem.Size = new System.Drawing.Size(283, 34);
             this.scheduleStreetTestToolStripMenuItem.Text = "Schedule Street Test";
             this.scheduleStreetTestToolStripMenuItem.Click += new System.EventHandler(this.scheduleStreetTestToolStripMenuItem_Click);
             // 
             // issueDrivingLicenseToolStripMenuItem
             // 
             this.issueDrivingLicenseToolStripMenuItem.Name = "issueDrivingLicenseToolStripMenuItem";
-            this.issueDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.issueDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
             this.issueDrivingLicenseToolStripMenuItem.Text = "Issue Driving License (First Time)";
             this.issueDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.issueDrivingLicenseToolStripMenuItem_Click);
             // 
             // showLicenseToolStripMenuItem
             // 
             this.showLicenseToolStripMenuItem.Name = "showLicenseToolStripMenuItem";
-            this.showLicenseToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.showLicenseToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
             this.showLicenseToolStripMenuItem.Text = "Show License";
             this.showLicenseToolStripMenuItem.Click += new System.EventHandler(this.showLicenseToolStripMenuItem_Click);
             // 
             // showPersonLicenseHistoryToolStripMenuItem
             // 
             this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
-            this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
             this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
             this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
             // 
@@ -353,7 +363,7 @@
             this.lblRecord.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecord.Location = new System.Drawing.Point(20, 660);
             this.lblRecord.Name = "lblRecord";
-            this.lblRecord.Size = new System.Drawing.Size(87, 21);
+            this.lblRecord.Size = new System.Drawing.Size(133, 32);
             this.lblRecord.TabIndex = 4;
             this.lblRecord.Text = "Records: 0";
             // 
@@ -374,7 +384,7 @@
             // 
             // frmLocalDrivingLicenseApplicationManage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1200, 700);

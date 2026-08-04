@@ -33,6 +33,7 @@ namespace Presentation_Layer
         public frmAddOrUpdateUser()
         {
             InitializeComponent();
+            this.AutoScroll = true;
             _User = new clsUser();
             _Person = new clsPerson();
             lblTitle.Text = "Add New User";
@@ -43,6 +44,7 @@ namespace Presentation_Layer
         public frmAddOrUpdateUser(int UserID)
         {
             InitializeComponent();
+            this.AutoScroll = true;
             _User = clsUser.Find(UserID);
             _Person = clsPerson.Find(_User.PersonId);
             lblTitle.Text = "Update User";
@@ -245,6 +247,11 @@ namespace Presentation_Layer
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
         {
 
         }

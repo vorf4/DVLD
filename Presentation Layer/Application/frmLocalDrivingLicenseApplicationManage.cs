@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Forms;
 using Business_Layer;
 using PresentationLayer;
@@ -9,7 +10,6 @@ namespace DVLD.Presentation_Layer
 {
     public partial class frmLocalDrivingLicenseApplicationManage : Form
     {
-
 
         public frmLocalDrivingLicenseApplicationManage(clsUser User)
         {
@@ -20,10 +20,34 @@ namespace DVLD.Presentation_Layer
             _User = User;
 
             _LoadDataToDgv();
+            _VerificationTestType();
         }
 
         private DataTable dt;
         private clsUser _User;
+
+        private void _VerificationTestType() 
+        {
+            scheduleStreetTestToolStripMenuItem.Enabled = false;
+            scheduleVisionTestToolStripMenuItem.Enabled = false;
+            scheduleWrittenTestToolStripMenuItem.Enabled = false;
+            showPersonLicenseHistoryToolStripMenuItem.Enabled = false;
+            issueDrivingLicenseToolStripMenuItem.Enabled = false;
+            
+            string Status = dgvLocalDriving.CurrentRow.Cells[6].Value.ToString();
+            if (Status == "Cancelled") { return; }
+
+            int PassedTests = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[5].Value);
+
+            if (PassedTests == 0) { scheduleVisionTestToolStripMenuItem.Enabled = true; }
+            else if (PassedTests == 1) { scheduleWrittenTestToolStripMenuItem.Enabled = true; }
+            else if (PassedTests == 2) { scheduleStreetTestToolStripMenuItem.Enabled = true; }
+            else if (PassedTests == 3) { issueDrivingLicenseToolStripMenuItem.Enabled = true; }
+
+            
+            // need to complete Show License when create LIcense History to be continue 
+
+        }
 
         private void _LoadDataToDgv()
         {
@@ -245,6 +269,7 @@ namespace DVLD.Presentation_Layer
             frmTestAppointments frm = new frmTestAppointments(LocalDrivingLicenseApplicationID, PassedTests, FullName, Fees, _User);
             frm.ShowDialog();
             _LoadDataToDgv();
+            _VerificationTestType();
 
         }
 
@@ -281,6 +306,11 @@ namespace DVLD.Presentation_Layer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvLocalDriving_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _VerificationTestType();
         }
     }
 }
