@@ -11,15 +11,16 @@ namespace PresentationLayer
         private clsLocalDrivingLicenseApplication _Application;
         private string _FullName;
         private double _Fees;
+        private clsUser _User;
 
-        public frmTakeAppointment(clsLocalDrivingLicenseApplication Application,string FullName, double fees)
+        public frmTakeAppointment(clsLocalDrivingLicenseApplication Application,string FullName, double fees , clsUser user)
         {
             InitializeComponent();
 
             _Application = Application;
             _FullName = FullName;
             _Fees = fees;
-
+            _User = user;
 
             LoadDataToForm();
 
@@ -45,7 +46,14 @@ namespace PresentationLayer
         private void btnSave_Click(object sender, EventArgs e)
         {
             
-
+            clsAppointment appointment = new clsAppointment();
+            appointment.LocalDrivingLicenseApplicationID1 = _Application.LocalDrivingLicenseApplicationID;
+            appointment.TestTypeID1 = 1;
+            appointment.AppointmentDate1 = dtpAppointmentDate.Value;
+            appointment.PaidFees1 = _Fees;
+            appointment.UserID1 = _User.UserId;
+            appointment.IsLocked1 = false;
+            appointment.RetakeTestAppointmentID1 = -1;
 
         }
 

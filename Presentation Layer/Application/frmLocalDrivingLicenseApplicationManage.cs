@@ -237,13 +237,15 @@ namespace DVLD.Presentation_Layer
 
         private void CallTestAppointmentForm(double Fees)
         {
+
             int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[0].Value);
             int PassedTests = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[5].Value);
             string FullName = dgvLocalDriving.CurrentRow.Cells[3].Value.ToString();
 
-            frmTestAppointments frm = new frmTestAppointments(LocalDrivingLicenseApplicationID, PassedTests, FullName, Fees);
+            frmTestAppointments frm = new frmTestAppointments(LocalDrivingLicenseApplicationID, PassedTests, FullName, Fees, _User);
             frm.ShowDialog();
             _LoadDataToDgv();
+
         }
 
         private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)

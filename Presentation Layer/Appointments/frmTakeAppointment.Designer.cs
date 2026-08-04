@@ -244,6 +244,7 @@
             this.gbRetakeTestInformation.Controls.Add(this.lblRetakeTestApplicationIDValue);
             this.gbRetakeTestInformation.Controls.Add(this.lblTotalFeesTitle);
             this.gbRetakeTestInformation.Controls.Add(this.lblTotalFeesValue);
+            this.gbRetakeTestInformation.Enabled = false;
             this.gbRetakeTestInformation.Location = new System.Drawing.Point(20, 390);
             this.gbRetakeTestInformation.Name = "gbRetakeTestInformation";
             this.gbRetakeTestInformation.Size = new System.Drawing.Size(500, 150);

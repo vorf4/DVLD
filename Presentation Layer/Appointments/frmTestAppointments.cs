@@ -15,6 +15,7 @@ namespace DVLD.Presentation_Layer
         private int PassedTests;
         private double Fees;
         private string FullName;
+        private clsUser User;
 
 
         private void LoadAppointmentData()
@@ -38,7 +39,7 @@ namespace DVLD.Presentation_Layer
             }
         }
 
-        public frmTestAppointments(int LocalDrivingLicenseID,int passedTests,string fullName,double Fees)
+        public frmTestAppointments(int LocalDrivingLicenseID,int passedTests,string fullName,double Fees,clsUser User)
         {
             InitializeComponent();
 
@@ -46,6 +47,7 @@ namespace DVLD.Presentation_Layer
             PassedTests = passedTests;
             this.Fees = Fees;
             this.FullName = fullName;
+            this.User = User;
 
             _LoadDataOfControls();
             LoadAppointmentData();
@@ -62,7 +64,7 @@ namespace DVLD.Presentation_Layer
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
 
-            frmTakeAppointment frm = new frmTakeAppointment(Application, FullName, Fees);
+            frmTakeAppointment frm = new frmTakeAppointment(Application, FullName, Fees, User);
             frm.ShowDialog();
 
         }
