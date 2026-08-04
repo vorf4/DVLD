@@ -16,11 +16,12 @@ namespace DVLD.Presentation_Layer
         private double Fees;
         private string FullName;
         private clsUser User;
+        private int TestTypeID;
 
 
         private void LoadAppointmentData()
         {
-            DataTable dt = clsAppointment.GetAppointmentsByLocalID(Application.LocalDrivingLicenseApplicationID);
+            DataTable dt = clsAppointment.GetAppointmentsByLocalID(Application.LocalDrivingLicenseApplicationID, TestTypeID);
             if (dt.Rows.Count > 0)
             {
 
@@ -39,12 +40,13 @@ namespace DVLD.Presentation_Layer
             }
         }
 
-        public frmTestAppointments(int LocalDrivingLicenseID,int passedTests,string fullName,double Fees,clsUser User)
+        public frmTestAppointments(int LocalDrivingLicenseID,int passedTests,string fullName,double Fees,clsUser User,int TestTypeID)
         {
             InitializeComponent();
 
             Application = clsLocalDrivingLicenseApplication.Find(LocalDrivingLicenseID);
             PassedTests = passedTests;
+            this.TestTypeID = TestTypeID;
             this.Fees = Fees;
             this.FullName = fullName;
             this.User = User;
@@ -61,11 +63,55 @@ namespace DVLD.Presentation_Layer
 
         }
 
+        private int GetLastIndexOfAppointmentDataGridView()
+        {
+            if (dgvAppointments.Rows.Count > 0)
+            {
+                return dgvAppointments.Rows.Count - 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        private bool IsAppointmentLocked()
+        {
+
+            bool isFound = false;
+
+            int LastIndex = GetLastIndexOfAppointmentDataGridView();
+
+            if (LastIndex != -1)
+            {
+                int AppointmentID1 = dgvAppointments.Rows[LastIndex].Cells["colAppointmentID"].Value != null ? Convert.ToInt32(dgvAppointments.Rows[LastIndex].Cells["colAppointmentID"].Value) : -1;
+
+                if (!clsAppointment.IsAppointmentLockedPublic(AppointmentID1))
+                {
+                    isFound = true;
+                }
+            }
+            else 
+            {
+                isFound = false; // No appointments found, so we can add a new appointment
+            }
+
+            return isFound;
+
+        }
+
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
 
-            frmTakeAppointment frm = new frmTakeAppointment(Application, FullName, Fees, User);
+            if (IsAppointmentLocked())
+            {
+                MessageBox.Show("The last appointment is locked. You cannot add a new appointment.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            frmTakeAppointment frm = new frmTakeAppointment(Application, FullName, Fees, User, TestTypeID);
             frm.ShowDialog();
+            LoadAppointmentData();
 
         }
 

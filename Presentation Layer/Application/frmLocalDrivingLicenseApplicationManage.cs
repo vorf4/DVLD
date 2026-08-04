@@ -259,14 +259,14 @@ namespace DVLD.Presentation_Layer
 
         }
 
-        private void CallTestAppointmentForm(double Fees)
+        private void CallTestAppointmentForm(double Fees,int TestTypeID)
         {
 
             int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[0].Value);
             int PassedTests = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[5].Value);
             string FullName = dgvLocalDriving.CurrentRow.Cells[3].Value.ToString();
 
-            frmTestAppointments frm = new frmTestAppointments(LocalDrivingLicenseApplicationID, PassedTests, FullName, Fees, _User);
+            frmTestAppointments frm = new frmTestAppointments(LocalDrivingLicenseApplicationID, PassedTests, FullName, Fees, _User, TestTypeID);
             frm.ShowDialog();
             _LoadDataToDgv();
             _VerificationTestType();
@@ -275,17 +275,17 @@ namespace DVLD.Presentation_Layer
 
         private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-              CallTestAppointmentForm(15.00);
+              CallTestAppointmentForm(15.00,1);
         }
 
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CallTestAppointmentForm(20.00);
+            CallTestAppointmentForm(20.00,2);
         }
 
         private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CallTestAppointmentForm(25.00);
+            CallTestAppointmentForm(25.00,3);
         }
 
         private void issueDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)

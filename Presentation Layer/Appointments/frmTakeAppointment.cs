@@ -12,8 +12,11 @@ namespace PresentationLayer
         private string _FullName;
         private double _Fees;
         private clsUser _User;
+        private int TestTypeID;
+        private int RetakeApplicationID;
 
-        public frmTakeAppointment(clsLocalDrivingLicenseApplication Application,string FullName, double fees , clsUser user)
+        public frmTakeAppointment(clsLocalDrivingLicenseApplication Application,string FullName, double fees 
+            , clsUser user,int TestTypeID,int RetakeApplicationID = -1)
         {
             InitializeComponent();
 
@@ -21,6 +24,8 @@ namespace PresentationLayer
             _FullName = FullName;
             _Fees = fees;
             _User = user;
+            this.TestTypeID = TestTypeID;
+            this.RetakeApplicationID = RetakeApplicationID;
 
             LoadDataToForm();
 
@@ -40,7 +45,7 @@ namespace PresentationLayer
 
         private void dtpAppointmentDate_ValueChanged(object sender, EventArgs e)
         {
-            // Empty event handler
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -48,21 +53,45 @@ namespace PresentationLayer
             
             clsAppointment appointment = new clsAppointment();
             appointment.LocalDrivingLicenseApplicationID1 = _Application.LocalDrivingLicenseApplicationID;
-            appointment.TestTypeID1 = 1;
+            appointment.TestTypeID1 = TestTypeID;
             appointment.AppointmentDate1 = dtpAppointmentDate.Value;
             appointment.PaidFees1 = _Fees;
             appointment.UserID1 = _User.UserId;
             appointment.IsLocked1 = false;
-            appointment.RetakeTestAppointmentID1 = -1;
+            appointment.RetakeTestAppointmentID1 = RetakeApplicationID;
+
+            clsAppointment.enSave result = appointment.save();
+
+            switch (result) 
+            {
+            
+                case clsAppointment.enSave.enAddScc:
+                    MessageBox.Show("Appointment saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    break;
+                case clsAppointment.enSave.enEditScc:
+                    MessageBox.Show("Appointment updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    break;
+                case clsAppointment.enSave.enFailedScc:
+                    MessageBox.Show("Failed to save appointment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+
+            }
 
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            // Empty event handler
+            this.Close();
         }
 
         private void gbScheduleTest_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
         {
 
         }

@@ -80,6 +80,7 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Schedule Test";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // gbScheduleTest
             // 

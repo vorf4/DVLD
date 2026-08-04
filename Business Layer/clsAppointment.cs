@@ -81,9 +81,9 @@ namespace Business_Layer
 
         //private methods
 
-        private static DataTable GetAllAppointmentsByLocalID(int LocalID)
+        private static DataTable GetAllAppointmentsByLocalID(int LocalID,int TestTypeID)
         {
-            return clsAppointmentTB.GetAllAppointmentsByLocalID(LocalID);
+            return clsAppointmentTB.GetAllAppointmentsByLocalID(LocalID, TestTypeID);
         }
 
         private bool InsertAppointment()
@@ -92,11 +92,21 @@ namespace Business_Layer
                 this.AppointmentDate1, this.PaidFees1, this.UserID1, this.IsLocked1, this.RetakeTestAppointmentID1);
         }
 
+        private static bool IsAppointmentLocked(int AppointmentID)
+        {
+            return clsAppointmentTB.IsAppointmentLocked(AppointmentID);
+        }
+
+       private static bool UpdateAppointment(int AppointmentID, DateTime AppointmentDate,  bool IsLocked)
+        {
+            return clsAppointmentTB.UpdateAppointment(AppointmentID, AppointmentDate, IsLocked);
+        }
+
         //public methods
 
-        public static DataTable GetAppointmentsByLocalID(int LocalID)
+        public static DataTable GetAppointmentsByLocalID(int LocalID, int TestTypeID)
         {
-            return clsAppointment.GetAllAppointmentsByLocalID(LocalID);
+            return clsAppointment.GetAllAppointmentsByLocalID(LocalID, TestTypeID);
         }
         public enSave save() 
         {
@@ -121,6 +131,21 @@ namespace Business_Layer
 
             }
 
+        }
+
+        public static bool IsAppointmentLockedPublic(int AppointmentID)
+        {
+            return IsAppointmentLocked(AppointmentID);
+        }
+
+        public static bool UpdateDataOfIsLocked(int AppointmentID, DateTime AppointmentDate, bool IsLocked)
+        {
+            return UpdateAppointment(AppointmentID, AppointmentDate, IsLocked);
+        }
+
+        public static bool UpdateDataOfAppointmentDate(int AppointmentID, DateTime AppointmentDate)
+        {
+            return UpdateAppointment(AppointmentID, AppointmentDate, false);
         }
 
     }
