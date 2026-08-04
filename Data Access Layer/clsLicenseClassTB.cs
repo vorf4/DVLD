@@ -14,7 +14,7 @@ namespace Data_Access_Layer
 
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select ClassName from LicenseClasses";
             
@@ -51,7 +51,7 @@ namespace Data_Access_Layer
         public static double GetFeesByClassName(string className)
         {
             double fees = 0.0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT ClassFees FROM LicenseClasses WHERE ClassName = @ClassName";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ClassName", className);
@@ -78,7 +78,7 @@ namespace Data_Access_Layer
         public static int GetLicenseClassIDByClassName(string className)
         {
             int classID = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT LicenseClassID FROM LicenseClasses WHERE ClassName = @ClassName";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ClassName", className);
@@ -105,7 +105,7 @@ namespace Data_Access_Layer
         public static string GetLicenseClassNameByClassID(int classID)
         {
             string className = string.Empty;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT ClassName FROM LicenseClasses WHERE LicenseClassID = @ClassID";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ClassID", classID);

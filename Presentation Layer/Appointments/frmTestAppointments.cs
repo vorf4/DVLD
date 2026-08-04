@@ -11,7 +11,7 @@ namespace DVLD.Presentation_Layer
     public partial class frmTestAppointments : Form
     {
 
-        private clsLocalDrivingLicenseApplication Application;
+        private clsLocalDrivingLicenseApplication LocalApplication;
         private int PassedTests;
         private double Fees;
         private string FullName;
@@ -21,7 +21,8 @@ namespace DVLD.Presentation_Layer
 
         private void LoadAppointmentData()
         {
-            DataTable dt = clsAppointment.GetAppointmentsByLocalID(Application.LocalDrivingLicenseApplicationID, TestTypeID);
+
+            DataTable dt = clsAppointment.GetAppointmentsByLocalID(LocalApplication.LocalDrivingLicenseApplicationID, TestTypeID);
             if (dt.Rows.Count > 0)
             {
 
@@ -40,11 +41,32 @@ namespace DVLD.Presentation_Layer
             }
         }
 
+        private void LoadAppointmentTitle(int PassedTests) 
+        {
+
+            if(PassedTests == 0)
+            {
+                this.Text = "Schedule Vision Test";
+                lblTitle.Text = "Schedule Vision Test";
+            }
+           else if (PassedTests == 1)
+            {
+                this.Text = "Schedule Written Test";
+                lblTitle.Text = "Schedule Written Test";
+            }
+            else if (PassedTests == 2)
+            {
+                this.Text = "Schedule Street Test";
+                lblTitle.Text = "Schedule Street Test";
+            }
+
+        }
+
         public frmTestAppointments(int LocalDrivingLicenseID,int passedTests,string fullName,double Fees,clsUser User,int TestTypeID)
         {
             InitializeComponent();
 
-            Application = clsLocalDrivingLicenseApplication.Find(LocalDrivingLicenseID);
+            LocalApplication = clsLocalDrivingLicenseApplication.Find(LocalDrivingLicenseID);
             PassedTests = passedTests;
             this.TestTypeID = TestTypeID;
             this.Fees = Fees;
@@ -53,13 +75,14 @@ namespace DVLD.Presentation_Layer
 
             _LoadDataOfControls();
             LoadAppointmentData();
+            LoadAppointmentTitle(PassedTests);
         }
 
         private void _LoadDataOfControls() 
         {
         
-            ctrlDrivingLicenseApplicationInfo.LoadDrivingLicenseApplicationInfo(Application, PassedTests);
-            ctrlApplicationBasicInfo.LoadApplicationInfo(Application.ApplicationID);
+            ctrlDrivingLicenseApplicationInfo.LoadDrivingLicenseApplicationInfo(LocalApplication, PassedTests);
+            ctrlApplicationBasicInfo.LoadApplicationInfo(LocalApplication.ApplicationID);
 
         }
 
@@ -109,7 +132,7 @@ namespace DVLD.Presentation_Layer
                 return;
             }
 
-            frmTakeAppointment frm = new frmTakeAppointment(Application, FullName, Fees, User, TestTypeID);
+            frmTakeAppointment frm = new frmTakeAppointment(LocalApplication, FullName, Fees, User, TestTypeID);
             frm.ShowDialog();
             LoadAppointmentData();
 
@@ -124,6 +147,11 @@ namespace DVLD.Presentation_Layer
             }
         }
 
+        private bool VerificationIfAppointmentIsLocked(int AppointmentID)
+        {
+            return clsAppointment.IsAppointmentLockedPublic(AppointmentID);
+        }
+
         private void editAppointmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // TODO: Implement Edit logic
@@ -131,7 +159,54 @@ namespace DVLD.Presentation_Layer
 
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: Implement Take Test logic
+            // 1. Safety check: Ensure at least one row is selected to prevent crashes
+            if (dgvAppointments.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an appointment first.", "Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Store the single selected row in a variable for cleaner code
+            DataGridViewRow selectedRow = dgvAppointments.SelectedRows[0];
+
+            // 3. Extract data from the same selected row (index 0)
+            int AppointmentID = selectedRow.Cells["colAppointmentID"].Value != null
+                ? Convert.ToInt32(selectedRow.Cells["colAppointmentID"].Value)
+                : -1;
+
+            DateTime AppointmentDate = selectedRow.Cells["colAppointmentDate"].Value != null
+                ? Convert.ToDateTime(selectedRow.Cells["colAppointmentDate"].Value)
+                : DateTime.MinValue;
+
+            double PaidFees = selectedRow.Cells["colPaidFees"].Value != null
+                ? Convert.ToDouble(selectedRow.Cells["colPaidFees"].Value)
+                : 0.0;
+
+            int TryNumber = dgvAppointments.Rows.Count - 1;
+
+            if (VerificationIfAppointmentIsLocked(AppointmentID))
+            {
+                MessageBox.Show("The selected appointment is locked. You cannot take the test.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 4. Open the form
+            frmTakeTest frm = new frmTakeTest(clsApplication.Find(LocalApplication.ApplicationID), LocalApplication, TryNumber, AppointmentDate, PaidFees, AppointmentID,User.UserId);
+            frm.isPassed += FrmIsPassed; // Subscribe to the event
+            frm.ShowDialog();
+
+            LoadAppointmentData(); // Refresh the data after the test is taken
+
+        }
+
+        private void FrmIsPassed(bool isPassed)
+        {
+            
+            if(isPassed)
+            {
+                this.Close();
+            }
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace Data_Access_Layer
             DateTime LastStatusDate, decimal PaidFees, int UserID)
         {
             int newApplicationID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "INSERT INTO Applications (ApplicantPersonID, ApplicationDate, ApplicationTypeID," +
                 " ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID) " +
                            "VALUES (@PersonID, @ApplicationDate, @TypeID, @Status, @LastStatusDate, @PaidFees, @UserID); select scope_identity();";
@@ -49,7 +49,7 @@ namespace Data_Access_Layer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "SELECT ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID " +
                            "FROM Applications WHERE ApplicationID = @ApplicationID";
@@ -98,7 +98,7 @@ namespace Data_Access_Layer
         public static bool CheckIfPersonHasThisApplicationType(int PersonID, int TypeID)
         {
             bool hasApplication = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT COUNT(*) FROM Applications WHERE ApplicationPersonID = @PersonID AND ApplicationTypeID = @TypeID";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
@@ -123,7 +123,7 @@ namespace Data_Access_Layer
         public static bool UpdateApplicationStatus(int ApplicationID, byte NewStatus, DateTime LastStatusDate)
         {
             bool isUpdated = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "UPDATE Applications SET ApplicationStatus = @NewStatus, LastStatusDate = @LastStatusDate WHERE ApplicationID = @ApplicationID";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@NewStatus", NewStatus);

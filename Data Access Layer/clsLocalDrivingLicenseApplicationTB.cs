@@ -11,7 +11,7 @@ namespace Data_Access_Layer
         public static int AddNewLocalLicense(int applicationID, int licenseClassID)
         {
             int newID = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "INSERT INTO LocalDrivingLicenseApplications (ApplicationID, LicenseClassID)" +
                 " VALUES (@ApplicationID, @LicenseClassID); SELECT SCOPE_IDENTITY();";
             SqlCommand command = new SqlCommand(query, connection);
@@ -44,7 +44,7 @@ namespace Data_Access_Layer
 
             bool isFound = false;
 
-            SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "SELECT        ApplicantPersonID\r\nFROM        " +
                 "    Applications INNER JOIN\r\n          " +
@@ -88,7 +88,7 @@ namespace Data_Access_Layer
 
             DataTable dt = new DataTable();
 
-            SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select * from LocalDrivingLicenseApplications_View";
 
@@ -121,7 +121,7 @@ namespace Data_Access_Layer
         {
             int applicationID = -1;
 
-            SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "SELECT ApplicationID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalID";
 
@@ -154,7 +154,7 @@ namespace Data_Access_Layer
 
             bool result = false;
 
-            SqlConnection conn = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "SELECT ApplicationID, LicenseClassID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalID";
 

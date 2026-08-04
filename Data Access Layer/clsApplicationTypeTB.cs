@@ -12,7 +12,7 @@ namespace Data_Access_Layer
           
             DataTable dt = new DataTable()  ;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "SELECT * FROM ApplicationTypes";
 
@@ -50,7 +50,7 @@ namespace Data_Access_Layer
 
         public static bool UpdateApplicationType(int applicationTypeID, string title, double fees)
         {
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "UPDATE ApplicationTypes SET ApplicationTypeTitle = @Title, ApplicationFees = @Fees WHERE ApplicationTypeID = @ID";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@Title", title);
@@ -76,7 +76,7 @@ namespace Data_Access_Layer
         public static double GetApplicationFees(string applicationTypeTitle)
         {
             double fees = 0.0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeTitle = @Title";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@Title", applicationTypeTitle);
@@ -103,7 +103,7 @@ namespace Data_Access_Layer
         public static string GetApplicationTypeTitleByID(int applicationTypeID)
         {
             string title = string.Empty;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT ApplicationTypeTitle FROM ApplicationTypes WHERE ApplicationTypeID = @ID";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ID", applicationTypeID);
@@ -130,7 +130,7 @@ namespace Data_Access_Layer
         public static int GetApplicationTypeIDByTitle(string applicationTypeTitle)
         {
             int id = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT ApplicationTypeID FROM ApplicationTypes WHERE ApplicationTypeTitle = @Title";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@Title", applicationTypeTitle);

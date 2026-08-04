@@ -13,7 +13,7 @@ namespace Data_Access_Layer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select * from People";
 
@@ -50,7 +50,7 @@ namespace Data_Access_Layer
         {
             int countryID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select CountryID from Countries where CountryName = @CountryName";
 
@@ -83,7 +83,7 @@ namespace Data_Access_Layer
         {
             string countryName = null;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select CountryName from Countries where CountryID = @CountryID";
 
@@ -119,7 +119,7 @@ namespace Data_Access_Layer
 
             int PersonID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "insert into People (FirstName, SecondName, ThirdName, LastName, NationalNo, DateOfBirth " +
                 ", Gendor, Address, Phone, Email, NationalityCountryID, ImagePath) values (@FirstName, @SecondName, @ThirdName, @LastName, @NationalNo, @DateOfBirth" +
@@ -181,7 +181,7 @@ namespace Data_Access_Layer
             , DateTime DateOfBirth, int Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "update People set FirstName = @FirstName, SecondName = @SecondName, ThirdName = @ThirdName, LastName = @LastName, NationalNo = @NationalNo, DateOfBirth = @DateOfBirth" +
                 ", Gendor = @Gender, Address = @Address, Phone = @Phone, Email = @Email, NationalityCountryID = @NationalityCountryID, ImagePath = @ImagePath where PersonID = @PersonID";
@@ -241,7 +241,7 @@ namespace Data_Access_Layer
 
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select * from People where PersonID = @PersonID";
 
@@ -299,7 +299,7 @@ namespace Data_Access_Layer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select * from People where NationalNo = @NationalNo";
 
@@ -353,7 +353,7 @@ namespace Data_Access_Layer
            
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select count(*) from People where NationalNo = @NationalNo";
 
@@ -383,7 +383,7 @@ namespace Data_Access_Layer
         public static bool DeletePerson(int PersonID)
         {
             bool isDeleted = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "delete from People where PersonID = @PersonID";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@PersonID", PersonID);
@@ -407,7 +407,7 @@ namespace Data_Access_Layer
         public static string GetFullNameByID(int PersonID) 
         {
             string fullName = string.Empty;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "select FirstName, SecondName, ThirdName, LastName from People where PersonID = @PersonID";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@PersonID", PersonID);

@@ -15,7 +15,7 @@ namespace Data_Access_Layer
 
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "SELECT UserID, PersonId, IsActive FROM Users WHERE UserName = @UserName AND Password = @Password";
 
@@ -64,7 +64,7 @@ namespace Data_Access_Layer
 
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "SELECT PersonId, IsActive, UserName, Password FROM Users WHERE UserID = @UserID";
 
@@ -105,7 +105,7 @@ namespace Data_Access_Layer
         public static bool GetUserByPersonID(int PersonID, ref int UserID, ref bool IsActive, ref string UserName, ref string Password)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT UserID, IsActive, UserName, Password FROM Users WHERE PersonID = @PersonID";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@PersonID", PersonID);
@@ -137,7 +137,7 @@ namespace Data_Access_Layer
         public static DataTable GetAllUsers()
         {
             DataTable dtUsers = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT        Users.UserID, Users.PersonID,\r\n" +
                 "People.FirstName+''+ People.SecondName+''+ People.ThirdName+''+ People.LastName as FullName,\r\n" +
                 "Users.UserName, Users.IsActive\r\nFROM           " +
@@ -174,7 +174,7 @@ namespace Data_Access_Layer
         public static int AddUser(int PersonId, string UserName, string Password, bool IsActive)
         {
             int newUserId = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "INSERT INTO Users (PersonId, UserName, Password, IsActive) VALUES (@PersonId, @UserName, @Password, @IsActive); SELECT SCOPE_IDENTITY();";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@PersonId", PersonId);
@@ -205,7 +205,7 @@ namespace Data_Access_Layer
         public static bool UpdateUser(int UserID, int PersonId, string UserName, string Password, bool IsActive)
         {
             bool isUpdated = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "UPDATE Users SET PersonId = @PersonId, UserName = @UserName, Password = @Password, IsActive = @IsActive WHERE UserID = @UserID";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@UserID", UserID);
@@ -233,7 +233,7 @@ namespace Data_Access_Layer
         public static bool DeleteUser(int UserID)
         {
             bool isDeleted = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "DELETE FROM Users WHERE UserID = @UserID";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@UserID", UserID);
@@ -257,7 +257,7 @@ namespace Data_Access_Layer
         public static bool IsUserExists(int UserID)
         {
             bool exists = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT COUNT(*) FROM Users WHERE UserID = @UserID";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@UserID", UserID);
@@ -281,7 +281,7 @@ namespace Data_Access_Layer
         public static bool IsUsernameExists(string UserName)
         {
             bool exists = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT COUNT(*) FROM Users WHERE UserName = @UserName";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@UserName", UserName);
@@ -305,7 +305,7 @@ namespace Data_Access_Layer
         public static bool IsPersonIdExists(int PersonId)
         {
             bool exists = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT COUNT(*) FROM Users WHERE PersonId = @PersonId";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@PersonId", PersonId);
@@ -329,7 +329,7 @@ namespace Data_Access_Layer
         public static bool IsNationalIdExists(string NationalId)
         {
             bool exists = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT        count(*)\r\nFROM    " +
                 "        People INNER JOIN\r\n       " +
                 "                  Users ON People.PersonID = Users.PersonID" +
@@ -356,7 +356,7 @@ namespace Data_Access_Layer
         public static string GetPasswordByID(int UserID)
         {
             string password = null;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "SELECT Password FROM Users WHERE UserID = @UserID";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@UserID", UserID);

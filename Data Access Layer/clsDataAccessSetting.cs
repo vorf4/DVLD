@@ -6,7 +6,7 @@ namespace Data_Access_Layer
     internal class clsDataAccessSetting
     {
 
-       public static string connectionString = "server=.;database=DVLD;user id=sa;password=123456";
+       public static string ConnectionString = "server=.;database=DVLD;user id=sa;password=123456";
 
     }
 }

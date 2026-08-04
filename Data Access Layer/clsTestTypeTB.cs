@@ -12,7 +12,7 @@ namespace Data_Access_Layer
 
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select * from TestTypes";
 
@@ -52,7 +52,7 @@ namespace Data_Access_Layer
         public static bool UpdateTestTypeByID(int testTypeID, string testTypeTitle, string testTypeDescription, double testTypeFees)
         {
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "UPDATE TestTypes SET TestTypeTitle = @TestTypeTitle, TestTypeDescription = @TestTypeDescription" +
                 ", TestTypeFees = @TestTypeFees WHERE TestTypeID = @TestTypeID";

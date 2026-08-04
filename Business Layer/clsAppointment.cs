@@ -138,9 +138,9 @@ namespace Business_Layer
             return IsAppointmentLocked(AppointmentID);
         }
 
-        public static bool UpdateDataOfIsLocked(int AppointmentID, DateTime AppointmentDate, bool IsLocked)
+        public static bool UpdateDataOfIsLocked(int AppointmentID,  bool IsLocked)
         {
-            return UpdateAppointment(AppointmentID, AppointmentDate, IsLocked);
+            return UpdateAppointment(AppointmentID, DateTime.Now, IsLocked);
         }
 
         public static bool UpdateDataOfAppointmentDate(int AppointmentID, DateTime AppointmentDate)

@@ -12,7 +12,7 @@ namespace Data_Access_Layer
 
             DataTable dt = new DataTable();
 
-            SqlConnection con = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection con = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = "select TestAppointmentID,AppointmentDate,PaidFees,IsLocked " +
                 "from TestAppointments\r\n" +
@@ -51,7 +51,7 @@ namespace Data_Access_Layer
 
         public static bool InsertAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, double PaidFees, int UserID, bool IsLocked, int RetakeTestAppointmentID)
         {
-            SqlConnection con = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection con = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "insert into TestAppointments(TestTypeID,LocalDrivingLicenseApplicationID,AppointmentDate,PaidFees,CreatedByUserID,IsLocked,RetakeTestApplicationID) values(@TestTypeID,@LocalDrivingLicenseApplicationID,@AppointmentDate,@PaidFees,@UserID,@IsLocked,@RetakeTestAppointmentID)";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@TestTypeID", TestTypeID);
@@ -86,7 +86,7 @@ namespace Data_Access_Layer
 
         public static bool IsAppointmentLocked(int AppointmentID)
         {
-            SqlConnection con = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection con = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "select IsLocked from TestAppointments where TestAppointmentID = @AppointmentID";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@AppointmentID", AppointmentID);
@@ -115,7 +115,7 @@ namespace Data_Access_Layer
 
         public static bool UpdateAppointment(int AppointmentID, DateTime AppointmentDate,  bool IsLocked)
         {
-            SqlConnection con = new SqlConnection(clsDataAccessSetting.connectionString);
+            SqlConnection con = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = "update TestAppointments set AppointmentDate=@AppointmentDate,IsLocked=@IsLocked where TestAppointmentID=@AppointmentID";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@AppointmentID", AppointmentID);
