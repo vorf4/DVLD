@@ -172,6 +172,11 @@ namespace Business_Layer
             return _UpdateApplicationStatus(ApplicationID, enStatus.enCancelled);
         }
 
+        public static bool CompletedApplication(int ApplicationID)
+        {
+            return _UpdateApplicationStatus(ApplicationID, enStatus.enCompleted);
+        }
+
         // get and set methods
 
         private enMode Mode { get => _Mode; set => _Mode = value; }

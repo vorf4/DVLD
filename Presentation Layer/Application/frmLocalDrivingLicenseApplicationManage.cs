@@ -33,6 +33,7 @@ namespace DVLD.Presentation_Layer
             scheduleWrittenTestToolStripMenuItem.Enabled = false;
             showPersonLicenseHistoryToolStripMenuItem.Enabled = false;
             issueDrivingLicenseToolStripMenuItem.Enabled = false;
+            showLicenseToolStripMenuItem.Enabled = false;
             
             string Status = dgvLocalDriving.CurrentRow.Cells[6].Value.ToString();
             if (Status == "Cancelled") { return; }
@@ -43,6 +44,7 @@ namespace DVLD.Presentation_Layer
             else if (PassedTests == 1) { scheduleWrittenTestToolStripMenuItem.Enabled = true; }
             else if (PassedTests == 2) { scheduleStreetTestToolStripMenuItem.Enabled = true; }
             else if (PassedTests == 3) { issueDrivingLicenseToolStripMenuItem.Enabled = true; }
+            else if (Status == "Completed") { showLicenseToolStripMenuItem.Enabled = true; }
 
             
             // need to complete Show License when create LIcense History to be continue 
@@ -290,6 +292,17 @@ namespace DVLD.Presentation_Layer
 
         private void issueDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[0].Value);
+            int PassedTests = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[5].Value);
+
+            clsLocalDrivingLicenseApplication LocalApplication = clsLocalDrivingLicenseApplication.Find(LocalDrivingLicenseApplicationID);
+
+            frmIssueDriverLicenseForTheFirstTime frm = new frmIssueDriverLicenseForTheFirstTime(LocalApplication, PassedTests, _User);
+            frm.ShowDialog();
+            
+            _LoadDataToDgv();
+            _VerificationTestType();
 
         }
 

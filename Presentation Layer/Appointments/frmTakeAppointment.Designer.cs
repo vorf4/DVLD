@@ -252,6 +252,7 @@
             this.gbRetakeTestInformation.TabIndex = 13;
             this.gbRetakeTestInformation.TabStop = false;
             this.gbRetakeTestInformation.Text = "Retake Test Information";
+            this.gbRetakeTestInformation.Enter += new System.EventHandler(this.gbRetakeTestInformation_Enter);
             // 
             // lblRetakeApplicationFeesTitle
             // 

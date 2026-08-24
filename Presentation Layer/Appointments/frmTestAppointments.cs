@@ -81,8 +81,8 @@ namespace DVLD.Presentation_Layer
         private void _LoadDataOfControls() 
         {
         
-            ctrlDrivingLicenseApplicationInfo.LoadDrivingLicenseApplicationInfo(LocalApplication, PassedTests);
-            ctrlApplicationBasicInfo.LoadApplicationInfo(LocalApplication.ApplicationID);
+            ctrlDrivingLicenseApplicationInfo1.LoadDrivingLicenseApplicationInfo(LocalApplication, PassedTests);
+            ctrlApplicationBasicInfo1.LoadApplicationInfo(LocalApplication.ApplicationID);
 
         }
 
@@ -123,6 +123,22 @@ namespace DVLD.Presentation_Layer
 
         }
 
+        private bool IsRetakeAppointment() 
+        {
+        
+            bool isRetake = false;
+
+            if (dgvAppointments.SelectedRows.Count > 0) 
+            {
+
+                isRetake = true;
+
+            }
+
+            return isRetake;
+
+        }
+
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
 
@@ -132,8 +148,18 @@ namespace DVLD.Presentation_Layer
                 return;
             }
 
+            if (IsRetakeAppointment())
+            {
+                frmTakeAppointment frm = new frmTakeAppointment(LocalApplication, FullName, Fees, User, TestTypeID, LocalApplication.ApplicationID);
+                frm.ShowDialog();
+            }
+            else 
+            {
             frmTakeAppointment frm = new frmTakeAppointment(LocalApplication, FullName, Fees, User, TestTypeID);
             frm.ShowDialog();
+            }
+
+            
             LoadAppointmentData();
 
         }
@@ -220,6 +246,11 @@ namespace DVLD.Presentation_Layer
         }
 
         private void frmTestAppointments_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ctrlApplicationBasicInfo_Load(object sender, EventArgs e)
         {
 
         }

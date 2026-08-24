@@ -102,6 +102,7 @@
             this.gbTakeTest.TabIndex = 1;
             this.gbTakeTest.TabStop = false;
             this.gbTakeTest.Text = "Application Information";
+            this.gbTakeTest.Enter += new System.EventHandler(this.gbTakeTest_Enter);
             // 
             // lblLocalDrivingLicenseApplicationIDTitle
             // 

@@ -46,6 +46,7 @@
     <Compile Include="clsAppointmentTB.cs" />
     <Compile Include="clsDataAccessSetting.cs" />
     <Compile Include="clsLicenseClassTB.cs" />
+    <Compile Include="clsLicensesTB.cs" />
     <Compile Include="clsLocalDrivingLicenseApplicationTB.cs" />
     <Compile Include="clsPersonsTB.cs" />
     <Compile Include="clsTestsTB.cs" />

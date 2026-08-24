@@ -40,6 +40,15 @@ namespace PresentationLayer
             lblFeesValue.Text = _Fees.ToString("F2");
             dtpAppointmentDate.MinDate = DateTime.Now.AddDays(1);
 
+            if (RetakeApplicationID != -1)
+            {
+                gbRetakeTestInformation.Enabled = true;
+                lblRetakeApplicationFeesValue.Text = "5.00";
+                lblTotalFeesValue.Text = (_Fees + 5.00).ToString("F2");
+                _Fees += 5.00;
+                lblRetakeTestApplicationIDValue.Text = RetakeApplicationID.ToString();
+
+            }
 
         }
 
@@ -51,6 +60,7 @@ namespace PresentationLayer
         private void btnSave_Click(object sender, EventArgs e)
         {
             
+
             clsAppointment appointment = new clsAppointment();
             appointment.LocalDrivingLicenseApplicationID1 = _Application.LocalDrivingLicenseApplicationID;
             appointment.TestTypeID1 = TestTypeID;
@@ -58,7 +68,8 @@ namespace PresentationLayer
             appointment.PaidFees1 = _Fees;
             appointment.UserID1 = _User.UserId;
             appointment.IsLocked1 = false;
-            appointment.RetakeTestAppointmentID1 = RetakeApplicationID;
+            
+            
 
             clsAppointment.enSave result = appointment.save();
 
@@ -92,6 +103,11 @@ namespace PresentationLayer
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbRetakeTestInformation_Enter(object sender, EventArgs e)
         {
 
         }

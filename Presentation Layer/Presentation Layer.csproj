@@ -108,6 +108,12 @@
     <Compile Include="Appointments\frmTakeTest.Designer.cs">
       <DependentUpon>frmTakeTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="License\frmIssueDriverLicenseForTheFirstTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="License\frmIssueDriverLicenseForTheFirstTime.Designer.cs">
+      <DependentUpon>frmIssueDriverLicenseForTheFirstTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persons\ctrlShowDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -102,5 +102,10 @@ namespace DVLD.Presentation_Layer
         {
             this.Close();
         }
+
+        private void gbTakeTest_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
