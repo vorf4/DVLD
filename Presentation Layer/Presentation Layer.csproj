@@ -200,6 +200,9 @@
     <EmbeddedResource Include="Application Types\frmManageApplicationTypes.resx">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="License\frmIssueDriverLicenseForTheFirstTime.resx">
+      <DependentUpon>frmIssueDriverLicenseForTheFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Persons\ctrlShowDetails.resx">
       <DependentUpon>ctrlShowDetails.cs</DependentUpon>
     </EmbeddedResource>

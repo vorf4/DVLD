@@ -38,6 +38,12 @@ namespace DVLD.Presentation_Layer
         private void btnIssue_Click(object sender, EventArgs e)
         {
            
+           clsLicesnes License = new clsLicesnes();
+          
+            License.ApplicationID = LocalApplication.ApplicationID;
+            License.IssueDate = DateTime.Now;
+            License.ExpiryDate= DateTime.Now.AddYears(5); // Assuming a 5-year validity for the license
+            
 
 
         }

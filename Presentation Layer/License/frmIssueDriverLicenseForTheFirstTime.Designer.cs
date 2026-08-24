@@ -44,105 +44,97 @@
             this.pnlNotes.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // pnlHeader
-            //
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(0, 102, 204);
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(980, 75);
             this.pnlHeader.TabIndex = 0;
-            //
+            // 
             // lblTitle
-            //
+            // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(20, 20);
             this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(407, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Issue Driver License For The First Time";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
+            // 
             // pnlContent
-            //
-            this.pnlContent.Anchor = ((System.Windows.Forms.AnchorStyles)(
-                System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Left |
-                System.Windows.Forms.AnchorStyles.Right));
-            this.pnlContent.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            // 
+            this.pnlContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.pnlContent.Controls.Add(this.ctrlDrivingLicenseApplicationInfo1);
             this.pnlContent.Controls.Add(this.ctrlApplicationBasicInfo1);
             this.pnlContent.Location = new System.Drawing.Point(15, 90);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Padding = new System.Windows.Forms.Padding(0);
             this.pnlContent.Size = new System.Drawing.Size(950, 280);
             this.pnlContent.TabIndex = 1;
-            //
+            // 
             // ctrlDrivingLicenseApplicationInfo1
-            //
-            this.ctrlDrivingLicenseApplicationInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(
-                System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Left |
-                System.Windows.Forms.AnchorStyles.Right));
-            this.ctrlDrivingLicenseApplicationInfo1.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            // 
+            this.ctrlDrivingLicenseApplicationInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ctrlDrivingLicenseApplicationInfo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.ctrlDrivingLicenseApplicationInfo1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(0, 0);
             this.ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
             this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(950, 120);
             this.ctrlDrivingLicenseApplicationInfo1.TabIndex = 0;
-            //
+            // 
             // ctrlApplicationBasicInfo1
-            //
-            this.ctrlApplicationBasicInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(
-                System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Left |
-                System.Windows.Forms.AnchorStyles.Right));
-            this.ctrlApplicationBasicInfo1.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            // 
+            this.ctrlApplicationBasicInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ctrlApplicationBasicInfo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.ctrlApplicationBasicInfo1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlApplicationBasicInfo1.Location = new System.Drawing.Point(0, 130);
             this.ctrlApplicationBasicInfo1.Name = "ctrlApplicationBasicInfo1";
             this.ctrlApplicationBasicInfo1.Size = new System.Drawing.Size(950, 150);
             this.ctrlApplicationBasicInfo1.TabIndex = 1;
-            //
+            // 
             // pnlNotes
-            //
-            this.pnlNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(
-                System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Left |
-                System.Windows.Forms.AnchorStyles.Right |
-                System.Windows.Forms.AnchorStyles.Bottom));
-            this.pnlNotes.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            // 
+            this.pnlNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.pnlNotes.Controls.Add(this.lblNotes);
             this.pnlNotes.Controls.Add(this.txtNotes);
             this.pnlNotes.Location = new System.Drawing.Point(15, 380);
             this.pnlNotes.Name = "pnlNotes";
             this.pnlNotes.Size = new System.Drawing.Size(950, 165);
             this.pnlNotes.TabIndex = 2;
-            //
+            // 
             // lblNotes
-            //
+            // 
             this.lblNotes.AutoSize = true;
             this.lblNotes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotes.ForeColor = System.Drawing.Color.FromArgb(51, 51, 51);
+            this.lblNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lblNotes.Location = new System.Drawing.Point(0, 0);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(53, 19);
+            this.lblNotes.Size = new System.Drawing.Size(52, 19);
             this.lblNotes.TabIndex = 0;
             this.lblNotes.Text = "Notes:";
-            //
+            // 
             // txtNotes
-            //
+            // 
             this.txtNotes.AcceptsReturn = true;
-            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(
-                System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Left |
-                System.Windows.Forms.AnchorStyles.Right |
-                System.Windows.Forms.AnchorStyles.Bottom));
+            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNotes.BackColor = System.Drawing.Color.White;
             this.txtNotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNotes.ForeColor = System.Drawing.Color.FromArgb(51, 51, 51);
+            this.txtNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.txtNotes.Location = new System.Drawing.Point(0, 25);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
@@ -150,14 +142,12 @@
             this.txtNotes.Size = new System.Drawing.Size(950, 130);
             this.txtNotes.TabIndex = 1;
             this.txtNotes.TextChanged += new System.EventHandler(this.txtNotes_TextChanged);
-            //
+            // 
             // pnlBottom
-            //
-            this.pnlBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(
-                System.Windows.Forms.AnchorStyles.Bottom |
-                System.Windows.Forms.AnchorStyles.Left |
-                System.Windows.Forms.AnchorStyles.Right));
-            this.pnlBottom.BackColor = System.Drawing.Color.FromArgb(235, 240, 248);
+            // 
+            this.pnlBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(248)))));
             this.pnlBottom.Controls.Add(this.btnIssue);
             this.pnlBottom.Controls.Add(this.btnClose);
             this.pnlBottom.Location = new System.Drawing.Point(0, 565);
@@ -165,13 +155,11 @@
             this.pnlBottom.Padding = new System.Windows.Forms.Padding(0, 10, 15, 10);
             this.pnlBottom.Size = new System.Drawing.Size(980, 65);
             this.pnlBottom.TabIndex = 3;
-            //
+            // 
             // btnIssue
-            //
-            this.btnIssue.Anchor = ((System.Windows.Forms.AnchorStyles)(
-                System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Right));
-            this.btnIssue.BackColor = System.Drawing.Color.FromArgb(0, 102, 204);
+            // 
+            this.btnIssue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIssue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.btnIssue.FlatAppearance.BorderSize = 0;
             this.btnIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIssue.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,13 +171,11 @@
             this.btnIssue.Text = "Issue";
             this.btnIssue.UseVisualStyleBackColor = false;
             this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
-            //
+            // 
             // btnClose
-            //
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(
-                System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Right));
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(0, 102, 204);
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -201,19 +187,19 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            //
+            // 
             // frmIssueDriverLicenseForTheFirstTime
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(980, 630);
             this.Controls.Add(this.pnlBottom);
             this.Controls.Add(this.pnlNotes);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.FromArgb(51, 51, 51);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -227,6 +213,7 @@
             this.pnlNotes.PerformLayout();
             this.pnlBottom.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         #endregion
