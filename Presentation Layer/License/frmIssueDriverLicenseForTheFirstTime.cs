@@ -64,11 +64,13 @@ namespace DVLD.Presentation_Layer
             case clsLicesnes.enSave.enAddScc:
                     MessageBox.Show("Driver's license issued successfully, Driver ID: " + License.DriverID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                    if(OnCompleted != null)
                     OnCompleted(true);
                     break;
                     default:
                     MessageBox.Show("Failed to issue driver's license.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    OnCompleted(false);
+                    if (OnCompleted != null)
+                        OnCompleted(false);
                     break;
             }
 

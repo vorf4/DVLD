@@ -195,6 +195,7 @@
             this.ctrlShowDetails.Name = "ctrlShowDetails";
             this.ctrlShowDetails.Size = new System.Drawing.Size(854, 473);
             this.ctrlShowDetails.TabIndex = 0;
+            this.ctrlShowDetails.Load += new System.EventHandler(this.ctrlShowDetails_Load);
             // 
             // contextMenuStrip1
             // 

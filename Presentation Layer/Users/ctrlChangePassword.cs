@@ -99,5 +99,10 @@ namespace DVLD.PresentationLayer
         {
             // Implementation logic
         }
+
+        private void ctrlShowDetails_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

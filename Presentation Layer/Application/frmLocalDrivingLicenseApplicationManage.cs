@@ -318,9 +318,11 @@ namespace DVLD.Presentation_Layer
             clsLocalDrivingLicenseApplication LocalApplication = clsLocalDrivingLicenseApplication.Find(LocalDrivingLicenseApplicationID);
 
             frmIssueDriverLicenseForTheFirstTime frm = new frmIssueDriverLicenseForTheFirstTime(LocalApplication, PassedTests, _User);
+       
+             frm.OnCompleted += CheckIfIssuedLicense;
             frm.ShowDialog();
             
-            frm.OnCompleted += CheckIfIssuedLicense;
+           
 
             _LoadDataToDgv();
             _VerificationTestType();
