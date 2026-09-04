@@ -98,7 +98,7 @@ namespace Business_Layer
 
         //public Methods
 
-        enSave Save() 
+        public enSave Save() 
         {
 
             switch (this._Mode)
@@ -125,11 +125,6 @@ namespace Business_Layer
                     }
             }
         }
-
-
-
-
-
 
 
 

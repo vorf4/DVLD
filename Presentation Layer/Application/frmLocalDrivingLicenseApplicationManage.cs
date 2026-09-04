@@ -290,6 +290,25 @@ namespace DVLD.Presentation_Layer
             CallTestAppointmentForm(25.00,3);
         }
 
+        private void CheckIfIssuedLicense(bool isCompleted) 
+        {
+
+            if (isCompleted)
+            {
+
+                int LocalDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDriving.CurrentRow.Cells[0].Value);
+                clsLocalDrivingLicenseApplication LocalApplication = clsLocalDrivingLicenseApplication.Find(LocalDrivingLicenseApplicationID);
+                clsApplication.CompletedApplication(LocalApplication.ApplicationID);
+
+            }
+            else {
+            
+                //nothing to do.................
+
+            }
+
+        }
+
         private void issueDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -301,6 +320,8 @@ namespace DVLD.Presentation_Layer
             frmIssueDriverLicenseForTheFirstTime frm = new frmIssueDriverLicenseForTheFirstTime(LocalApplication, PassedTests, _User);
             frm.ShowDialog();
             
+            frm.OnCompleted += CheckIfIssuedLicense;
+
             _LoadDataToDgv();
             _VerificationTestType();
 

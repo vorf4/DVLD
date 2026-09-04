@@ -8,7 +8,11 @@ namespace DVLD.Presentation_Layer
     public partial class frmIssueDriverLicenseForTheFirstTime : Form
     {
 
+        public delegate void IsCompleted(bool isCompleted);
+        public event IsCompleted OnCompleted;
+
         private clsLocalDrivingLicenseApplication LocalApplication;
+        private int PersonID;
         private int PassedTests;
         private clsUser User;
 
@@ -19,6 +23,7 @@ namespace DVLD.Presentation_Layer
             LocalApplication = localApplication;
             PassedTests = passedTests;
             this.User = User;
+            PersonID = clsApplication.Find(LocalApplication.ApplicationID).PersonID;
             _LoadDataOfControls();
         }
 
@@ -43,7 +48,29 @@ namespace DVLD.Presentation_Layer
             License.ApplicationID = LocalApplication.ApplicationID;
             License.IssueDate = DateTime.Now;
             License.ExpiryDate= DateTime.Now.AddYears(5); // Assuming a 5-year validity for the license
+            License.LicenseClassID = LocalApplication.LicenseClassID1;
+            License.Note = txtNotes.Text;
+            License.IssueReason = clsLicesnes.enIssueReason.NewLicense;
+            License.IssuedByUserID = User.UserId;
+            License.PaidFees = 0;
+            License.IsActive = true;
+            License.DriverID = clsDriver.AddNewDriver(PersonID, User.UserId);
+
+            clsLicesnes.enSave result = License.Save();
+
+            switch (result) 
+            {
             
+            case clsLicesnes.enSave.enAddScc:
+                    MessageBox.Show("Driver's license issued successfully, Driver ID: " + License.DriverID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    OnCompleted(true);
+                    break;
+                    default:
+                    MessageBox.Show("Failed to issue driver's license.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    OnCompleted(false);
+                    break;
+            }
 
 
         }
@@ -51,6 +78,11 @@ namespace DVLD.Presentation_Layer
         private void txtNotes_TextChanged(object sender, EventArgs e)
         {
             // TODO: Implement notes changed logic
+        }
+
+        private void frmIssueDriverLicenseForTheFirstTime_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

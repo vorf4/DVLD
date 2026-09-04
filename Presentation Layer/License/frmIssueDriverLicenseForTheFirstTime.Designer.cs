@@ -206,6 +206,7 @@
             this.Name = "frmIssueDriverLicenseForTheFirstTime";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Issue Driver License For The First Time";
+            this.Load += new System.EventHandler(this.frmIssueDriverLicenseForTheFirstTime_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.pnlContent.ResumeLayout(false);
