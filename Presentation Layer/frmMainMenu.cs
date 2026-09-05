@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Business_Layer;
@@ -95,6 +96,10 @@ namespace Presentation_Layer
 
         private void miInternationalLicense_Click(object sender, EventArgs e)
         {
+
+           frmNewInternationalLicenseApplication frm = new frmNewInternationalLicenseApplication(_User);
+            frm.ShowDialog();
+
         }
 
         private void miRenewDrivingLicense_Click(object sender, EventArgs e)

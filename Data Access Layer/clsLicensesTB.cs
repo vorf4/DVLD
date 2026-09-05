@@ -57,5 +57,156 @@ namespace Data_Access_Layer
             return newLicenseID;
         }
 
+        public static bool GetLicenseByID(int LicenseID, ref int ApplicationID, ref int DriverID, ref int LicenseClassID, ref DateTime IssueDate, ref DateTime ExpiryDate, ref string Note
+            , ref double PaidFees, ref bool IsActive, ref int IssueReason, ref int IssuedByUserID)
+        {
+
+            bool isfound = false;
+
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = "SELECT * FROM Licenses WHERE LicenseID = @LicenseID";
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows) 
+                {
+                    reader.Read();
+                    ApplicationID = Convert.ToInt32(reader["ApplicationID"]);
+                    DriverID = Convert.ToInt32(reader["DriverID"]);
+                    LicenseClassID = Convert.ToInt32(reader["LicenseClass"]);
+                    IssueDate = Convert.ToDateTime(reader["IssueDate"]);
+                    ExpiryDate = Convert.ToDateTime(reader["ExpirationDate"]);
+                    Note = reader["Notes"].ToString();
+                    PaidFees = Convert.ToDouble(reader["PaidFees"]);
+                    IsActive = Convert.ToBoolean(reader["IsActive"]);
+                    IssueReason = Convert.ToInt32(reader["IssueReason"]);
+                    IssuedByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
+                    isfound = true;
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+                // Handle exception (e.g., log it)
+
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+
+            return isfound;
+        }
+
+        public static bool IfhaveInternationalLicense(int LicenseID) 
+        {
+        
+            bool isfound = false;
+
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = "SELECT        LicenseID\r\nFROM       " +
+                "     Licenses INNER JOIN\r\n              " +
+                "           Applications ON Licenses.ApplicationID = Applications.ApplicationID\r\n            " +
+                "             where Licenses.LicenseID = @LicenseID and Applications.ApplicationTypeID = 6";
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                conn.Open();
+                
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows) 
+                {
+                
+                    isfound = true;
+
+                }
+
+                reader.Close();
+
+            }
+            catch
+            {
+
+                // Handle exception (e.g., log it)
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return isfound;
+
+        }
+
+        public static bool IsLicenseActive(int LicenseID)
+        {
+            bool isActive = false;
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = "SELECT IsActive FROM Licenses WHERE LicenseID = @LicenseID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+            try
+            {
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null && bool.TryParse(result.ToString(), out bool activeStatus))
+                {
+                    isActive = activeStatus;
+                }
+            }
+            catch
+            {
+                // Handle exception (e.g., log it)
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return isActive;
+        }
+
+        public static int GetTypeLicense(int LicenseID)
+        {
+            int ID = -1;
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = "SELECT LicenseClassID FROM Licenses WHERE LicenseID = @LicenseID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+            try
+            {
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    ID = Convert.ToInt32(result);
+                }
+            }
+            catch
+            {
+                // Handle exception (e.g., log it)
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return ID;
+        }
     }
 }

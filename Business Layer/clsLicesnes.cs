@@ -42,7 +42,7 @@ namespace Business_Layer
         { 
         
             _Mode= enMode.enUpdate;
-            this._LicenseID = LicenseID;
+            this.LicenseID = LicenseID;
             this._ApplicationID = ApplicationID;
             this.IssueDate = IssueDate;
             this.Note = Note;
@@ -59,7 +59,7 @@ namespace Business_Layer
         public clsLicesnes()
         {
             _Mode = enMode.enAddNew;
-            _LicenseID = 0;
+            LicenseID = 0;
             _ApplicationID = 0;
             _DriverID = 0;
             _LicenseClassID = 0;
@@ -96,6 +96,53 @@ namespace Business_Layer
             return clsLicensesTB.InsertNewLicesne(_ApplicationID, _DriverID, _LicenseClassID, _IssueDate, _ExpiryDate, _Note, _PaidFees, _isActive, (int)_IssueReason, _IssuedByUserID);
         }
 
+        private static clsLicesnes _LoadLicenseInfo(int LicenseID)
+        {
+            int ApplicationID = 0;
+            int DriverID = 0;
+            int LicenseClassID = 0;
+            DateTime IssueDate = DateTime.Now;
+            DateTime ExpiryDate = DateTime.Now;
+            string Note = string.Empty;
+            double PaidFees = 0.0;
+            bool IsActive = true;
+            int IssueReason = 0;
+            int IssuedByUserID = 0;
+
+            bool isfound = clsLicensesTB.GetLicenseByID(LicenseID, ref ApplicationID, ref DriverID, ref LicenseClassID, ref IssueDate, ref ExpiryDate, ref Note, ref PaidFees, ref IsActive, ref IssueReason, ref IssuedByUserID);
+
+            if (!isfound)
+                return null;
+
+            return new clsLicesnes(LicenseID, ApplicationID, DriverID, LicenseClassID, IssueDate, ExpiryDate, Note, PaidFees, IsActive, (enIssueReason)IssueReason, IssuedByUserID);
+        }
+
+        private static bool IfHaveinternationalLicense(int LicenseID) 
+        {
+            return clsLicensesTB.IfhaveInternationalLicense(LicenseID);
+        }
+
+        private static bool isActive(int LicenseID)
+        {
+            return clsLicensesTB.IsLicenseActive(LicenseID);
+        }
+
+        private static bool IsLicense3(int licenseID) 
+        {
+        
+            bool isLicense3 = false;
+
+            int LicenseClassID = clsLicensesTB.GetTypeLicense(licenseID);
+
+            if (LicenseClassID == 3)
+            {
+                isLicense3 = true;
+            }
+
+            return isLicense3;
+
+        } 
+
         //public Methods
 
         public enSave Save() 
@@ -109,7 +156,7 @@ namespace Business_Layer
                         int NewLicenseID = _InsertNewLicense();
                         if (NewLicenseID > 0)
                         {
-                            this._LicenseID = NewLicenseID;
+                            this.LicenseID = NewLicenseID;
                             this._Mode = enMode.enUpdate;
                             return enSave.enAddScc;
                         }
@@ -126,7 +173,26 @@ namespace Business_Layer
             }
         }
 
+        public static clsLicesnes LoadLicenseInfo(int LicenseID)
+        {
 
+            return _LoadLicenseInfo(LicenseID);
+        }
+
+        public static bool HaveInternationalLicense(int LicenseID)
+        {
+            return IfHaveinternationalLicense(LicenseID);
+        }
+
+        public static bool IsLicenseActive(int LicenseID)
+        {
+            return isActive(LicenseID);
+        }
+
+        public static bool IsLicenseClass3(int LicenseID)
+        {
+            return IsLicense3(LicenseID);
+        }
 
 
         // set and get methods
@@ -140,6 +206,6 @@ namespace Business_Layer
         public bool IsActive { get => _isActive; set => _isActive = value; }
         public enIssueReason IssueReason { get => _IssueReason; set => _IssueReason = value; }
         public int IssuedByUserID { get => _IssuedByUserID; set => _IssuedByUserID = value; }
-
+        public int LicenseID { get => _LicenseID; set => _LicenseID = value; }
     }
 }
