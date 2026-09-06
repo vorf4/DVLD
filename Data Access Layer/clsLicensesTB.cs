@@ -186,7 +186,7 @@ namespace Data_Access_Layer
         {
             int ID = -1;
             SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = "SELECT LicenseClassID FROM Licenses WHERE LicenseID = @LicenseID";
+            string query = "SELECT LicenseClass FROM Licenses WHERE LicenseID = @LicenseID";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
             try

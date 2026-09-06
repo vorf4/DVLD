@@ -54,6 +54,12 @@
     <Compile Include="Application\ctrlApplicationInfo.Designer.cs">
       <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\frmInternationalLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\frmInternationalLicenseApplication.Designer.cs">
+      <DependentUpon>frmInternationalLicenseApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\frmLocalDrivingLicenseApplicationManage.cs">
       <SubType>Form</SubType>
     </Compile>

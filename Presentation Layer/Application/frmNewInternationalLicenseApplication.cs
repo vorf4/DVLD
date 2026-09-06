@@ -25,7 +25,7 @@ namespace DVLD.Presentation_Layer
                 MessageBox.Show("This driver already has an International License. You cannot issue another one.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if(clsLicesnes.IsLicenseActive(LicenseID))
+            if(!clsLicesnes.IsLicenseActive(LicenseID))
             {
                 MessageBox.Show("This license is not active. You cannot issue an international license for it.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -137,7 +137,7 @@ namespace DVLD.Presentation_Layer
                 switch(saveResult1)
                 {
                     case clsLicesnes.enSave.enAddScc:
-                        MessageBox.Show("International License issued successfully. licenseId"+ newLicense.LicenseID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("International License issued successfully. licenseId : "+ newLicense.LicenseID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     case clsLicesnes.enSave.enFailed:
                         MessageBox.Show("Failed to issue International License.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
