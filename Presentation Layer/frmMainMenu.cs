@@ -128,6 +128,10 @@ namespace Presentation_Layer
 
         private void miInternationalLicenseApplications_Click(object sender, EventArgs e)
         {
+
+            frmInternationalLicenseApplications frm = new frmInternationalLicenseApplications();
+            frm.ShowDialog();
+
         }
 
         private void miManageDetainedLicenses_Click(object sender, EventArgs e)

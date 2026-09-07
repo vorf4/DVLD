@@ -143,6 +143,11 @@ namespace Business_Layer
 
         } 
 
+        private static DataTable GetAllInfoOfDvginternationalLicenseApplications()
+        {
+            return clsLicensesTB.GetAllInternationalLicensesInfo();
+        }
+
         //public Methods
 
         public enSave Save() 
@@ -192,6 +197,11 @@ namespace Business_Layer
         public static bool IsLicenseClass3(int LicenseID)
         {
             return IsLicense3(LicenseID);
+        }
+
+        public static DataTable GetAllInternationalLicensesInfo()
+        {
+            return GetAllInfoOfDvginternationalLicenseApplications();
         }
 
 

@@ -208,5 +208,33 @@ namespace Data_Access_Layer
             }
             return ID;
         }
+
+        public static DataTable GetAllInternationalLicensesInfo() 
+        {
+        
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = "select * from dbo.international_view";
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                dt.Load(reader);
+            }
+            catch (Exception ex)
+            {
+                // Handle exception (e.g., log it)
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return dt;
+
+        }
     }
 }
