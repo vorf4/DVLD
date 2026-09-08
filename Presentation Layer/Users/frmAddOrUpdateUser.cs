@@ -19,7 +19,7 @@ namespace Presentation_Layer
         {
             if (_User != null)
             {
-                lblUserIDValue.Text ="[" + _User.UserId.ToString()+"]";
+                lblUserIDValue.Text ="[" + _User.UserID.ToString()+"]";
                 txtUserName.Text = _User.UserName;
                 txtPassword.Text = _User.Password;
                 txtConfirmPassword.Text = _User.Password;

@@ -54,6 +54,12 @@
     <Compile Include="Application\ctrlApplicationInfo.Designer.cs">
       <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\ctrlApplicationNewLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Application\ctrlApplicationNewLicenseInfo.Designer.cs">
+      <DependentUpon>ctrlApplicationNewLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\frmInternationalLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,12 @@
     </Compile>
     <Compile Include="Application\frmNewLocalDrivinglicenseApplication.Designer.cs">
       <DependentUpon>frmNewLocalDrivinglicenseApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\frmRenewLocalDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\frmRenewLocalDrivingLicense.Designer.cs">
+      <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="Appointments\Controls\ctrlApplicationBasicInfo.cs">
       <SubType>UserControl</SubType>
@@ -206,6 +218,9 @@
     <Compile Include="Users\frmManageUsers.Designer.cs">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Application\ctrlApplicationNewLicenseInfo.resx">
+      <DependentUpon>ctrlApplicationNewLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Application\frmLocalDrivingLicenseApplicationManage.resx">
       <DependentUpon>frmLocalDrivingLicenseApplicationManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Application\frmNewLocalDrivinglicenseApplication.resx">
       <DependentUpon>frmNewLocalDrivinglicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application\frmRenewLocalDrivingLicense.resx">
+      <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Appointments\Controls\ctrlDrivingLicenseApplicationInfo.resx">
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>

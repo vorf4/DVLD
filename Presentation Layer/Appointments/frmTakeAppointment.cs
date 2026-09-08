@@ -66,7 +66,7 @@ namespace PresentationLayer
             appointment.TestTypeID1 = TestTypeID;
             appointment.AppointmentDate1 = dtpAppointmentDate.Value;
             appointment.PaidFees1 = _Fees;
-            appointment.UserID1 = _User.UserId;
+            appointment.UserID1 = _User.UserID;
             appointment.IsLocked1 = false;
             
             

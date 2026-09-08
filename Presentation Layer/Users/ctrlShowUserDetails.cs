@@ -30,7 +30,7 @@ namespace PresentationLayer
             ctrlShowDetails1.Controls.Clear();
             ctrlShowDetails1.Controls.Add(personDetailsControl);
             lblIsActiveValue.Text = _User.IsActive ? "Yes" : "No";
-            lblUserIDValue.Text = _User.UserId.ToString();
+            lblUserIDValue.Text = _User.UserID.ToString();
             lblUserNameValue.Text = _User.UserName;
 
         }

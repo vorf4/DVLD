@@ -21,7 +21,7 @@ namespace DVLD.Presentation_Layer
         private void LoadDgvInfo() 
         {
         
-            _dtInternationalLicenses = clsLicesnes.GetAllInternationalLicensesInfo();
+            _dtInternationalLicenses = clsLicense.GetAllInternationalLicensesInfo();
 
             // 1. Prevent creating duplicate/extra columns
             dgvInternationalLicenseApplications.AutoGenerateColumns = false;

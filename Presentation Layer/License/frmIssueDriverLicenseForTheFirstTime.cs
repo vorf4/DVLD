@@ -43,25 +43,25 @@ namespace DVLD.Presentation_Layer
         private void btnIssue_Click(object sender, EventArgs e)
         {
            
-           clsLicesnes License = new clsLicesnes();
+           clsLicense License = new clsLicense();
           
             License.ApplicationID = LocalApplication.ApplicationID;
             License.IssueDate = DateTime.Now;
             License.ExpiryDate= DateTime.Now.AddYears(5); // Assuming a 5-year validity for the license
             License.LicenseClassID = LocalApplication.LicenseClassID1;
             License.Note = txtNotes.Text;
-            License.IssueReason = clsLicesnes.enIssueReason.NewLicense;
-            License.IssuedByUserID = User.UserId;
+            License.IssueReason = clsLicense.enIssueReason.NewLicense;
+            License.IssuedByUserID = User.UserID;
             License.PaidFees = 0;
             License.IsActive = true;
-            License.DriverID = clsDriver.AddNewDriver(PersonID, User.UserId);
+            License.DriverID = clsDriver.AddNewDriver(PersonID, User.UserID);
 
-            clsLicesnes.enSave result = License.Save();
+            clsLicense.enSave result = License.Save();
 
             switch (result) 
             {
             
-            case clsLicesnes.enSave.enAddScc:
+            case clsLicense.enSave.enAddScc:
                     MessageBox.Show("Driver's license issued successfully, Driver ID: " + License.DriverID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     if(OnCompleted != null)

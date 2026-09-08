@@ -236,5 +236,32 @@ namespace Data_Access_Layer
             return dt;
 
         }
+
+        public static bool PutLicenseNotActiveByID(int LicenseID)
+        {
+            bool isUpdated = false;
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = "UPDATE Licenses SET IsActive = 0 WHERE LicenseID = @LicenseID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@LicenseID", LicenseID);
+            try
+            {
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    isUpdated = true;
+                }
+            }
+            catch
+            {
+                // Handle exception (e.g., log it)
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return isUpdated;
+        }
     }
 }

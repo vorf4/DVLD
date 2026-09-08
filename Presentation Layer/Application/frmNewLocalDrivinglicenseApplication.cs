@@ -185,7 +185,7 @@ namespace PresentationLayer
             newApplication.UpdateStatus(1);
             newApplication.PaidFees = 15.00m;
             newApplication.LastStatusDate = DateTime.Now;
-            newApplication.UserID = _User.UserId;
+            newApplication.UserID = _User.UserID;
 
             newApplication.Save();
 

@@ -217,7 +217,7 @@ namespace DVLD.Presentation_Layer
             }
 
             // 4. Open the form
-            frmTakeTest frm = new frmTakeTest(clsApplication.Find(LocalApplication.ApplicationID), LocalApplication, TryNumber, AppointmentDate, PaidFees, AppointmentID,User.UserId);
+            frmTakeTest frm = new frmTakeTest(clsApplication.Find(LocalApplication.ApplicationID), LocalApplication, TryNumber, AppointmentDate, PaidFees, AppointmentID,User.UserID);
             frm.isPassed += FrmIsPassed; // Subscribe to the event
             frm.ShowDialog();
 

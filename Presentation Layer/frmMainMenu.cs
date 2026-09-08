@@ -104,6 +104,10 @@ namespace Presentation_Layer
 
         private void miRenewDrivingLicense_Click(object sender, EventArgs e)
         {
+
+            frmRenewLocalDrivingLicense frm = new frmRenewLocalDrivingLicense(_User);
+            frm.ShowDialog();
+
         }
 
         private void miReplacementForLostOrDamagedLicense_Click(object sender, EventArgs e)
@@ -165,7 +169,7 @@ namespace Presentation_Layer
         private void miCurrentUserInfo_Click(object sender, EventArgs e)
         {
 
-            ctrlShowUserDetails ctrlShowUserDetails = new ctrlShowUserDetails(_User.UserId);
+            ctrlShowUserDetails ctrlShowUserDetails = new ctrlShowUserDetails(_User.UserID);
             ctrlShowUserDetails._CheckIfEndTask += btnCloseDetails_Click;
 
             plUserDetails.Controls.Clear();
@@ -184,7 +188,7 @@ namespace Presentation_Layer
         private void miChangePassword_Click(object sender, EventArgs e)
         {
 
-            ctrlChangePassword ctrlChangePassword = new ctrlChangePassword(_User.UserId);
+            ctrlChangePassword ctrlChangePassword = new ctrlChangePassword(_User.UserID);
             ctrlChangePassword.TaskIsEnd += btnCloseChnage_Click;
 
             plUserChange.Controls.Clear();

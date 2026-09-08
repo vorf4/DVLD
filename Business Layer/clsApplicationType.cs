@@ -49,6 +49,12 @@ namespace Business_Layer
             return clsApplicationTypeTB.GetApplicationTypeIDByTitle(applicationTypeTitle);
         }
 
+        private static double _GetApplicationFeesByID(int applicationTypeID)
+        {
+            // Code to retrieve the fees for a specific application type by ID from the database
+            return clsApplicationTypeTB.GetApplicationFeesByID(applicationTypeID);
+        }
+
         //public methods
 
         public static DataTable GetAllApplicationTypes()
@@ -74,6 +80,11 @@ namespace Business_Layer
         public static int GetApplicationTypeID(string applicationTypeTitle)
         {
             return _GetApplicationTypeID(applicationTypeTitle);
+        }
+
+        public static double GetApplicationFeesByID(int applicationTypeID)
+        {
+            return _GetApplicationFeesByID(applicationTypeID);
         }
 
         //set and get methods

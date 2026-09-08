@@ -20,17 +20,17 @@ namespace DVLD.Presentation_Layer
         private bool CheckIfYouCanIssueLicense(int LicenseID) 
         {
         
-            if(clsLicesnes.HaveInternationalLicense(LicenseID))
+            if(clsLicense.HaveInternationalLicense(LicenseID))
             {
                 MessageBox.Show("This driver already has an International License. You cannot issue another one.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if(!clsLicesnes.IsLicenseActive(LicenseID))
+            if(!clsLicense.IsLicenseActive(LicenseID))
             {
                 MessageBox.Show("This license is not active. You cannot issue an international license for it.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if(!clsLicesnes.IsLicenseClass3(LicenseID))
+            if(!clsLicense.IsLicenseClass3(LicenseID))
             {
                 MessageBox.Show("This license isn't of class 3. You cannot issue an international license for it.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -94,7 +94,7 @@ namespace DVLD.Presentation_Layer
            
             if(CheckIfYouCanIssueLicense(_selectedLicenseID))
             {
-                clsLicesnes oldLicense = clsLicesnes.LoadLicenseInfo(_selectedLicenseID);
+                clsLicense oldLicense = clsLicense.Find(_selectedLicenseID);
                 clsApplication oldApplication = clsApplication.Find(oldLicense.ApplicationID);
 
                 clsApplication newApplication = new clsApplication();
@@ -105,7 +105,7 @@ namespace DVLD.Presentation_Layer
                 newApplication.Status = 1; // Assuming 1 is the status for New
                 newApplication.LastStatusDate = DateTime.Now;
                 newApplication.PaidFees = (decimal)clsApplicationType.GetApplicationFees(clsApplicationType.GetApplicationTypeTitle(6)); // Assuming no fees for the application itself
-                newApplication.UserID = _User.UserId;
+                newApplication.UserID = _User.UserID;
 
                 clsApplication.enSave saveResult = newApplication.Save();
 
@@ -119,7 +119,7 @@ namespace DVLD.Presentation_Layer
                         break;
                 }
 
-                clsLicesnes newLicense = new clsLicesnes();
+                clsLicense newLicense = new clsLicense();
 
                 newLicense.ApplicationID = newApplication.ApplicationID;
                 newLicense.DriverID = oldLicense.DriverID;
@@ -129,17 +129,17 @@ namespace DVLD.Presentation_Layer
                 newLicense.Note = "Issued as International License";
                 newLicense.PaidFees = 51.00; // Assuming a fixed fee for International License
                 newLicense.IsActive = true;
-                newLicense.IssueReason = clsLicesnes.enIssueReason.NewLicense;
-                newLicense.IssuedByUserID = _User.UserId;
+                newLicense.IssueReason = clsLicense.enIssueReason.NewLicense;
+                newLicense.IssuedByUserID = _User.UserID;
 
-                clsLicesnes.enSave saveResult1 = newLicense.Save();
+                clsLicense.enSave saveResult1 = newLicense.Save();
 
                 switch(saveResult1)
                 {
-                    case clsLicesnes.enSave.enAddScc:
+                    case clsLicense.enSave.enAddScc:
                         MessageBox.Show("International License issued successfully. licenseId : "+ newLicense.LicenseID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
-                    case clsLicesnes.enSave.enFailed:
+                    case clsLicense.enSave.enFailed:
                         MessageBox.Show("Failed to issue International License.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                 }

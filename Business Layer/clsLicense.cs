@@ -5,7 +5,7 @@ using Data_Access_Layer;
 
 namespace Business_Layer
 {
-    public class clsLicesnes
+    public class clsLicense
     {
         // enumns
 
@@ -37,7 +37,7 @@ namespace Business_Layer
 
         // constracter 
 
-        private clsLicesnes(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate
+        private clsLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate
             , DateTime ExpiryDate, string Note, double PaidFees, bool IsActive, enIssueReason IssueReason, int IssuedByUserID)
         { 
         
@@ -56,7 +56,7 @@ namespace Business_Layer
 
         }
 
-        public clsLicesnes()
+        public clsLicense()
         {
             _Mode = enMode.enAddNew;
             LicenseID = 0;
@@ -96,7 +96,7 @@ namespace Business_Layer
             return clsLicensesTB.InsertNewLicesne(_ApplicationID, _DriverID, _LicenseClassID, _IssueDate, _ExpiryDate, _Note, _PaidFees, _isActive, (int)_IssueReason, _IssuedByUserID);
         }
 
-        private static clsLicesnes _LoadLicenseInfo(int LicenseID)
+        private static clsLicense _LoadLicenseInfo(int LicenseID)
         {
             int ApplicationID = 0;
             int DriverID = 0;
@@ -114,7 +114,7 @@ namespace Business_Layer
             if (!isfound)
                 return null;
 
-            return new clsLicesnes(LicenseID, ApplicationID, DriverID, LicenseClassID, IssueDate, ExpiryDate, Note, PaidFees, IsActive, (enIssueReason)IssueReason, IssuedByUserID);
+            return new clsLicense(LicenseID, ApplicationID, DriverID, LicenseClassID, IssueDate, ExpiryDate, Note, PaidFees, IsActive, (enIssueReason)IssueReason, IssuedByUserID);
         }
 
         private static bool IfHaveinternationalLicense(int LicenseID) 
@@ -148,6 +148,11 @@ namespace Business_Layer
             return clsLicensesTB.GetAllInternationalLicensesInfo();
         }
 
+        private static bool PutLicenseNotActive(int LicenseID)
+        {
+            return clsLicensesTB.PutLicenseNotActiveByID(LicenseID);
+        }
+
         //public Methods
 
         public enSave Save() 
@@ -178,7 +183,7 @@ namespace Business_Layer
             }
         }
 
-        public static clsLicesnes LoadLicenseInfo(int LicenseID)
+        public static clsLicense Find(int LicenseID)
         {
 
             return _LoadLicenseInfo(LicenseID);
@@ -202,6 +207,11 @@ namespace Business_Layer
         public static DataTable GetAllInternationalLicensesInfo()
         {
             return GetAllInfoOfDvginternationalLicenseApplications();
+        }
+
+        public static bool PutLicenseNotActiveByID(int LicenseID)
+        {
+            return PutLicenseNotActive(LicenseID);
         }
 
 

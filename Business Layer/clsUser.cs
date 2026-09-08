@@ -146,7 +146,7 @@ namespace Business_Layer
         }
 
         //public set and get methods for the private variables
-        public int UserId { get => _UserId; set => _UserId = value; }
+        public int UserID { get => _UserId; set => _UserId = value; }
         public int PersonId { get => _PersonId; set => _PersonId = value; }
         public string UserName { get => _UserName; set => _UserName = value; }
         public string Password { get => _Password; set => _Password = value; }
@@ -162,7 +162,7 @@ namespace Business_Layer
             this._Password = "";
             this._UserName = "";
             this._PersonId = -1;
-            this.UserId = -1;
+            this.UserID = -1;
 
         }
 

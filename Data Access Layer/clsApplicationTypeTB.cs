@@ -154,5 +154,32 @@ namespace Data_Access_Layer
             return id;
         }
 
+        public static double GetApplicationFeesByID(int applicationTypeID)
+        {
+            double fees = 0.0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = "SELECT ApplicationFees FROM ApplicationTypes WHERE ApplicationTypeID = @ID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ID", applicationTypeID);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    fees = Convert.ToDouble(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception (e.g., log the error)
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return fees;
+        }
+
     }
 }

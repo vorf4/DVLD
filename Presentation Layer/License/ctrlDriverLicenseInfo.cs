@@ -117,7 +117,7 @@ namespace DVLD.Presentation_Layer
         public void LoadDriverLicenseInfo(int licenseID)
         {
 
-            clsLicesnes license = clsLicesnes.LoadLicenseInfo(licenseID);
+            clsLicense license = clsLicense.Find(licenseID);
             clsPerson Driver = clsPerson.Find(clsApplication.Find(license.ApplicationID).PersonID);
 
             if(Driver != null && license != null)
