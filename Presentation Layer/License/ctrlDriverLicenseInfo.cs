@@ -118,22 +118,26 @@ namespace DVLD.Presentation_Layer
         {
 
             clsLicesnes license = clsLicesnes.LoadLicenseInfo(licenseID);
+            clsPerson Driver = clsPerson.Find(clsApplication.Find(license.ApplicationID).PersonID);
 
-            if(license != null)
+            if(Driver != null && license != null)
             {
-                lblClassValue.Text = license.LicenseClassID.ToString();
-                lblNameValue.Text = license.DriverID.ToString();
+
+                lblClassValue.Text = clsLicenseClass.GetClassName(license.LicenseClassID);
+                lblNameValue.Text = clsPerson.GetFullName(Driver.PersonID);
                 lblLicenseIDValue.Text = license.LicenseID.ToString();
-                lblNationalNoValue.Text = license.DriverID.ToString();
-                lblGenderValue.Text = license.DriverID.ToString();
-                lblIssueDateValue.Text = license.IssueDate.ToString();
+                lblNationalNoValue.Text = Driver.NationalNo.ToString();
+                lblGenderValue.Text = Driver.Gender.ToString();
+                lblIssueDateValue.Text = license.IssueDate.ToString("yyyy-MM-dd");
                 lblIssueReasonValue.Text = license.IssueReason.ToString();
-                lblNotesValue.Text = license.Note;
-                lblIsActiveValue.Text = license.IsActive.ToString();
-                lblDateOfBirthValue.Text = license.DriverID.ToString();
+                lblNotesValue.Text = license.Note.ToString();
+
+                lblIsActiveValue.Text = license.IsActive ? "Yes" : "No";
+                lblDateOfBirthValue.Text = Driver.DateOfBirth.ToString("yyyy-MM-dd");
                 lblDriverIDValue.Text = license.DriverID.ToString();
-                lblExpirationDateValue.Text = license.ExpiryDate.ToString();
-                lblIsDetainedValue.Text = license.DriverID.ToString();
+                lblExpirationDateValue.Text = license.ExpiryDate.ToString("yyyy-MM-dd");
+                lblIsDetainedValue.Text = "No";
+
             }
 
         }
