@@ -112,6 +112,10 @@ namespace Presentation_Layer
 
         private void miReplacementForLostOrDamagedLicense_Click(object sender, EventArgs e)
         {
+
+            frmReplacementForDamagedLicense frm = new frmReplacementForDamagedLicense(_User);
+            frm.ShowDialog();
+
         }
 
         private void miReleaseDetainedDrivingLicense_Click(object sender, EventArgs e)
@@ -212,6 +216,11 @@ namespace Presentation_Layer
         }
 
         private void frmMainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miNewDrivingLicense_Click(object sender, EventArgs e)
         {
 
         }

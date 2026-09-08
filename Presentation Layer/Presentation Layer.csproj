@@ -54,6 +54,12 @@
     <Compile Include="Application\ctrlApplicationInfo.Designer.cs">
       <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\ctrlApplicationInfoForLicenseReplacement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Application\ctrlApplicationInfoForLicenseReplacement.Designer.cs">
+      <DependentUpon>ctrlApplicationInfoForLicenseReplacement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\ctrlApplicationNewLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="Application\frmRenewLocalDrivingLicense.Designer.cs">
       <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\frmReplacementForDamagedLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\frmReplacementForDamagedLicense.Designer.cs">
+      <DependentUpon>frmReplacementForDamagedLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="Appointments\Controls\ctrlApplicationBasicInfo.cs">
       <SubType>UserControl</SubType>
