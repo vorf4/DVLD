@@ -21,12 +21,22 @@ namespace Business_Layer
             return clsDriverTB.InsertNewDriver(PersonID, CreatedByUserID);
         }
 
+        private static int GetPersonIDByDriverID(int DriverID)
+        {
+            return clsDriverTB.GetPersonIDByDriverID(DriverID);
+        }
+
         // public methods
 
         public static int AddNewDriver(int PersonID, int CreatedByUserID)
         {
             int newDriverID = InsertNewDriver(PersonID, CreatedByUserID);
             return newDriverID;
+        }
+
+        public static int RetrievePersonID(int DriverID)
+        {
+            return GetPersonIDByDriverID(DriverID);
         }
 
 

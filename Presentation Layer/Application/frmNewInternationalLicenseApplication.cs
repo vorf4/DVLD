@@ -43,8 +43,6 @@ namespace DVLD.Presentation_Layer
         {
             ctrlApplicationInfo1.ResetDefaultValues();
             btnIssue.Enabled = false;
-            llShowLicenseInfo.Enabled = false;
-            llShowLicenseHistory.Enabled = false;
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -68,7 +66,6 @@ namespace DVLD.Presentation_Layer
 
             // Populate local license ID in application info control
             ctrlApplicationInfo1.LocalLicenseID = licenseID.ToString();
-            llShowLicenseHistory.Enabled = true;
 
             // Enable Issue button if license is valid
             btnIssue.Enabled = true;
@@ -151,16 +148,6 @@ namespace DVLD.Presentation_Layer
 
             
 
-        }
-
-        private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show($"Showing license history for License ID: {_selectedLicenseID}", "License History", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show($"Showing International License info for License ID: {_createdInternationalLicenseID}", "International License Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

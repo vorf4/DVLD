@@ -120,6 +120,10 @@ namespace Presentation_Layer
 
         private void miReleaseDetainedDrivingLicense_Click(object sender, EventArgs e)
         {
+
+            frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense(_User);
+            frm.ShowDialog();
+
         }
 
         private void miRetakeTest_Click(object sender, EventArgs e)
@@ -144,6 +148,10 @@ namespace Presentation_Layer
 
         private void miManageDetainedLicenses_Click(object sender, EventArgs e)
         {
+
+            frmListDetainedLicenses frmListDetainedLicenses = new frmListDetainedLicenses(_User);
+            frmListDetainedLicenses.ShowDialog();
+
         }
 
         private void miDetainLicense_Click(object sender, EventArgs e)
@@ -156,6 +164,10 @@ namespace Presentation_Layer
 
         private void miReleaseDetainedLicense_Click(object sender, EventArgs e)
         {
+
+            frmReleaseDetainedLicense frmReleaseDetainedLicense = new frmReleaseDetainedLicense(_User);
+            frmReleaseDetainedLicense.ShowDialog();
+
         }
 
         private void miManageApplicationTypes_Click(object sender, EventArgs e)

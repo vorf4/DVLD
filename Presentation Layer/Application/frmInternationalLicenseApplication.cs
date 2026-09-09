@@ -155,7 +155,9 @@ namespace DVLD.Presentation_Layer
         private void showLicenseDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvInternationalLicenseApplications.CurrentRow == null) return;
-            // TODO: Open License Details Form
+            int intLicenseID = Convert.ToInt32(dgvInternationalLicenseApplications.CurrentRow.Cells["colIntLicenseID"].Value);
+            frmLicenseInfo frmLicenseInfo = new frmLicenseInfo(intLicenseID);
+            frmLicenseInfo.ShowDialog();
         }
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)

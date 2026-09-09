@@ -106,6 +106,15 @@ namespace DVLD.Presentation_Layer
             return true;
         }
 
+        public void LoadData(int detainID, DateTime detainDate, int licenseID, int createdBy)
+        {
+            lblDetainID.Text = detainID.ToString();
+            lblDetainDate.Text = detainDate.ToShortDateString();
+            lblLicenseID.Text = licenseID.ToString();
+            lblCreatedBy.Text = createdBy.ToString();
+            txtFineFees.Enabled = false; // Disable editing of Fine Fees when loading existing data
+        }
+
         #endregion
 
         #region Event Handlers

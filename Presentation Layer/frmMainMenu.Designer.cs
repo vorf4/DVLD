@@ -224,7 +224,7 @@
             this.miManageApplicationTypes,
             this.miManageTestTypes});
             this.cmsApplications.Name = "cmsApplications";
-            this.cmsApplications.Size = new System.Drawing.Size(255, 146);
+            this.cmsApplications.Size = new System.Drawing.Size(255, 124);
             // 
             // miDrivingLicenseServices
             // 

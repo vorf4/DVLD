@@ -41,8 +41,6 @@ namespace DVLD.Presentation_Layer
             ctrlApplicationNewLicenseInfo1.ResetDefaultValues();
 
             btnRenew.Enabled = false;
-            llShowNewLicenseInfo.Enabled = false;
-            llShowLicensesHistory.Enabled = false;
         }
 
         private void btnAddNewLicense_Click(object sender, EventArgs e)
@@ -56,15 +54,11 @@ namespace DVLD.Presentation_Layer
             {
 
                 btnRenew.Enabled = false;
-                llShowNewLicenseInfo.Enabled = false;
-                llShowLicensesHistory.Enabled = false;
 
             }
             else 
             {
                 btnRenew.Enabled = true;
-                llShowNewLicenseInfo.Enabled = true;
-                llShowLicensesHistory.Enabled = true;
             }
 
         }
@@ -148,16 +142,6 @@ namespace DVLD.Presentation_Layer
             btnRenew.Enabled = false;
 
 
-        }
-
-        private void llShowLicensesHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-           
-        }
-
-        private void llShowNewLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-     
         }
 
         private void btnClose_Click(object sender, EventArgs e)

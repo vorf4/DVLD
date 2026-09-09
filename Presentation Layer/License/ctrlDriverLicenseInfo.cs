@@ -136,7 +136,7 @@ namespace DVLD.Presentation_Layer
                 lblDateOfBirthValue.Text = Driver.DateOfBirth.ToString("yyyy-MM-dd");
                 lblDriverIDValue.Text = license.DriverID.ToString();
                 lblExpirationDateValue.Text = license.ExpiryDate.ToString("yyyy-MM-dd");
-                lblIsDetainedValue.Text = "No";
+                lblIsDetainedValue.Text = clsDetainLicense.CheckIfLicenseIsDetained(license.LicenseID) ? "Yes" : "No";
 
             }
 

@@ -36,8 +36,6 @@
             this.lblLicenseID = new System.Windows.Forms.Label();
             this.ctrlDriverLocalLicenseInfo1 = new DVLD.Presentation_Layer.ctrlDriverLicenseInfo();
             this.ctrlApplicationNewLicenseInfo1 = new DVLD.Presentation_Layer.ctrlApplicationNewLicenseInfo();
-            this.llShowLicensesHistory = new System.Windows.Forms.LinkLabel();
-            this.llShowNewLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.btnRenew = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
@@ -101,7 +99,7 @@
             this.txtLicenseID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLicenseID.Location = new System.Drawing.Point(180, 25);
             this.txtLicenseID.Name = "txtLicenseID";
-            this.txtLicenseID.Size = new System.Drawing.Size(220, 34);
+            this.txtLicenseID.Size = new System.Drawing.Size(220, 25);
             this.txtLicenseID.TabIndex = 1;
             this.txtLicenseID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLicenseID_KeyPress);
             // 
@@ -111,7 +109,7 @@
             this.lblLicenseID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLicenseID.Location = new System.Drawing.Point(20, 27);
             this.lblLicenseID.Name = "lblLicenseID";
-            this.lblLicenseID.Size = new System.Drawing.Size(113, 28);
+            this.lblLicenseID.Size = new System.Drawing.Size(75, 17);
             this.lblLicenseID.TabIndex = 0;
             this.lblLicenseID.Text = "License ID:";
             // 
@@ -156,32 +154,6 @@
             this.ctrlApplicationNewLicenseInfo1.TabIndex = 3;
             this.ctrlApplicationNewLicenseInfo1.TotalFees = "[???]";
             // 
-            // llShowLicensesHistory
-            // 
-            this.llShowLicensesHistory.AutoSize = true;
-            this.llShowLicensesHistory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llShowLicensesHistory.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.llShowLicensesHistory.Location = new System.Drawing.Point(20, 795);
-            this.llShowLicensesHistory.Name = "llShowLicensesHistory";
-            this.llShowLicensesHistory.Size = new System.Drawing.Size(223, 28);
-            this.llShowLicensesHistory.TabIndex = 4;
-            this.llShowLicensesHistory.TabStop = true;
-            this.llShowLicensesHistory.Text = "Show Licenses History";
-            this.llShowLicensesHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicensesHistory_LinkClicked);
-            // 
-            // llShowNewLicenseInfo
-            // 
-            this.llShowNewLicenseInfo.AutoSize = true;
-            this.llShowNewLicenseInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llShowNewLicenseInfo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.llShowNewLicenseInfo.Location = new System.Drawing.Point(228, 798);
-            this.llShowNewLicenseInfo.Name = "llShowNewLicenseInfo";
-            this.llShowNewLicenseInfo.Size = new System.Drawing.Size(240, 28);
-            this.llShowNewLicenseInfo.TabIndex = 5;
-            this.llShowNewLicenseInfo.TabStop = true;
-            this.llShowNewLicenseInfo.Text = "Show New Licenses Info";
-            this.llShowNewLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowNewLicenseInfo_LinkClicked);
-            // 
             // btnRenew
             // 
             this.btnRenew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
@@ -216,14 +188,12 @@
             // 
             // frmRenewLocalDrivingLicense
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 835);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRenew);
-            this.Controls.Add(this.llShowNewLicenseInfo);
-            this.Controls.Add(this.llShowLicensesHistory);
             this.Controls.Add(this.ctrlApplicationNewLicenseInfo1);
             this.Controls.Add(this.ctrlDriverLocalLicenseInfo1);
             this.Controls.Add(this.gbFilter);
@@ -239,7 +209,6 @@
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -253,8 +222,6 @@
         private System.Windows.Forms.Button btnAddNewLicense;
         private DVLD.Presentation_Layer.ctrlDriverLicenseInfo ctrlDriverLocalLicenseInfo1;
         private DVLD.Presentation_Layer.ctrlApplicationNewLicenseInfo ctrlApplicationNewLicenseInfo1;
-        private System.Windows.Forms.LinkLabel llShowLicensesHistory;
-        private System.Windows.Forms.LinkLabel llShowNewLicenseInfo;
         private System.Windows.Forms.Button btnRenew;
         private System.Windows.Forms.Button btnClose;
     }

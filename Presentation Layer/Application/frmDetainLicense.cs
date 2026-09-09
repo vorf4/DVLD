@@ -26,6 +26,26 @@ namespace DVLD.Presentation_Layer
             llShowLicensesHistory.Enabled = false;
         }
 
+        private void _VerificationIfContinuouslyDetainedLicense(int LicenseID)
+        {
+            if (clsDetainLicense.CheckIfLicenseIsDetained(LicenseID))
+            {
+                MessageBox.Show($"License ID {LicenseID} is already detained and cannot be detained again.",
+                    "Detain Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnDetain.Enabled = false;
+            }
+            if(!clsLicense.IsLicenseActive(LicenseID))
+            {
+                
+                MessageBox.Show($"License ID {LicenseID} is not active and cannot be detained.",
+                    "Detain Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnDetain.Enabled = false;
+
+            }
+
+         
+        }
+
         private void btnFind_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtLicenseID.Text))
@@ -52,6 +72,8 @@ namespace DVLD.Presentation_Layer
 
             llShowLicensesHistory.Enabled = true;
             btnDetain.Enabled = true;
+
+            _VerificationIfContinuouslyDetainedLicense(licenseID);
         }
 
         private void txtLicenseID_KeyPress(object sender, KeyPressEventArgs e)
@@ -67,6 +89,40 @@ namespace DVLD.Presentation_Layer
             {
                 btnFind_Click(sender, e);
             }
+        }
+
+        private void _CreateNewDetained(decimal fineFees) 
+        {
+
+            clsDetainLicense detainedLicense = new clsDetainLicense();
+           
+            detainedLicense.LicenseID = _selectedLicenseID;
+            detainedLicense.DetainDate = DateTime.Now;
+            detainedLicense.FineFees = fineFees;
+            detainedLicense.CreatedByUserID = _User.UserID;
+            detainedLicense.IsReleased = false;
+
+            clsDetainLicense.enSave result = detainedLicense.Save();
+
+            switch (result)
+            {
+                case clsDetainLicense.enSave.enDetained:
+                    MessageBox.Show($"License ID {_selectedLicenseID} has been detained successfully. DetainID : " + detainedLicense.DetainID,
+                        "Detain Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnDetain.Enabled = false;
+                    gbFilter.Enabled = false;
+                    ctrlDetainInfo1.LoadData(detainedLicense.DetainID, detainedLicense.DetainDate, detainedLicense.LicenseID, detainedLicense.CreatedByUserID);
+                    break;
+                case clsDetainLicense.enSave.enFailed:
+                    MessageBox.Show($"Failed to detain License ID {_selectedLicenseID}. Please try again.",
+                        "Detain Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                default:
+                    MessageBox.Show("An unexpected error occurred. Please contact support.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+
         }
 
         private void btnDetain_Click(object sender, EventArgs e)
@@ -94,14 +150,9 @@ namespace DVLD.Presentation_Layer
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question) == DialogResult.OK)
             {
-                // TODO: Call business layer to process the detain operation
-                // Example: clsDetainedLicense.DetainLicense(_selectedLicenseID, fineFees, createdByUserID);
+              
+                _CreateNewDetained(fineFees);
 
-                MessageBox.Show($"License ID {_selectedLicenseID} has been detained successfully.",
-                    "Detain Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                btnDetain.Enabled = false;
-                gbFilter.Enabled = false;
             }
         }
 

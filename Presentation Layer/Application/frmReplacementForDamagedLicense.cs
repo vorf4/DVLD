@@ -26,8 +26,6 @@ namespace DVLD.Presentation_Layer
             ctrlApplicationInfoForLicenseReplacement1.ResetDefaultValues();
 
             btnIssueReplacement.Enabled = false;
-            llShowLicensesHistory.Enabled = false;
-            llShowNewLicenseInfo.Enabled = false;
 
             UpdateReplacementTypeInfo();
         }
@@ -99,7 +97,6 @@ namespace DVLD.Presentation_Layer
             ctrlApplicationInfoForLicenseReplacement1.OldLicenseID = licenseID.ToString();
             ctrlApplicationInfoForLicenseReplacement1.ApplicationDate = DateTime.Now.ToShortDateString();
 
-            llShowLicensesHistory.Enabled = true;
             btnIssueReplacement.Enabled = true;
         }
 
@@ -204,18 +201,7 @@ namespace DVLD.Presentation_Layer
                 btnIssueReplacement.Enabled = false;
                 gbFilter.Enabled = false;
                 gbReplacementFor.Enabled = false;
-                llShowNewLicenseInfo.Enabled = true;
             }
-        }
-
-        private void llShowLicensesHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show($"Show License History for License ID: {_selectedLicenseID}", "License History", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void llShowNewLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show($"Show New License Info for Replaced License ID: {_replacedLicenseID}", "New License Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

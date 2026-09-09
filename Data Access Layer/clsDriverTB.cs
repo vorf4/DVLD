@@ -42,5 +42,32 @@ namespace Data_Access_Layer
             return newDriverID;
         }
 
+        public static int GetPersonIDByDriverID(int DriverID)
+        {
+            int personID = -1;
+            SqlConnection conn = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = "SELECT PersonID FROM Drivers WHERE DriverID = @DriverID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@DriverID", DriverID);
+            try
+            {
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int retrievedPersonID))
+                {
+                    personID = retrievedPersonID;
+                }
+            }
+            catch
+            {
+                // Handle exception (log it, rethrow it, etc.)
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return personID;
+        }
+
     }
 }
