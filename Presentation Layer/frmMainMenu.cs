@@ -148,6 +148,10 @@ namespace Presentation_Layer
 
         private void miDetainLicense_Click(object sender, EventArgs e)
         {
+
+            frmDetainLicense frmDetainLicense = new frmDetainLicense(_User);
+            frmDetainLicense.ShowDialog();
+
         }
 
         private void miReleaseDetainedLicense_Click(object sender, EventArgs e)

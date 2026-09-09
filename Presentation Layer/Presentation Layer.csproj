@@ -66,6 +66,18 @@
     <Compile Include="Application\ctrlApplicationNewLicenseInfo.Designer.cs">
       <DependentUpon>ctrlApplicationNewLicenseInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\ctrlDetainInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Application\ctrlDetainInfo.Designer.cs">
+      <DependentUpon>ctrlDetainInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\frmInternationalLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
